@@ -42,6 +42,20 @@ def everyday(options):
     os.chdir("everyday")
     subprocess.call(params)
     os.chdir("..")
+    
+@task
+@cmdopts([('all','a','rebuild everything')])
+def context(options):
+    # project-specific pavements have defaults set but we can override here
+    params = ["paver", "build", # task name
+              "--masterapp", master_app,
+              "--masterurl", master_url]
+    if 'all' in options.context:
+        params.append("-a")
+
+    os.chdir("contextualizedpython")
+    subprocess.call(params)
+    os.chdir("..")
 
 @task
 @cmdopts([('all','a','rebuild everything')])

@@ -10,3 +10,6 @@
 [submodule "Java4Python"]
 	path = Java4Python
 	url = https://github.com/bnmnetp/Java4Python
+[submodule "common/ext/jsav"]
+	path = common/ext/jsav
+	url = https://github.com/vkaravir/JSAV.git

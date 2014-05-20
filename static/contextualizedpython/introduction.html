@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; Python in Context</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.0.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/video.css" type="text/css" />
+    <link rel="stylesheet" href="_static/poll.css" type="text/css" />
+    <link rel="stylesheet" href="_static/tabbedstuff.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pytutor.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/codemirror.css" type="text/css" />
+    <link rel="stylesheet" href="_static/activecode.css" type="text/css" />
+    <link rel="stylesheet" href="_static/parsons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/lib/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="_static/jquery-ui-1.10.3.custom.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/user-highlights.css" type="text/css" />
+    <link rel="stylesheet" href="../runestone-custom-sphinx-bootstrap.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/poll.js"></script>
+    <script type="text/javascript" src="_static/blockly_compressed.js"></script>
+    <script type="text/javascript" src="_static/blocks_compressed.js"></script>
+    <script type="text/javascript" src="_static/javascript_compressed.js"></script>
+    <script type="text/javascript" src="_static/python_compressed.js"></script>
+    <script type="text/javascript" src="_static/msg/js/en.js"></script>
+    <script type="text/javascript" src="_static/d3.v2.min.js"></script>
+    <script type="text/javascript" src="_static/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="_static/jquery.ba-bbq.min.js"></script>
+    <script type="text/javascript" src="_static/jquery.jsPlumb-1.3.10-all-min.js"></script>
+    <script type="text/javascript" src="_static/pytutor.js"></script>
+    <script type="text/javascript" src="_static/jquery.highlight.js"></script>
+    <script type="text/javascript" src="_static/bookfuncs.js"></script>
+    <script type="text/javascript" src="_static/codemirror.js"></script>
+    <script type="text/javascript" src="_static/python.js"></script>
+    <script type="text/javascript" src="_static/javascript.js"></script>
+    <script type="text/javascript" src="_static/activecode.js"></script>
+    <script type="text/javascript" src="_static/skulpt.min.js"></script>
+    <script type="text/javascript" src="_static/skulpt-stdlib.js"></script>
+    <script type="text/javascript" src="_static/assess.js"></script>
+    <script type="text/javascript" src="_static/animationbase.js"></script>
+    <script type="text/javascript" src="_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="_static/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="_static/lib/prettify.js"></script>
+    <script type="text/javascript" src="_static/lib/underscore-min.js"></script>
+    <script type="text/javascript" src="_static/lib/lis.js"></script>
+    <script type="text/javascript" src="_static/parsons.js"></script>
+    <script type="text/javascript" src="_static/parsons-noconflict.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="_static/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="_static/waypoints.min.js"></script>
+    <script type="text/javascript" src="_static/rangy-core.js"></script>
+    <script type="text/javascript" src="_static/rangy-textrange.js"></script>
+    <script type="text/javascript" src="_static/rangy-cssclassapplier.js"></script>
+    <script type="text/javascript" src="_static/user-highlights.js"></script>
+    <script type="text/javascript" src="_static/jquery.idle-timer.js"></script>
+    <script type="text/javascript" src="_static/processing-1.4.1.min.js"></script>
+    <script type="text/javascript" src="_static/jquery.hotkey.js"></script>
+    <link rel="top" title="Python in Context" href="index.html" />
+    <link rel="prev" title="Python in Context" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<script type="text/javascript">
+  eBookConfig = {};
+  eBookConfig.host = 'http://127.0.0.1:8000' ? 'http://127.0.0.1:8000' : 'http://127.0.0.1:8000';
+  eBookConfig.app = eBookConfig.host+'/runestone';
+  eBookConfig.ajaxURL = eBookConfig.app+'/ajax/';
+  eBookConfig.course = 'contextualizedpython';
+  eBookConfig.logLevel = 10;
+  eBookConfig.loginRequired = false
+  eBookConfig.build_info = "";
+  eBookConfig.isLoggedIn = false;
+</script>
+
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+  </head>
+  <body>
+
+
+<!-- Begin navbar -->
+<div id="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+  <div class="container">
+
+    <div class="navbar-header">
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <button type='button' class='navbar-toggle' data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div>
+        <a class="brand-logo" style='background: transparent url("_static/img/logo_small.png") no-repeat 0px 0px;' href="/runestone/default/user/login">&nbsp; </a>
+        <a class="navbar-brand" href="index.html">Python in Context</a>
+      </div>
+    </div>
+
+    <div class="navbar-collapse collapse navbar-ex1-collapse">
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <li class="divider-vertical"></li>
+
+        <!-- social media dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-share-alt" style="opacity: 0.9"></i>
+          </a>
+          <ul class="dropdown-menu social-menu">
+              <li>
+                <div>
+                  <b>Runestone in social media:</b>
+                </div>
+                <a href="https://twitter.com/iRunestone" class="twitter-follow-button" data-show-count="true">Follow @iRunestone</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <div class="fb-like" data-href="https://www.facebook.com/RunestoneInteractive" data-send="false" data-layout="button_count" data-width="300" data-show-faces="false" data-font="arial"></div>
+              </li>
+
+              <li class="divider"></li>
+              <li>
+                <div>
+                  <b>Help support us:</b>
+                </div>
+                <div class="gittip">
+                  <iframe style="border:0;"
+                    src="https://www.gittip.com/bnmnetp/widget.html"
+                    width="48pt" height="22pt" class="gittip-button">
+                  </iframe>
+                </div>
+              </li>
+          </ul>
+        </li>
+        <!-- end social media dropdown -->
+
+        <li class="divider-vertical"></li>
+
+        <!-- search dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-search" style='opacity:0.9;'></i>
+          </a>
+          <ul class='dropdown-menu'>
+            
+                <li><a href='index.html'>Table of Contents</a></li>
+            
+            <li><a href='/runestone/static/contextualizedpython/genindex.html'>Book Index</a></li>
+            <li class="divider"></li>
+            <li id="scratch_ac_link"><a href="javascript:toggleScratchActivecode()">Scratch ActiveCode</a></li>
+            <li class="divider"></li>
+            <li style="width: 240px;">
+              <form class="navbar-search" style="margin:10px;" action="search.html" method="get">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="q" placeholder="Search this book" />
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" style="margin:0;" type="submit">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                  </span>
+                </div><!-- /input-group -->
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+            </li>
+          </ul>
+        </li>
+        <!-- end search dropdown -->
+
+        <li class="divider-vertical"></li>
+
+        <!-- user account dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-user" style="opacity:0.9;"></i>
+          </a>
+          <ul class="dropdown-menu user-menu">
+            <li><span class='loggedinuser'></span></li>
+            <li class="divider"></li>
+            <li><a href='http://127.0.0.1:8000/runestone/admin/index'>Instructor's Page</a></li>
+            <li class="divider"></li>
+            <li><a href="http://127.0.0.1:8000/runestone/default/user/profile" id="profilelink">Edit Profile</a></li>
+            <li><a href="http://127.0.0.1:8000/runestone/default/user/change_password" id="passwordlink">Change Password</a></li>
+            <li><a href="http://127.0.0.1:8000/runestone/default/user/register" id="registerlink">Register</a></li>
+            <li class='loginout'><a href='#'>Login</a></li> <!-- correct link populated by addNavbarLoginLink() -->
+          </ul>
+        </li>
+        <!-- end user account dropdown -->
+
+        <li class="divider-vertical"></li>
+
+        <!-- help menu dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-question-sign" style="opacity:0.9;"></i>
+          </a>
+          <ul class="dropdown-menu user-menu">
+            <li><a href='/runestone/static/contextualizedpython/navhelp.html'>Navigation Help</a></li>
+            <li><a href='/runestone/static/overview/instructor.html'>Help for Instructors</a></li>            
+            <li class="divider"></li>
+            <li><a href='http://runestoneinteractive.org'>About Runestone</a></li>
+            <li><a href='https://github.com/bnmnetp/runestone/issues/new'>Report A Problem</a></li>
+          </ul>
+        </li>
+        <!-- end help menu dropdown -->
+
+        <li class="divider-vertical"></li>
+
+      </ul>
+
+      <ul class="nav navbar-nav">
+        <li class="divider-vertical"></li>
+        
+          <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"><ul>
+<li><a class="reference internal" href="#">Introduction</a></li>
+<li><a class="reference internal" href="#contextual-learning">Contextual Learning</a></li>
+<li><a class="reference internal" href="#problems">Problems</a></li>
+<li><a class="reference internal" href="#blockly">Blockly</a></li>
+<li><a class="reference internal" href="#data">Data</a></li>
+<li><a class="reference internal" href="#algorithms">Algorithms</a></li>
+<li><a class="reference internal" href="#creativity">Creativity</a></li>
+</ul>
+</ul>
+</li>
+          <li class="divider-vertical"></li>
+        
+        
+          
+  <li id="relations-prev" title="Previous Chapter - Python in Context" data-toggle="tooltip">
+    <a href="index.html" >
+      <i class='glyphicon glyphicon-backward' style='opacity:0.9;'></i>
+    </a>
+  </li>
+  
+    <li class="divider-vertical"></li>
+  
+
+<script type="text/javascript">
+  opts = {'placement':'bottom',
+          'selector': '',
+          'delay': { show: 100, hide: 50}
+         };
+
+  $('#relations-prev').tooltip(opts);
+  $('#relations-next').tooltip(opts);
+</script>
+        
+        
+          <li></li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>Computer Science is about solving problems at scale. &lt;&#8212; Explain creativity as being outside this paradigm, but still cover it</p>
+<p>Computers are a tool for this, because they are exceptionally good at automating tasks</p>
+<p>When reading this book, think about how we identify and design Problems, Data, and Algorithms</p>
+</div>
+<div class="section" id="contextual-learning">
+<h1>Contextual Learning<a class="headerlink" href="#contextual-learning" title="Permalink to this headline">¶</a></h1>
+<p>This textbook is designed to be contextualized. That means that when we introduce a concept, it will be connected to ideas and framed by problems that are authentic to you. Think of it as a &#8220;Choose-your-own Adventure&#8221; story. At any time, you can look at a parallel example in another discipline.</p>
+</div>
+<div class="section" id="problems">
+<h1>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h1>
+<p>What kinds of problems can we solve in Computer Science? Here&#8217;s some simple criteria:</p>
+<ul class="simple">
+<li><strong>Big</strong>: The problem has many complicated parts, or involves a lot of data.</li>
+<li><strong>Repeated</strong>: The problem needs to be done many times.</li>
+</ul>
+<p>When deciding whether you should use Computational Thinking to solve a problem, you need to consider how big and how often. Sorting your socks is not a problem that should be solved with Computational Thinking, unless you are constantly washing hundreds of socks.</p>
+<p>Of course, there are other reasons why problems might not be solvable with Computational Thinking. Mathematicians have proven that some problems are impossible to compute solutions to. Sometimes problems would take so long to solve, we&#8217;d run out of time in the universe. Sometimes problems require buy-in from people that aren&#8217;t interested.</p>
+<p>Still, there are many problems that are easy to solve with a computer.</p>
+ <div id='pollid1' class='context alert alert-warning'> 
+    <form id='pollid1_context' name='pollid1_context' action="">
+        <fieldset>
+            <legend>Context</legend>
+            <div class='context-question'> On a scale from 1 to 10, how important do you think it is to have a polling directive in the Runestone Tools?</div>
+            <div id='pollid1_context_input'>
+                <div class='context-options'>
+
+<label class='radio-inline'>
+    <input type='radio' name='pollid1_opt' id='pollid1_1' value='1'>
+    1
+</label>
+
+<label class='radio-inline'>
+    <input type='radio' name='pollid1_opt' id='pollid1_2' value='2'>
+    2
+</label>
+
+<label class='radio-inline'>
+    <input type='radio' name='pollid1_opt' id='pollid1_3' value='3'>
+    3
+</label>
+
+<label class='radio-inline'>
+    <input type='radio' name='pollid1_opt' id='pollid1_4' value='4'>
+    4
+</label>
+
+<label class='radio-inline'>
+    <input type='radio' name='pollid1_opt' id='pollid1_5' value='5'>
+    5
+</label>
+
+<label class='radio-inline'>
+    <input type='radio' name='pollid1_opt' id='pollid1_6' value='6'>
+    6
+</label>
+
+<label class='radio-inline'>
+    <input type='radio' name='pollid1_opt' id='pollid1_7' value='7'>
+    7
+</label>
+
+<label class='radio-inline'>
+    <input type='radio' name='pollid1_opt' id='pollid1_8' value='8'>
+    8
+</label>
+
+<label class='radio-inline'>
+    <input type='radio' name='pollid1_opt' id='pollid1_9' value='9'>
+    9
+</label>
+
+<label class='radio-inline'>
+    <input type='radio' name='pollid1_opt' id='pollid1_10' value='10'>
+    10
+</label>
+ </div> 
+<br />
+<input type='text' class='form-control' style='width:300px;' name='pollid1_comment' placeholder='Any comments?'>
+<br />
+
+            <button type='button' id='pollid1_submit' class='btn btn-success' onclick="submitContext('pollid1');">Submit</button>
+        </div>
+
+        </fieldset>
+    </form>
+ <div id='pollid1_results'></div> 
+    <script type='text/javascript'>
+        // check if the user has already answered this context
+        $(function() {
+            var len = localStorage.length;
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                    var key = localStorage.key(i);
+                    if (key === 'pollid1') {
+                        var ex = localStorage.getItem(key);
+                        if(ex === "true") {
+                            // hide the context inputs
+                            $("#pollid1_context_input").hide();
+
+                            // show the results of the context
+                            var data = {};
+                            data.div_id = 'pollid1';
+                            data.course = eBookConfig.course;
+                            jQuery.get(eBookConfig.ajaxURL+'getcontextresults', data, showContextResults);
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</div>
+</div>
+<div class="section" id="blockly">
+<h1>Blockly<a class="headerlink" href="#blockly" title="Permalink to this headline">¶</a></h1>
+
+<p>
+    <button onclick="showCode()">Show Python</button>
+    <button onclick="runCode()">Run</button>
+</p>
+<div id="blockly1" style="height: 480px; width: 600px;"></div>
+<xml id="toolbox" style="display: none"><category name="controls"><block type="controls_if"></block>
+<block type="controls_repeat_ext"></block>
+</category><category name="logic"><block type="logic_compare"></block>
+</category><category name="math"><block type="math_number"></block>
+<block type="math_arithmetic"></block>
+</category><category name="text"><block type="text"></block>
+<block type="text_print"></block>
+</category><category name="Variables" custom="VARIABLE"></category></xml>
+<script>
+    Blockly.inject(document.getElementById('blockly1'),
+        {path: '_static/', toolbox: document.getElementById('toolbox')});
+
+    function showCode() {
+      // Generate JavaScript code and display it.
+      Blockly.Python.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.Python.workspaceToCode();
+      alert(code);
+    }
+
+    function runCode() {
+      // Generate JavaScript code and run it.
+      window.LoopTrap = 1000;
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+      var code = Blockly.JavaScript.workspaceToCode();
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      try {
+        eval(code);
+      } catch (e) {
+        alert(e);
+      }
+    }
+
+    Blockly.JavaScript['text_print'] = function(block) { 
+      // Print statement override. 
+      var argument0 = Blockly.JavaScript.valueToCode(block, 'TEXT', 
+          Blockly.JavaScript.ORDER_NONE) || '\'\''; 
+      return 'my_custom_print(' + argument0 + ', "blockly1" );\n'; 
+    }; 
+
+    function my_custom_print(text,divid) { 
+      var p = document.getElementById(divid+"_pre");
+      p.innerHTML += text + "\n"
+      }
+
+    var xmlText = '<xml>    <block type="variables_set" id="1" inline="true" x="25" y="9">       <field name="VAR">X</field>       <value name="VALUE">          <block type="math_number" id="2">             <field name="NUM">10</field>          </block>       </value>    </block> </xml>';
+    var xmlDom = Blockly.Xml.textToDom(xmlText);
+    Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xmlDom);
+  </script>
+  
+  <pre id="blockly1_pre"></pre>
+</div>
+<div class="section" id="data">
+<h1>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="algorithms">
+<h1>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="creativity">
+<h1>Creativity<a class="headerlink" href="#creativity" title="Permalink to this headline">¶</a></h1>
+<p>Of course, data is beautiful.</p>
+<p>Looking at visualizations of data can activate the same neural circuitry as traditional works of art. [Citation]</p>
+</div>
+
+
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <span id='numuserspan'></span> readers online now | <span class='loggedinuser'></span> | <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright &lt;2014, Austin Cory Bart&gt;.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.
+    </p>
+  </div>
+</footer>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(addUserToFooter);
+    $(document).ready(addNavbarLoginLink);
+    $(document).ready(createEditors);
+    $(document).ready(getNumUsers);
+    $(document).ready(getOnlineUsers);
+    $(document).ready(createScratchActivecode());
+    $(document).ready(styleUnittestResults());
+</script>
+
+<script type="text/javascript">
+  // add the video play button overlay image
+  $(".video-play-overlay").each(function() {
+    $(this).css('background-image', "url(\'_static/play_overlay_icon.png\')")
+    });
+
+  // This function is needed to allow the dropdown search bar to work;
+  // The default behaviour is that the dropdown menu closes when something in
+  // it (like the search bar) is clicked
+  $(function() {
+    // Fix input element click problem
+    $('.dropdown input, .dropdown label').click(function(e) {
+      e.stopPropagation();
+      });
+  });
+
+  // style codelens buttons (doing it here because PyTutor is a submodule owned by someone else
+  $(function() {
+    $(".ExecutionVisualizer").each(function() {
+      $(this).find("#jmpFirstInstr").addClass('btn btn-default');
+      $(this).find("#jmpStepBack").addClass('btn btn-danger');
+      $(this).find("#jmpStepFwd").addClass('btn btn-success');
+      $(this).find("#jmpLastInstr").addClass('btn btn-default');
+      });
+  });
+
+</script>
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32029811-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
