@@ -4,6 +4,10 @@ import shutil
 import sys
 from sphinx.application import Sphinx
 
+import logging
+logger = logging.getLogger("web2py.app.runestone")
+logger.setLevel(logging.DEBUG)
+
 # this is for admin links
 # use auth.requires_membership('manager')
 #
@@ -62,24 +66,58 @@ def listassignments():
 
 @auth.requires(lambda: verifyInstructorStatus(auth.user.course_name, auth.user), requires_login=True)
 def listassessments():
+    
     course = db(db.courses.id == auth.user.course_id).select().first()
+    
+    logging.error(course.course_name)
+    logging.error(course.term_start_date)
+    
+    query = '''SELECT *, 
+                      (SELECT count(*) 
+                           FROM useinfo 
+                           WHERE div_id = oui.div_id 
+                           AND course_id = '%(course_name)s'),
+                      (SELECT count(*) * 1.0 
+                           FROM useinfo 
+                           WHERE div_id = oui.div_id 
+                           AND course_id='%(course_name)s' 
+                           AND instr(act, 'correct') > 0)
+                       / 
+                       (SELECT count(*) 
+                           FROM useinfo 
+                           WHERE div_id = oui.div_id 
+                           AND course_id = '%(course_name)s' ) 
+                       AS pct
+                   FROM useinfo AS oui
+                   WHERE event = 'mChoice'
+                   AND DATE(timestamp) >= DATE('%(start_date)s')
+                   GROUP BY div_id
+                   ORDER BY pct''' % dict(course_name=course.course_name, start_date=course.term_start_date)
+    logging.error(db.executesql(query))
+    
 
-    query = '''select div_id,
-                     (select count(*) from useinfo where div_id = oui.div_id
-                     and course_id = '%(course_name)s'),
-                     (select count(*) * 1.0 from useinfo where div_id = oui
-                     .div_id  and course_id='%(course_name)s' and position(
-                     'correct' in
-                     act) > 0) /
-                         (select count(*)
-                          from useinfo
-                          where div_id = oui.div_id and course_id = '%(course_name)s' ) as
-                          pct
-               from useinfo oui
-               where event = 'mChoice'
-                     and DATE(timestamp) >= DATE('%(start_date)s')
-                     and course_id = '%(course_name)s' group by div_id order
-                     by pct''' % dict(course_name=course.course_name, start_date=course.term_start_date)
+    query = '''SELECT div_id, 
+                      (SELECT count(*) 
+                           FROM useinfo 
+                           WHERE div_id = oui.div_id 
+                           AND course_id = '%(course_name)s'),
+                      (SELECT count(*) * 1.0 
+                           FROM useinfo 
+                           WHERE div_id = oui.div_id 
+                           AND course_id='%(course_name)s' 
+                           AND instr(act, 'correct') > 0)
+                       / 
+                       (SELECT count(*) 
+                           FROM useinfo 
+                           WHERE div_id = oui.div_id 
+                           AND course_id = '%(course_name)s' ) 
+                       AS pct
+                   FROM useinfo AS oui
+                   WHERE event = 'mChoice'
+                   AND DATE(timestamp) >= DATE('%(start_date)s')
+                   AND course_id = '%(course_name)s'
+                   GROUP BY div_id
+                   ORDER BY pct''' % dict(course_name=course.course_name, start_date=course.term_start_date)
     rset = db.executesql(query)
     return dict(solutions=rset)
 
