@@ -8,5 +8,26 @@ Python in Context
 
    introduction.rst
    
+
+Introduction
+
+    The "Character" of this course
+    Themes
+    Learning Objectives
+    Overview
+        NetLogo
+        Blockly
+        Python
    
-Here we 
+Computational Modeling: NetLogo
+
+    Sidebar: Installation of Netlogo
+    
+    Abstraction (Day 1)
+        Properties
+        Agents
+    
+
+Algorithms: Blockly
+
+Coding: Python

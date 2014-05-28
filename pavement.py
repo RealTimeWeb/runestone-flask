@@ -39,9 +39,9 @@ def everyday(options):
     if 'all' in options.everyday:
         params.append("-a")
 
-    os.chdir("everyday")
+    os.chdir("books/everyday")
     subprocess.call(params)
-    os.chdir("..")
+    os.chdir("../..")
     
 @task
 @cmdopts([('all','a','rebuild everything')])
@@ -53,9 +53,9 @@ def context(options):
     if 'all' in options.context:
         params.append("-a")
 
-    os.chdir("contextualizedpython")
+    os.chdir("books/contextualizedpython")
     subprocess.call(params)
-    os.chdir("..")
+    os.chdir("../..")
 
 @task
 @cmdopts([('all','a','rebuild everything')])
@@ -67,9 +67,9 @@ def thinkcspy(options):
     if 'all' in options.thinkcspy:
         params.append("-a")
 
-    os.chdir("thinkcspy")
+    os.chdir("books/thinkcspy")
     subprocess.call(params)
-    os.chdir("..")
+    os.chdir("../..")
 
     if minify_js:
         sh('./minifyjs.py %s' % "static/thinkcspy")
@@ -84,9 +84,9 @@ def pythonds(options):
     if 'all' in options.pythonds:
         params.append("-a")
 
-    os.chdir("pythonds")
+    os.chdir("books/pythonds")
     subprocess.call(params)
-    os.chdir("..")
+    os.chdir("../..")
 
     if minify_js:
         sh('./minifyjs.py %s' % "static/pythonds")
@@ -101,9 +101,9 @@ def overview(options):
     if 'all' in options.overview:
         params.append("-a")
 
-    os.chdir("overview")
+    os.chdir("books/overview")
     subprocess.call(params)
-    os.chdir("..")
+    os.chdir("../..")
 
     if minify_js:
         sh('./minifyjs.py %s' % "static/overview")
@@ -118,9 +118,9 @@ def devcourse(options):
     if 'all' in options.devcourse:
         params.append("-a")
 
-    os.chdir("devcourse")
+    os.chdir("books/devcourse")
     subprocess.call(params)
-    os.chdir("..")
+    os.chdir("../..")
 
     if minify_js:
         sh('./minifyjs.py %s' % "static/devcourse")
@@ -135,9 +135,9 @@ def java4python(options):
     if 'all' in options.java4python:
         params.append("-a")
 
-    os.chdir("Java4Python")
+    os.chdir("books/Java4Python")
     subprocess.call(params)
-    os.chdir("..")
+    os.chdir("../..")
 
 @task
 @cmdopts([('all','a','rebuild everything')])
