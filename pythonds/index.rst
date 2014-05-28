@@ -7,9 +7,9 @@
    :description: An interactive version of Problem Solving with Algorithms and Data Structures using Python.
    :keywords: python, data structures, computer science
 
-==============================================================
-Welcome to Problem Solving with Algorithms and Data Structures
-==============================================================
+.. ==============================================================
+.. Welcome to Problem Solving with Algorithms and Data Structures
+.. ==============================================================
 
 .. image:: _static/PythonDScover.jpg
     :alt: PythonDS Cover
@@ -21,79 +21,193 @@ Introduction
 ::::::::::::
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   Introduction/introduction.rst
+    Introduction/Objectives.rst
+    Introduction/GettingStarted.rst
+    Introduction/WhatIsComputerScience.rst
+    Introduction/WhatIsProgramming.rst
+    Introduction/WhyStudyDataStructuresandAbstractDataTypes.rst
+    Introduction/WhyStudyAlgorithms.rst
+    Introduction/ReviewofBasicPython.rst
+    Introduction/GettingStartedwithData.rst
+    Introduction/InputandOutput.rst
+    Introduction/ControlStructures.rst
+    Introduction/ExceptionHandling.rst
+    Introduction/DefiningFunctions.rst
+    Introduction/ObjectOrientedProgramminginPythonDefiningClasses.rst
+    Introduction/Summary.rst
+    Introduction/KeyTerms.rst
+    Introduction/DiscussionQuestions.rst
+    Introduction/ProgrammingExercises.rst
 
 Analysis
 ::::::::
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   AlgorithmAnalysis/analysis.rst
+    AlgorithmAnalysis/Objectives.rst
+    AlgorithmAnalysis/WhatIsAlgorithmAnalysis.rst
+    AlgorithmAnalysis/BigONotation.rst
+    AlgorithmAnalysis/AnAnagramDetectionExample.rst
+    AlgorithmAnalysis/PerformanceofPythonDataStructures.rst
+    AlgorithmAnalysis/Lists.rst
+    AlgorithmAnalysis/Dictionaries.rst
+    AlgorithmAnalysis/Summary.rst
+    AlgorithmAnalysis/KeyTerms.rst
+    AlgorithmAnalysis/DiscussionQuestions.rst
+    AlgorithmAnalysis/ProgrammingExercises.rst
 
 Basic Data Structures
 :::::::::::::::::::::
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   BasicDS/basic.rst
-   BasicDS/stacks.rst
-   BasicDS/queues.rst
-   BasicDS/deques.rst
-   BasicDS/linkedlists.rst
-   BasicDS/basic_ex.rst
+    BasicDS/Objectives.rst
+    BasicDS/WhatAreLinearStructures.rst
+    BasicDS/WhatisaStack.rst
+    BasicDS/TheStackAbstractDataType.rst
+    BasicDS/ImplementingaStackinPython.rst
+    BasicDS/SimpleBalancedParentheses.rst
+    BasicDS/BalancedSymbols(AGeneralCase).rst
+    BasicDS/ConvertingDecimalNumberstoBinaryNumbers.rst
+    BasicDS/InfixPrefixandPostfixExpressions.rst
+    BasicDS/WhatIsaQueue.rst
+    BasicDS/TheQueueAbstractDataType.rst
+    BasicDS/ImplementingaQueueinPython.rst
+    BasicDS/SimulationHotPotato.rst
+    BasicDS/SimulationPrintingTasks.rst
+    BasicDS/WhatIsaDeque.rst
+    BasicDS/TheDequeAbstractDataType.rst
+    BasicDS/ImplementingaDequeinPython.rst
+    BasicDS/PalindromeChecker.rst
+    BasicDS/Lists.rst
+    BasicDS/TheUnorderedListAbstractDataType.rst
+    BasicDS/ImplementinganUnorderedListLinkedLists.rst
+    BasicDS/TheOrderedListAbstractDataType.rst
+    BasicDS/ImplementinganOrderedList.rst
+    BasicDS/Summary.rst
+    BasicDS/KeyTerms.rst
+    BasicDS/DiscussionQuestions.rst
+    BasicDS/ProgrammingExercises.rst
+
 
 Recursion
 :::::::::
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   Recursion/recursionsimple.rst
-   Recursion/graphical.rst
-   Recursion/recursioncomplex.rst
-   Recursion/recursionexercises.rst
+    Recursion/Objectives.rst
+    Recursion/WhatIsRecursion.rst
+    Recursion/CalculatingtheSumofaListofNumbers.rst
+    Recursion/TheThreeLawsofRecursion.rst
+    Recursion/ConvertinganIntegertoaStringinAnyBase.rst
+    Recursion/StackFramesImplementingRecursion.rst
+    Recursion/intro-VisualizingRecursion.rst
+    Recursion/SierpinskiTriangle.rst
+    Recursion/ComplexRecursiveProblems.rst
+    Recursion/TowerofHanoi.rst
+    Recursion/ExploringaMaze.rst
+    Recursion/DynamicProgramming.rst
+    Recursion/Summary.rst
+    Recursion/KeyTerms.rst
+    Recursion/DiscussionQuestions.rst
+    Recursion/Glossary.rst
+    Recursion/ProgrammingExercises.rst
 
 
 Sorting and Searching
 :::::::::::::::::::::
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   SortSearch/searching.rst
-   SortSearch/sorting.rst
-   SortSearch/sortsearchexercises.rst
+    SortSearch/Objectives.rst
+    SortSearch/TheSequentialSearch.rst
+    SortSearch/TheBinarySearch.rst
+    SortSearch/Hashing.rst
+    SortSearch/TheBubbleSort.rst
+    SortSearch/TheSelectionSort.rst
+    SortSearch/TheInsertionSort.rst
+    SortSearch/TheShellSort.rst
+    SortSearch/TheMergeSort.rst
+    SortSearch/TheQuickSort.rst
+    SortSearch/Summary.rst
+    SortSearch/KeyTerms.rst
+    SortSearch/DiscussionQuestions.rst
+    SortSearch/ProgrammingExercises.rst
+
+
 
 Trees and Tree Agorithms
 ::::::::::::::::::::::::
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   Trees/trees.rst
-   Trees/implementation.rst
-   Trees/bintreeapps.rst
-   Trees/heap.rst
-   Trees/bst.rst
-   Trees/balanced.rst
-   Trees/treeexercises.rst
+    Trees/Objectives.rst
+    Trees/ExamplesofTrees.rst
+    Trees/VocabularyandDefinitions.rst
+    Trees/ListofListsRepresentation.rst
+    Trees/NodesandReferences.rst
+    Trees/BinaryTreeApplications.rst
+    Trees/ParseTree.rst
+    Trees/TreeTraversals.rst
+    Trees/PriorityQueueswithBinaryHeaps.rst
+    Trees/BinaryHeapOperations.rst
+    Trees/BinaryHeapImplementation.rst
+    Trees/BinarySearchTrees.rst
+    Trees/SearchTreeOperations.rst
+    Trees/SearchTreeImplementation.rst
+    Trees/SearchTreeAnalysis.rst
+    Trees/BalancedBinarySearchTrees.rst
+    Trees/AVLTreePerformance.rst
+    Trees/AVLTreeImplementation.rst
+    Trees/SummaryofMapADTImplementations.rst
+    Trees/Summary.rst
+    Trees/KeyTerms.rst
+    Trees/DiscussionQuestions.rst
+    Trees/ProgrammingExercises.rst
+
 
 
 Graphs and Graph Algorithms
 :::::::::::::::::::::::::::
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   Graphs/graphintro.rst
-   Graphs/graphbfs.rst
-   Graphs/graphdfs.rst
-   Graphs/graphshortpath.rst
-   Graphs/graphexercises.rst
+    Graphs/Objectives.rst
+    Graphs/VocabularyandDefinitions.rst
+    Graphs/TheGraphAbstractDataType.rst
+    Graphs/AnAdjacencyMatrix.rst
+    Graphs/AnAdjacencyList.rst
+    Graphs/Implementation.rst
+    Graphs/BreadthFirstSearch.rst
+    Graphs/TheWordLadderProblem.rst
+    Graphs/BuildingtheWordLadderGraph.rst
+    Graphs/ImplementingBreadthFirstSearch.rst
+    Graphs/BreadthFirstSearchAnalysis.rst
+    Graphs/DepthFirstSearch.rst
+    Graphs/TheKnight’sTourProblem.rst
+    Graphs/BuildingtheKnight’sTourGraph.rst
+    Graphs/ImplementingKnight’sTour.rst
+    Graphs/Knight’sTourAnalysis.rst
+    Graphs/GeneralDepthFirstSearch.rst
+    Graphs/DepthFirstSearchAnalysis.rst
+    Graphs/TopologicalSorting.rst
+    Graphs/StronglyConnectedComponents.rst
+    Graphs/ShortestPathProblems.rst
+    Graphs/Dijkstra’sAlgorithm.rst
+    Graphs/AnalysisofDijkstra’sAlgorithm.rst
+    Graphs/Prim’sSpanningTreeAlgorithm.rst
+    Graphs/Summary.rst
+    Graphs/KeyTerms.rst
+    Graphs/DiscussionQuestions.rst
+    Graphs/ProgrammingExercises.rst
 
 
 Acknowledgements
