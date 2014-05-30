@@ -42,6 +42,7 @@ response.generic_patterns = ['*'] if request.is_local else []
 #########################################################################
 
 from gluon.tools import Auth, Crud, Service, PluginManager, prettydate
+
 auth = Auth(db, hmac_key=Auth.get_or_create_key())
 crud, service, plugins = Crud(db), Service(), PluginManager()
 
@@ -174,18 +175,61 @@ auth.settings.register_next = URL('default', 'index')
 #use_janrain(auth,filename='private/janrain.key')
 from gluon.contrib.login_methods.rpx_account import RPXAccount
 from gluon.contrib.login_methods.extended_login_form import ExtendedLoginForm
+from gluon.contrib.login_methods.oauth20_account import OAuthAccount
+from gluon.contrib import simplejson as json
+import os
+import urllib2
+
+
+class GoogleAccount(OAuthAccount):
+    "OAuth 2.0 for Google"
+
+    def __init__(self):
+        with open(os.path.join(request.folder, 'private/google_auth.json'), 'rb') as f:
+            gai = Storage(json.load(f)['web'])
+
+        OAuthAccount.__init__(self, None, gai.client_id, gai.client_secret,
+                              gai.auth_uri, gai.token_uri,
+                              scope='https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
+                              approval_prompt='force', state="auth_provider=google")
+
+    def get_user(self):
+
+        token = self.accessToken()
+        if not token:
+            return None
+
+        uinfo_url = 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=%s' % urllib2.quote(token, safe='')
+
+        uinfo = None
+
+        try:
+            uinfo_stream = urllib2.urlopen(uinfo_url)
+        except:
+            session.token = None
+            return
+        data = uinfo_stream.read()
+        uinfo = json.loads(data)
+
+        username = uinfo['id']
+
+        return dict(first_name = uinfo['given_name'],
+                    last_name = uinfo['family_name'],
+                    username = username,
+                    email = uinfo['email'])
 
 janrain_url = 'http://%s/%s/default/user/login' % (request.env.http_host,
                                                    request.application)
 
-janrain_form = RPXAccount(request,
-                          api_key=settings.janrain_api_key, # set in 1.py
-                          domain=settings.janrain_domain, # set in 1.py
-                          url=janrain_url)
-auth.settings.login_form = ExtendedLoginForm(auth, janrain_form) # uncomment this to use both Janrain and web2py auth
+#janrain_form = RPXAccount(request,
+#                          api_key=settings.janrain_api_key, # set in 1.py
+#                          domain=settings.janrain_domain, # set in 1.py
+#                          url=janrain_url)
+#auth.settings.login_form = ExtendedLoginForm(auth, janrain_form) # uncomment this to use both Janrain and web2py auth
 #auth.settings.login_form = auth # uncomment this to just use web2py integrated authentication
+auth.settings.login_form = GoogleAccount()
 
-request.janrain_form = janrain_form # save the form so that it can be added to the user/register controller
+#request.janrain_form = janrain_form # save the form so that it can be added to the user/register controller
 
 #########################################################################
 ## Define your tables below (or better in another model file) for example
