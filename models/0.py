@@ -21,14 +21,16 @@ settings.email_sender = 'info@interactivepython.org'
 settings.email_login = 'sendmail_bnmnetp@web318.webfaction.com:password'
 settings.login_method = 'local'
 settings.login_config = ''
-settings.course_id = 'devcourse'
+settings.course_id = 'compthink'
 settings.plugins = []
 
 # real API key and domain set in gitignore'd 1.py
 settings.janrain_api_key = 'a_fake_key'
 settings.janrain_domain = 'a-fake-domain'
 
-if 'local' in uname()[1] or 'Darwin' in uname()[0]:
+if 'think.cs.vt.edu' in uname()[1]:
+    settings.database_uri = 'mysql://'
+elif 'local' in uname()[1] or 'Darwin' in uname()[0]:
 	settings.database_uri = 'sqlite://storage.sqlite'
 elif 'webfaction' in uname()[1]: 
     # the real uri is set in gitignore'd 1.py

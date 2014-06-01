@@ -1,0 +1,13 @@
+---> pavement.build
+Building into  ../../static/compthink
+HELLO
+mkdir_p path(u'.\\../../static/compthink')
+mkdir_p path(u'../../static/compthink')
+mkdir_p path(u'.\\../../static/compthink\\doctrees')
+sphinx-build  -b html -d .\../../static/compthink\doctrees -c . -Acourse_id=compthink -Aloglevel=10 -Alogin_required=false -Acourse_url=http://127.0.0.1:8000 -Aappname=runestone .\_sources ../../static/compthink
+Running Sphinx v1.2.1
+loading pickled environment... done
+building [html]: targets for 0 source files that are out of date
+updating environment: 0 added, 0 changed, 0 removed
+looking for now-outdated files... none found
+no targets are out of date.
