@@ -2,8 +2,12 @@ def index():
     return A('Rebuild', _href=URL('rebuild'))
 
 def status():
+    total_log = ""
     with open("book_build.log", "r") as log:
-        return log.read()
+        total_log += log.read()
+    with open("applications/dev/build_compthink.log", "r") as log:
+        total_log += log.read()
+    return PRE(total_log)
 
 def rebuild():
     with open("book_build.log", "w") as log:
