@@ -28,9 +28,8 @@ static/unics1140/
 static/luther151/
 static/COSC122/
 static/python4bio/
-static/contextualizedpython/
+static/overview/
 /.idea/
-/static/overview/
 \#*\#
 TAGS
 
@@ -46,6 +45,6 @@ models/1.py
 /chromedriver.log
 /ghostdriver.log
 
-/paverconfig.py
+paverconfig.py
 
-/build_info
+build_info
