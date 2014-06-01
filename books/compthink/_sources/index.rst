@@ -11,21 +11,29 @@ Python in Context
 
 Introduction
 
-    The "Character" of this course
-    Themes
-    Learning Objectives
-    Overview
-        NetLogo
-        Blockly
-        Python
+The "Character" of this course
+
+Themes
+
+Learning Objectives
+
+Overview
+
+NetLogo
+
+Blockly
+
+Python
    
 Computational Modeling: NetLogo
 
-    Sidebar: Installation of Netlogo
+Sidebar: Installation of Netlogo
     
-    Abstraction (Day 1)
-        Properties
-        Agents
+Abstraction (Day 1)
+
+Properties
+
+Agents
     
 
 Algorithms: Blockly

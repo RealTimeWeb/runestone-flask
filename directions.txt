@@ -1,0 +1,3 @@
+1. Get a Permissions key for OAuth from google. We have different ones for local, server dev, and production dev. Put it in the private/ folder.
+2. Update your models/1.py file to have the proper database. We use sqlite for local and mysql for our servers.
+3. Check out the git submodules with `git submodule init` and `git submodule update`.
