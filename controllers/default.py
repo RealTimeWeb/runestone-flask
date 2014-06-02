@@ -2,6 +2,7 @@
 ### required - do no delete
 import json
 from urllib import unquote
+import time
 
 def user():
     # this is kinda hacky but it's the only way I can figure out how to pre-populate
@@ -40,6 +41,7 @@ def user():
 
     if 'profile' in request.args(0):
         form.vars.course_id = auth.user.course_name
+        print form
         if form.process().accepted:
             # auth.user session object doesn't automatically update when the DB gets updated
             auth.user.update(form.vars)
@@ -64,9 +66,19 @@ def download(): return response.download(request,db)
 def call(): return service()
 ### end requires
 
-@auth.requires_login()
+#@auth.requires_login()
 def index():
-    course = db(db.courses.id == auth.user.course_id).select(db.courses.course_name).first()
+    if auth.user:
+        course = db(db.courses.id == auth.user.course_id).select(db.courses.course_name).first()
+        redirect('/%s/static/%s/index.html' % (request.application,course.course_name))
+    else:
+        if request.cookies.has_key('ipuser'):
+            sid = request.cookies['ipuser'].value
+            setCookie = True
+        else:
+            sid = str(int(time.time()*1000))+"@"+request.client
+            setCookie = True
+    return dict()
     
     if 'boguscourse' in course.course_name:
         # if login was handled by Janrain, user didn't have a chance to choose the course_id;
