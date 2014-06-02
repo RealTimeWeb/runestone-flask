@@ -9,6 +9,14 @@ Python in Context
    introduction.rst
    
 
+.. activecode:: ac_example1
+   :language: python
+   :caption: This is my caption
+
+   for i in range(10):
+       print('hello world %d\n' % i)
+   
+   
 Introduction
 
 The "Character" of this course
