@@ -38,7 +38,7 @@ db.define_table('user_highlights',
   Field('user_id','integer'),
   Field('course_id','string'),
   Field('parent_class','string'), #class of the parent container
-  Field('range','text'), #range JSON of the highlight
+  Field('json_range','text'), #range JSON of the highlight
   Field('chapter_url','text'),
   Field('sub_chapter_url','text'),
   Field('method','string'), #self / Imported from friend
