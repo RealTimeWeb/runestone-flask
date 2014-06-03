@@ -62,9 +62,9 @@ auth.settings.retrieve_password_captcha	= False
 ## create all tables needed by auth if not custom tables
 db.define_table('courses',
   Field('course_id','string'),
-  Field('course_name', 'string', unique=True),
-  Field('term_start_date', 'date'),
-  migrate='runestone_courses.table'
+  Field('course_name', 'string', unique=True, length=255),
+  Field('term_start_date', 'date')#,
+  #migrate='runestone_courses.table'
 )
 if db(db.courses.id > 0).isempty():
     db.courses.insert(course_name='boguscourse', term_start_date=datetime.date(2000, 1, 1)) # should be id 1
