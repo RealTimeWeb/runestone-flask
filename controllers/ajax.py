@@ -194,7 +194,7 @@ def savehighlight():
                        user_id=auth.user.id,
                        course_id=course,
                        parent_class=parentClass,
-                       range=hrange,
+                       json_range=hrange,
                        chapter_url=page,
                        sub_chapter_url=pageSection,
                        method = method)
@@ -227,7 +227,7 @@ def gethighlights():
                     (db.user_highlights.is_active == 1)).select()
         rowarray_list = []
         for row in result:
-            res = {'range': row.range, 'uniqueId': row.id,
+            res = {'range': row.json_range, 'uniqueId': row.id,
                    'parentClass': row.parent_class,
                    'pageSection': row.sub_chapter_url, 'method': row.method}
             rowarray_list.append(res)
