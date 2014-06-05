@@ -3,6 +3,8 @@ Introduction
 
 Welcome to Computational Thinking. Please pay attention to the following problems.
 
+Hello World!
+
 .. context:: pollid1
    :scale: 10
    :allowcomment:
