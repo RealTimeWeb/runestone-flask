@@ -9,17 +9,28 @@ logger.setLevel(logging.DEBUG)
 
 response.headers['Access-Control-Allow-Origin'] = '*'
 
-def hsblog():    # Human Subjects Board Log
-    setCookie = False
+def get_user():
+    """
+    Returns the sid and cookie status for the current user, which depends on
+    whether the user has been logged in.
+    
+    Strictly internal. TODO: How do we "hide" internal functions from web2py?
+    
+    :returns: `str`, `bool`
+    """
     if auth.user:
-        sid = auth.user.username
+        return auth.user.username, False
+    elif request.cookies.has_key('ipuser'):
+        return request.cookies['ipuser'].value, True
     else:
-        if request.cookies.has_key('ipuser'):
-            sid = request.cookies['ipuser'].value
-            setCookie = True
-        else:
-            sid = str(int(time.time()*1000))+"@"+request.client
-            setCookie = True
+        return str(int(time.time()*1000))+"@"+request.client, True
+    
+
+def hsblog():    # Human Subjects Board Log
+    """
+    Adds 
+    """
+    sid, setCookie = get_user()
     act = request.vars.act
     div_id = request.vars.div_id
     event = request.vars.event
@@ -36,16 +47,7 @@ def hsblog():    # Human Subjects Board Log
     return json.dumps(res)
 
 def runlog():    # Log errors and runs with code
-    setCookie = False
-    if auth.user:
-        sid = auth.user.username
-    else:
-        if request.cookies.has_key('ipuser'):
-            sid = request.cookies['ipuser'].value
-            setCookie = True
-        else:
-            sid = str(int(time.time()*1000))+"@"+request.client
-            setCookie = True
+    sid, setCookie = get_user()
     div_id = request.vars.div_id
     course = request.vars.course
     code = request.vars.code

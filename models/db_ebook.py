@@ -2,6 +2,9 @@ import datetime; now=datetime.datetime.today()
 
 # Files in the model directory are loaded in alphabetical order.  This one needs to be loaded after db.py
 
+"""
+useinfo: basically, the event log. Terrible, terrible name.
+"""
 db.define_table('useinfo',
   Field('timestamp','datetime'),
   Field('sid','string'),

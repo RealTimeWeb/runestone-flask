@@ -9,6 +9,16 @@ logger = logging.getLogger("web2py.app.runestone")
 logger.setLevel(logging.DEBUG)
 
 # this is for admin links
+#   index
+#   listassignments
+#   listassessments
+#   assessdetail
+#   gradeassignment
+#   showlog
+#   studentactivity
+#   startdate
+#   rebuildcourse
+#   buildmodulelist
 # use auth.requires_membership('manager')
 #
 # create a simple index to provide a page of links
