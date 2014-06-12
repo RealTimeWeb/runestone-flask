@@ -18,14 +18,14 @@ As an example, consider the ``qbdata.txt`` file once again.  Assume that we have
 quarterbacks.  In addition, the names should be in the order last name followed by first name with the names separated by a comma.  This
 is a very common type of request, usually due to the fact that someone has a program that requires its data input format to be different from what is available.
 
-To construct this file, we will approach the problem using a similar algorithm as above.  After opening the file, we will iterate thru the
+To construct this file, we will approach the problem using a similar algorithm as above.  After opening the file, we will iterate through the
 lines, break each line into its parts, choose the parts that we need, and then output them.  Eventually, the output will be written to a file.
 
 The program below solves part of the problem.  Notice that it reads the data and creates a string consisting of last name followed by a comma followed by the first name.  In this example, we simply print the lines as they are created.
 
 .. activecode:: files_write01
 
-    infile = open("qbdata.txt","r")
+    infile = open("qbdata.txt", "r")
     aline = infile.readline()
     while aline:
         items = aline.split()
@@ -43,8 +43,8 @@ The complete program is shown below.
 
 .. sourcecode:: python
 
-    infile = open("qbdata.txt","r")
-    outfile = open("qbnames.txt","w")
+    infile = open("qbdata.txt", "r")
+    outfile = open("qbnames.txt", "w")
 
     aline = infile.readline()
     while aline:

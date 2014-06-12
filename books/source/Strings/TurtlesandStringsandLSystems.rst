@@ -39,7 +39,7 @@ Each rule set contains an axiom which represents the starting point in the trans
 where the left and side is a single symbol and the right had side is a sequence of symbols.  You can think of both sides as being simple strings.
 The way the rules are used is to replace occurrences of the left hand side with the corresponding right hand side.
 
-Now lets look at these simple rules in action, starting with the string A::
+Now let's look at these simple rules in action, starting with the string A::
 
     A
     B      Apply Rule 1  (A is replaced by B)
@@ -59,7 +59,7 @@ of very important things to note here:
    a brand new string using the accumulator pattern.  When we are all done with the original we replace it
    with the new string.
 
-Lets look at a simple Python program that implements the example set of rules described
+Let's look at a simple Python program that implements the example set of rules described
 above.
 
 .. activecode::  string_lsys1
@@ -93,7 +93,7 @@ above.
 
         return endString
 
-    print(createLSystem(4,"A"))
+    print(createLSystem(4, "A"))
 
 Try running the example above with different values for the ``numIters``
 parameter.  You should see that for values 1, 2, 3, and 4, the strings generated follow the
@@ -113,7 +113,7 @@ A -> BAB    Rule 1 Change A to BAB
 What kind of a string would these rules create?  Modify the program above to
 implement the rule.
 
-Now lets look at a real L-system that implements a famous drawing.  This
+Now let's look at a real L-system that implements a famous drawing.  This
 L-system has just two rules:
 
 =============  =====================
@@ -147,7 +147,7 @@ Pretty simple so far.  As you can imagine this string will get pretty long
 with a few applications of the rules.  You might try to expand the string a
 couple of times on your own just to see.
 
-The last step is to take the final string and turn it into a picture.  Lets
+The last step is to take the final string and turn it into a picture.  Let's
 assume that we are always going to go forward or backward by 5 units.  In
 addition we will also assume that when the turtle turns left or right we'll
 turn by 60 degrees.  Now look at the string ``F-F++F-F``.  You might try to
@@ -209,7 +209,7 @@ L-system string and then it creates a turtle and passes it and the string to the
 
         return newstr
 
-    def drawLsystem(aTurtle,instructions,angle,distance):
+    def drawLsystem(aTurtle, instructions, angle, distance):
         for cmd in instructions:
             if cmd == 'F':
                 aTurtle.forward(distance)
@@ -223,17 +223,17 @@ L-system string and then it creates a turtle and passes it and the string to the
                 print('Error:', cmd, 'is an unknown command')
 
     def main():
-        inst = createLSystem(4,"F")   #create the string
+        inst = createLSystem(4, "F")   # create the string
         print(inst)
-        t = turtle.Turtle()           #create the turtle
+        t = turtle.Turtle()            # create the turtle
         wn = turtle.Screen()
         
         t.up()
         t.back(200)
         t.down()
         t.speed(9)
-        drawLsystem(t,inst,60,5)      #draw the picture
-                                      #angle 60, segment length 5
+        drawLsystem(t, inst, 60, 5)   # draw the picture
+                                      # angle 60, segment length 5
         wn.exitonclick()
 
     main()

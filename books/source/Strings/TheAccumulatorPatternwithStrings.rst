@@ -51,7 +51,7 @@ the value of ``eachChar``.  We are building the result string character by chara
 Take a close look also at the initialization of ``sWithoutVowels``.  We start with an empty string and then begin adding
 new characters to the end.
 
-Step thru the function using codelens to see the accumulator variable grow.
+Step through the function using codelens to see the accumulator variable grow.
 
 .. codelens:: ch08_acc2
     
@@ -83,7 +83,7 @@ Step thru the function using codelens to see the accumulator variable grow.
       s = "ball"
       r = ""
       for item in s:
-         r = item.upper() + r
+          r = item.upper() + r
       print(r)
 
 

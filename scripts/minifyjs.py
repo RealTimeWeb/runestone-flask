@@ -1,7 +1,8 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python
 
 from subprocess import call
 import sys
+import os
 
 outdir = sys.argv[1] + "/_static/"
 
@@ -38,7 +39,7 @@ for filename in filenames:
     call(["mv", filename, "a.js"])
 
     call(["java",
-          "-jar", "closure-compiler.jar",
+          "-jar", "scripts/closure-compiler.jar",
           "--js", "a.js",
           "--js_output_file", filename,
           "--compilation_level", "SIMPLE_OPTIMIZATIONS",

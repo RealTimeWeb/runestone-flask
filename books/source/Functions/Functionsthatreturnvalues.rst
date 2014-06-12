@@ -51,7 +51,7 @@ Another built-in function that takes more than one argument is ``max``.
 
     print(max(7, 11))
     print(max(4, 1, 17, 2, 12))
-    print(max(3 * 11, 5**3, 512 - 9, 1024**0))
+    print(max(3 * 11, 5 ** 3, 512 - 9, 1024 ** 0))
 
 ``max`` can be sent any number of arguments, separated by commas, and will
 return the maximum value sent. The arguments can be either simple values or
@@ -78,7 +78,7 @@ piece of data that is returned from the function.
 .. image:: Figures/blackboxfun.png
 
 
-How do we write our own fruitful function?  Lets start by creating a very simple
+How do we write our own fruitful function?  Let's start by creating a very simple
 mathematical function that we will call ``square``.  The square function will take one number
 as a parameter and return the result of squaring that number.  Here is the
 black-box diagram with the Python code following.
@@ -209,14 +209,14 @@ function will be ``None``.  In this case, ``squareResult`` will refer to that va
    .. code-block:: python
 
      def addEm(x, y, z):
-         return x+y+z
-         print('the answer is', x+y+z)
+         return x + y + z
+         print('the answer is', x + y + z)
 
 
 .. mchoicemf:: test_question5_2_2
    :answer_a: Nothing (no value)
-   :answer_b: The value of x+y+z
-   :answer_c: The string 'x+y+z'
+   :answer_b: The value of x + y + z
+   :answer_c: The string 'x + y + z'
    :correct: a
    :feedback_a: We have accidentally used print where we mean return.  Therefore, the function will return the value None by default.  This is a VERY COMMON mistake so watch out!  This mistake is also particularly difficult to find because when you run the function the output looks the same.  It is not until you try to assign its value to a variable that you can notice a difference.
    :feedback_b: Careful!  This is a very common mistake.  Here we have printed the value x+y+z but we have not returned it.  To return a value we MUST use the return keyword.
@@ -227,6 +227,6 @@ function will be ``None``.  In this case, ``squareResult`` will refer to that va
    .. code-block:: python
 
     def addEm(x, y, z):
-        print(x+y+z)
+        print(x + y + z)
 
 

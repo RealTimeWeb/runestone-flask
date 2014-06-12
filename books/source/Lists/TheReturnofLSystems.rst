@@ -10,7 +10,7 @@
 The Return of L-Systems
 -----------------------
 
-Lets return the the L-systems we introduced in the previous chapter and
+Let's return the the L-systems we introduced in the previous chapter and
 introduce a very interesting new feature that requires the use of lists.
 
 Suppose we have the following grammar::
@@ -37,14 +37,14 @@ the turtle has been where the most recently saved location will always be at
 the end of the list.  When we find a ']' in the string we use the pop
 function to remove the the most recently appended information.
 
-Lets modify our ``drawLsystem`` function to begin to implement this new
+Let's modify our ``drawLsystem`` function to begin to implement this new
 behavior.
 
 .. activecode:: list_lsys1
 
     import turtle
 
-    def drawLsystem(aTurtle,instructions,angle,distance):
+    def drawLsystem(aTurtle, instructions, angle, distance):
         savedInfoList = []
         for cmd in instructions:
             if cmd == 'F':
@@ -56,7 +56,7 @@ behavior.
             elif cmd == '-':
                 aTurtle.left(angle)
             elif cmd == '[':
-                savedInfoList.append([aTurtle.heading(),aTurtle.xcor(),aTurtle.ycor()])
+                savedInfoList.append([aTurtle.heading(), aTurtle.xcor(), aTurtle.ycor()])
                 print(savedInfoList)
             elif cmd == ']':
                 newInfo = savedInfoList.pop()
@@ -67,7 +67,7 @@ behavior.
 
     t = turtle.Turtle()
     inst = "FF[-F[-X]+X]+F[-X]+X"
-    drawLsystem(t,inst,60,20)
+    drawLsystem(t, inst, 60, 20)
 
 When we run this example we can see that the picture is not very interesting,
 but notice what gets printed out, and how the saved information about the
@@ -80,7 +80,7 @@ so you get an idea of what the kind of drawing the L-System can really make.
 
     import turtle
 
-    def drawLsystem(aTurtle,instructions,angle,distance):
+    def drawLsystem(aTurtle, instructions, angle, distance):
         savedInfoList = []
         for cmd in instructions:
             if cmd == 'F':
@@ -92,20 +92,20 @@ so you get an idea of what the kind of drawing the L-System can really make.
             elif cmd == '-':
                 aTurtle.left(angle)
             elif cmd == '[':
-                savedInfoList.append([aTurtle.heading(),aTurtle.xcor(),aTurtle.ycor()])
+                savedInfoList.append([aTurtle.heading(), aTurtle.xcor(), aTurtle.ycor()])
                 print(savedInfoList)
             elif cmd == ']':
                 newInfo = savedInfoList.pop()
                 aTurtle.setheading(newInfo[0])
-                aTurtle.setposition(newInfo[1],newInfo[2])
+                aTurtle.setposition(newInfo[1], newInfo[2])
             else:
                 print('Error:', cmd, 'is an unknown command')
 
     t = turtle.Turtle()
     inst = "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF[-FFFFFFFFFFFFFFFF[-FFFFFFFF[-FFFF[-FF[-F[-X]+X]+F[-X]+X]+FF[-F[-X]+X]+F[-X]+X]+FFFF[-FF[-F[-X]+X]+F[-X]+X]+FF[-F[-X]+X]+F[-X]+X]+FFFFFFFF[-FFFF[-FF[-F[-X]+X]+F[-X]+X]+FF[-F[-X]+X]+F[-X]+X]+FFFF[-FF[-F[-X]+X]+F[-X]+X]+FF[-F[-X]+X]+F[-X]+X]+FFFFFFFFFFFFFFFF[-FFFFFFFF[-FFFF[-FF[-F[-X]+X]+F[-X]+X]+FF[-F[-X]+X]+F[-X]+X]+FFFF[-FF[-F[-X]+X]+F[-X]+X]+FF[-F[-X]+X]+F[-X]+X]+FFFFFFFF[-FFFF[-FF[-F[-X]+X]+F[-X]+X]+FF[-F[-X]+X]+F[-X]+X]+FFFF[-FF[-F[-X]+X]+F[-X]+X]+FF[-F[-X]+X]+F[-X]+X"
-    t.setposition(0,-200)
+    t.setposition(0, -200)
     t.left(90)
-    drawLsystem(t,inst,30,2)
+    drawLsystem(t, inst, 30, 2)
 
 
 Rather than use the ``inst`` string supplied here, use the code from the string

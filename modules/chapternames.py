@@ -67,16 +67,19 @@ def addChapterInfoUsingDAL(subChapD, chapTitles, course_id):
 
     module_path = os.path.abspath(os.path.dirname(__file__))
     dbpath = os.path.join(module_path, '..', 'databases')
-    print "db path = ", dbpath
+
     sys.path.insert(0,os.path.join('..','models'))
     _temp = __import__('0',globals(),locals())
     settings = _temp.settings
     execfile(os.path.join('..', 'models', '1.py'),globals(),locals())
 
-    print "using Database: ", settings.database_uri
-
     db = DAL(settings.database_uri, folder=dbpath, auto_import=False)
     execfile(os.path.join('..', 'models', 'db_ebook_chapters.py'))
+
+    addChapterInfoFromScheduler(subChapD, chapTitles, course_id, db)
+
+
+def addChapterInfoFromScheduler(subChapD, chapTitles, course_id, db):
 
     myset = db(db.chapters.course_id == course_id)
     myset.delete()
@@ -90,7 +93,6 @@ def addChapterInfoUsingDAL(subChapD, chapTitles, course_id):
                                    chapter_id=currentRowId,
                                    sub_chapter_label=subchaptername)
         db.commit()
-
 
 def populateChapterInfo(project_name, index_file):
     scd, ct = findChaptersSubChapters(index_file)

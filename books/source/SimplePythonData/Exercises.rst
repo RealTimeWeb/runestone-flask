@@ -34,7 +34,7 @@ Exercises
 
             .. activecode:: ch02_ex1
 
-               print(5**2)
+               print(5 ** 2)
 
         .. tab:: Answer
 
@@ -57,8 +57,7 @@ Exercises
                 :shortname: interactivepython
                 :identifier: c0a62044cac248859ce3695b46697ecc
 
-#. What is the order of the arithmetic operations in the following expression.  Evaluate the expression by hand and then check your
-     work.
+#. What is the order of the arithmetic operations in the following expression.  Evaluate the expression by hand and then check your work.
 
       2 + (3 - 1) * 10 / 5 * (2 + 3)
 
@@ -106,7 +105,7 @@ Exercises
                 :identifier: a77ed6163c254612b0d649034b261659
 
 
-#. It is possible to name the days 0 thru 6 where day 0 is Sunday and day 6 is Saturday.  If you go on a wonderful holiday
+#. It is possible to name the days 0 through 6 where day 0 is Sunday and day 6 is Saturday.  If you go on a wonderful holiday
    leaving on day number 3 (a Wednesday) and you return home after 10 nights.
    Write a general version of the program which asks for the starting day number, and
    the length of your stay, and it will tell you the number of day of the week you will return on.
@@ -275,7 +274,7 @@ Exercises
                 # formula to convert C to F is: (degrees Celcius) times (9/5) plus (32)
                 deg_f = deg_c * (9 / 5) + 32
 
-                print (deg_c, " degrees Celsius is", deg_f, " degrees Farenheit.")
+                print(deg_c, " degrees Celsius is", deg_f, " degrees Farenheit.")
 
         .. tab:: Discussion
 

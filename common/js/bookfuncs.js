@@ -80,7 +80,7 @@ function createEditors() {
     for (var i = 0; i < edList.length; i++) {
         newEdId = edList[i].id;
         var includes = edList[i].getAttribute('prefixcode');
-        var lang = edList[i].getAttribute('lang');
+        var lang = edList[i].getAttribute('lang') || "python";
         var first_line = 1;
         if (includes !== "undefined") {
             includes = eval(includes)
@@ -537,6 +537,7 @@ function gotUser(data, status, whatever) {
         if (!caughtErr) {
             mess = d.email;
             eBookConfig.isLoggedIn = true;
+			eBookConfig.cohortId = d.cohortId;
             addNavbarLoginLink(); // will change navbar login link to say 'Log Out'
             enableUserHighlights();
             timedRefresh();
@@ -595,6 +596,18 @@ function addUserToFooter() {
 
 function addNavbarLoginLink() {
     if (isLoggedIn()) {
+		if (eBookConfig.cohortId == null || eBookConfig.cohortId ==""){
+			$('#joinGroupLink').show();
+			$('#groupScheduleLink').hide();
+			$('#newChapterLink').hide();
+			$('#manageGroupLink').hide();
+		}
+		else{
+			$('#joinGroupLink').hide();
+			$('#groupScheduleLink').show();
+			$('#newChapterLink').show();
+			$('#manageGroupLink').show();
+		}
         $('#profilelink').show();
         $('#passwordlink').show();
         $('#registerlink').hide();
@@ -844,7 +857,11 @@ function createScratchActivecode() {
         '      <div class="modal-body">' +
         '        <div id="' + divid + '" lang="python">' +
         '          <div id="' + divid + '_code_div" style="display: block">' +
+<<<<<<< HEAD
         '            <textarea cols="50" rows="12" id="' + divid + '_code" lang="python" prefixcode="undefined" class="active_code">\n\n\n\n\n</textarea>' +
+=======
+        '            <textarea cols="50" rows="12" lang="python" id="' + divid + '_code" class="active_code">\n\n\n\n\n</textarea>' +
+>>>>>>> groups
         '          </div>' +
         '          <p class="ac_caption"><span class="ac_caption_text">Scratch Editor</span> </p>' +
 

@@ -45,13 +45,13 @@ about whether or not the turtle is still in the screen.  But this is the nice
 thing about programming, we can delay the tough stuff and get *something* in
 our program working right away.  The way we are going to do this is to
 delegate the work of deciding whether the turtle is still in the screen or
-not to a boolean function.  Lets call this boolean function ``isInScreen`` We
+not to a boolean function.  Let's call this boolean function ``isInScreen`` We
 can write a very simple version of this boolean function by having
 it always return ``True``, or by having it decide randomly,
 the point is to have it do something simple so that we can focus on the parts
 we already know how to do well and get them working.  Since having it always
 return true would not be a good idea we will write our version to decide
-randomly.  Lets say that there is a 90% chance the turtle is still in the
+randomly.  Let's say that there is a 90% chance the turtle is still in the
 window and 10% that the turtle has escaped.
 
 .. activecode:: iter_randwalk1
@@ -60,7 +60,7 @@ window and 10% that the turtle has escaped.
     import turtle
 
 
-    def isInScreen(w,t):
+    def isInScreen(w, t):
         if random.random() > 0.1:
             return True
         else:
@@ -71,8 +71,8 @@ window and 10% that the turtle has escaped.
     wn = turtle.Screen()
 
     t.shape('turtle')
-    while isInScreen(wn,t):
-        coin = random.randrange(0,2)
+    while isInScreen(wn, t):
+        coin = random.randrange(0, 2)
         if coin == 0:              # heads
             t.left(90)
         else:                      # tails
@@ -105,10 +105,10 @@ turtle and then use conditionals to decide.  Here is one implementation:
 .. sourcecode:: python
 
     def isInScreen(wn,t):
-        leftBound = -(wn.window_width()/2)
-        rightBound = wn.window_width()/2
-        topBound = wn.window_height()/2
-        bottomBound = -(wn.window_height()/2)
+        leftBound = -(wn.window_width() / 2)
+        rightBound = wn.window_width() / 2
+        topBound = wn.window_height() / 2
+        bottomBound = -(wn.window_height() / 2)
 
         turtleX = t.xcor()
         turtleY = t.ycor()
@@ -136,10 +136,10 @@ Here is the full version of our random walk program.
     import turtle
 
     def isInScreen(w,t):
-        leftBound = - w.window_width()/2
-        rightBound = w.window_width()/2
-        topBound = w.window_height()/2
-        bottomBound = -w.window_height()/2
+        leftBound = - w.window_width() / 2
+        rightBound = w.window_width() / 2
+        topBound = w.window_height() / 2
+        bottomBound = -w.window_height() / 2
 
         turtleX = t.xcor()
         turtleY = t.ycor()
@@ -157,7 +157,7 @@ Here is the full version of our random walk program.
 
     t.shape('turtle')
     while isInScreen(wn,t):
-        coin = random.randrange(0,2)
+        coin = random.randrange(0, 2)
         if coin == 0:
             t.left(90)
         else:

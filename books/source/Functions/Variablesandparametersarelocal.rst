@@ -34,7 +34,7 @@ The variable ``y`` only exists while the function is being executed ---
 we call this its **lifetime**.
 When the execution of the function terminates (returns),
 the local variables  are destroyed.  Codelens helps you  visualize this
-because the local variables disappear after the function returns.  Go back and step thru the
+because the local variables disappear after the function returns.  Go back and step through the
 statements paying particular attention to the variables that are created when the function is called.
 Note when they are subsequently destroyed as the function returns.
 
@@ -80,13 +80,13 @@ codelens example:
 
 .. codelens::  cl_powerof_bad
 
-    def powerof(x,p):
+    def powerof(x, p):
         power = p   # Another dumb mistake
         y = x ** power
         return y
 
     power = 3
-    result = powerof(10,2)
+    result = powerof(10, 2)
     print(result)
 
 Now step through the code.  What do you notice about the values of variable ``power``
