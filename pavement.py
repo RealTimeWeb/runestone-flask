@@ -45,6 +45,26 @@ def everyday(options):
     
 @task
 @cmdopts([('all','a','rebuild everything')])
+def compthink(options):
+    # project-specific pavements have defaults set but we can override here
+    params = ["paver", "build", # task name
+              "--masterapp", master_app,
+              "--masterurl", master_url]
+    if 'all' in options.compthink:
+        params.append("-a")
+
+    os.chdir("books/compthink")
+    with open("../../build_compthink.log", "wb") as build_log:
+        proc = subprocess.Popen(params, stdout=subprocess.PIPE, 
+                                        stderr=subprocess.STDOUT)
+        for line in proc.stdout:
+            sys.stdout.write(line)
+            build_log.write(line)
+        proc.wait()
+    os.chdir("../..")
+    
+@task
+@cmdopts([('all','a','rebuild everything')])
 def context(options):
     # project-specific pavements have defaults set but we can override here
     params = ["paver", "build", # task name
@@ -153,4 +173,3 @@ def allbooks(options):
     thinkcspy(options)
     pythonds(options)
     overview(options)
-
