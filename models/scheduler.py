@@ -185,6 +185,7 @@ def run_sphinx(rvars=None, folder=None, application=None, http_host=None):
     warningiserror = False
     tags = []
 
+    print "Finding chapters"
     sys.path.insert(0,path.join(folder,'modules'))
     from chapternames import addChapterInfoFromScheduler, findChaptersSubChapters
 

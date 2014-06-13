@@ -62,16 +62,10 @@ auth.settings.retrieve_password_captcha	= False
 ## create all tables needed by auth if not custom tables
 db.define_table('courses',
   Field('course_id','string'),
-<<<<<<< HEAD
-  Field('course_name', 'string', unique=True, length=255),
-  Field('term_start_date', 'date')#,
-  #migrate='runestone_courses.table'
-=======
   Field('course_name', 'string', unique=True),
   Field('term_start_date', 'date'),
   Field('institution', 'string'),
   migrate='runestone_courses.table'
->>>>>>> groups
 )
 if db(db.courses.id > 0).isempty():
     db.courses.insert(course_name='boguscourse', term_start_date=datetime.date(2000, 1, 1)) # should be id 1
@@ -135,12 +129,14 @@ class IS_COURSE_ID:
 
 db.define_table('auth_user',
     Field('username', type='string',
+          writable=False,
           label=T('Username')),
     Field('first_name', type='string',
           label=T('First Name')),
     Field('last_name', type='string',
           label=T('Last Name')),
     Field('email', type='string',
+          writable=False,
           requires=IS_EMAIL(banned='^.*shoeonlineblog\.com$'),
           label=T('Email')),
     Field('password', type='password',
@@ -161,6 +157,8 @@ db.define_table('auth_user',
           writable=False,readable=False),
     Field('course_id',db.courses,label=T('Course Name'),
           required=True,
+          writable=False,
+          readable=False,
           default=2),
     Field('course_name',compute=lambda row: getCourseNameFromId(row.course_id)),
     format='%(username)s',
@@ -254,6 +252,7 @@ janrain_url = 'http://%s/%s/default/user/login' % (request.env.http_host,
 #auth.settings.login_form = ExtendedLoginForm(auth, janrain_form) # uncomment this to use both Janrain and web2py auth
 #auth.settings.login_form = auth # uncomment this to just use web2py integrated authentication
 auth.settings.login_form = GoogleAccount()
+auth.settings.expiration = 60 * 60 * 2 # 2 Hours
 
 #request.janrain_form = janrain_form # save the form so that it can be added to the user/register controller
 

@@ -1,5 +1,4 @@
 import os
-import psycopg2
 from collections import OrderedDict
 import sys
 
@@ -42,6 +41,7 @@ def findChaptersSubChapters(tocfile):
 
 
 def addChapterInfoToDB(subChapD, chapTitles, course_id):
+    import psycopg2
     uname = os.environ['USER']
     db = psycopg2.connect(database="runestone",user=uname)
     cursor=db.cursor()
@@ -101,4 +101,4 @@ def populateChapterInfo(project_name, index_file):
 
 if __name__ == '__main__':
     # todo:  get file, and course_id from environment
-    populateChapterInfo('pythonds', 'index.rst')
+    populateChapterInfo('compthink', '../books/compthink/_sources/index.rst')

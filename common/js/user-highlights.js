@@ -116,7 +116,7 @@ function enableUserHighlights(){
 				$("#relations-next").animate({"right":relationsNextIconInitialPosition});
 				completionFlag = 0;
 			}
-				processPageState(completionFlag);
+            processPageState(completionFlag);
 		  });
 
 		  $(window).on('beforeunload', function(e){

@@ -248,7 +248,7 @@ def updatelastpage():
     lastPageSubchapter = lastPageUrl.split("/")[-1].split(".")[0]
     if auth.user:
         db((db.user_state.user_id == auth.user.id) &
-                 (db.user_state.course_id == course)).update(
+           (db.user_state.course_id == course)).update(
                    last_page_url = lastPageUrl,
                    last_page_chapter = lastPageChapter,
                    last_page_subchapter = lastPageSubchapter,
@@ -351,36 +351,38 @@ def getCorrectStats(miscdata,event):
 
 
 def getStudentResults(question):
-        course = db(db.courses.id == auth.user.course_id).select(db.courses.course_name).first()
+    course = db(db.courses.id == auth.user.course_id).select(db.courses.course_name).first()
 
-        q = db( (db.useinfo.div_id == question) &
-                (db.useinfo.course_id == course.course_name) &
-                (db.courses.course_name == course.course_name) &
-                (db.useinfo.timestamp >= db.courses.term_start_date) )
+    q = db( (db.useinfo.div_id == question) &
+            (db.useinfo.course_id == course.course_name) &
+            (db.courses.course_name == course.course_name) &
+            (db.useinfo.timestamp >= db.courses.term_start_date) )
 
-        res = q.select(db.useinfo.sid,db.useinfo.act,orderby=db.useinfo.sid)
+    res = q.select(db.useinfo.sid,db.useinfo.act,orderby=db.useinfo.sid)
 
-        resultList = []
-        if len(res) > 0:
-            currentSid = res[0].sid
-            currentAnswers = []
+    resultList = []
+    if len(res) > 0:
+        currentSid = res[0].sid
+        currentAnswers = []
 
-            for row in res:
-                answer = row.act.split(':')[1]
+        for row in res:
+            if not row.act.startswith('answer'):
+                continue
+            answer = row.act.split(':')[1]
 
-                if row.sid == currentSid:
-                    currentAnswers.append(answer)
-                else:
-                    currentAnswers.sort()
-                    resultList.append((currentSid, currentAnswers))
-                    currentAnswers = [row.act.split(':')[1]]
+            if row.sid == currentSid:
+                currentAnswers.append(answer)
+            else:
+                currentAnswers.sort()
+                resultList.append((currentSid, currentAnswers))
+                currentAnswers = [row.act.split(':')[1]]
 
-                    currentSid = row.sid
+                currentSid = row.sid
 
-            currentAnswers.sort()
-            resultList.append((currentSid, currentAnswers))
+        currentAnswers.sort()
+        resultList.append((currentSid, currentAnswers))
 
-        return resultList
+    return resultList
 
 
 def getaggregateresults():
@@ -431,7 +433,7 @@ def getaggregateresults():
 
     returnDict = dict(answerDict=rdata, misc=miscdata)
 
-    if auth.user and verifyInstructorStatus(course,auth.user.id):  #auth.has_membership('instructor', auth.user.id):
+    if auth.user and verifyInstructorStatus(course,auth.user.id):
         resultList = getStudentResults(question)
         returnDict['reslist'] = resultList
 

@@ -195,6 +195,18 @@ def showlog():
         paginate=40,
         formstyle='divs')
     return dict(grid=grid,course_id=course.course_name)
+    
+@auth.requires(lambda: verifyInstructorStatus(auth.user.course_name, auth.user), requires_login=True)
+def showlog_advanced():
+    course = db(db.courses.id == auth.user.course_id).select().first()
+    #grid = ((db.useinfo.course_id==course.course_name) & (db.useinfo.timestamp >= course.term_start_date),
+    #db.useinfo.timestamp,db.useinfo.sid, db.useinfo.event,db.useinfo.act,db.useinfo.div_id
+    grid = [{'time': row.timestamp.strftime('%Y-%m-%d %H:%M:%S'), 
+             'user': row.sid, 
+             'event': row.event, 
+             'act': row.act, 
+             'div_id': row.div_id} for row in db().select(db.useinfo.ALL)]
+    return dict(grid=json.dumps(grid),course_id=course.course_name)
 
 @auth.requires(lambda: verifyInstructorStatus(auth.user.course_name, auth.user), requires_login=True)
 def studentactivity():

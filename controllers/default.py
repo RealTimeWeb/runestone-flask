@@ -33,6 +33,7 @@ def user():
                     break
 
     form = auth()
+    progress = {}
 
     if 'register' in request.args(0) and request.janrain_form:
         # add the Janrain login form
@@ -41,7 +42,18 @@ def user():
 
     if 'profile' in request.args(0):
         form.vars.course_id = auth.user.course_name
-        print form
+        progress = db((db.user_state.user_id == auth.user.id) & 
+                      (db.user_state.course_id == auth.user.course_name)).select()
+        if progress:
+            progress = progress[0]
+        else:
+            progress = {}
+        """Field('last_page_url','string'),
+        Field('last_page_hash','string'),
+        Field('last_page_chapter','string'),
+        Field('last_page_subchapter','string'),
+        Field('last_page_scroll_location','string'),
+        Field('last_page_accessed_on','datetime'),"""
         if form.process().accepted:
             # auth.user session object doesn't automatically update when the DB gets updated
             auth.user.update(form.vars)
@@ -68,7 +80,7 @@ def user():
     except AttributeError: # not all auth methods actually have a submit button (e.g. user/not_authorized)
         pass
 
-    return dict(form=form)
+    return dict(form=form, progress=progress)
 
 def download(): return response.download(request,db)
 def call(): return service()

@@ -1,49 +1,51 @@
 
-=================
-Python in Context
-=================
+Introduction
+============
 
 .. toctree::
    :maxdepth: 2
 
-   introduction.rst
+   Introduction/welcome.rst
+   Introduction/syllabus.rst
+   Introduction/themes.rst
+
+Computational Modelling
+=======================
+
+.. toctree::
+   :maxdepth: 2
    
+   Modelling/introduction.rst
 
-.. activecode:: ac_example1
-   :language: python
-   :caption: This is my caption
+Algorithms
+==========
 
-   for i in range(10):
-       print('hello world %d\n' % i)
+.. toctree::
+   :maxdepth: 2   
    
+   Algorithms/introduction.rst
    
-Introduction
-
-The "Character" of this course
-
-Themes
-
-Learning Objectives
-
-Overview
-
-NetLogo
-
-Blockly
-
-Python
+Python and Big Data
+===================
    
-Computational Modeling: NetLogo
-
-Sidebar: Installation of Netlogo
-    
-Abstraction (Day 1)
-
-Properties
-
-Agents
-    
-
-Algorithms: Blockly
-
-Coding: Python
+.. toctree::
+   :maxdepth: 2
+   
+   BigData/introduction.rst
+   
+Conclusion
+==========
+   
+.. toctree::
+   :maxdepth: 2
+   
+   Conclusions/introduction.rst
+   
+Appendix
+========
+   
+.. toctree::
+   :maxdepth: 2
+   
+   Appendix/introduction.rst
+   

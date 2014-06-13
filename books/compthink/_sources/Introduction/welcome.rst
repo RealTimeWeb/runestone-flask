@@ -1,5 +1,5 @@
-Introduction
-------------
+Welcome
+-------
 
 Welcome to Computational Thinking. Please pay attention to the following problems.
 
@@ -10,9 +10,6 @@ Hello World!
    :allowcomment:
 
     On a scale from 1 to 10, how important do you think it is to have a polling directive in the Runestone Tools?
-    
-Blockly
--------
 
 .. blockly:: blockly1
 
@@ -45,17 +42,11 @@ Blockly
       </block>
    </xml>
 
-Data
-----
-
 .. fillintheblank:: baseconvert1
    :correct: \\b31\\b
    :blankid: baseconvert1_ans1
 
    What is value of 25 expressed as an octal number (base 8) :textfield:`baseconvert1_ans1::mini`
-
-Algorithms
-----------
 
 .. mchoicemf:: question1_1
    :answer_a: Python
@@ -70,15 +61,10 @@ Algorithms
 
    What programming language does this site help you to learn?
 
-Creativity
-----------
 
 Of course, data is beautiful.
 
 Looking at visualizations of data can activate the same neural circuitry as traditional works of art. [Citation]
-
-Test
-----
 
 This is a test. The test has been continued.
 

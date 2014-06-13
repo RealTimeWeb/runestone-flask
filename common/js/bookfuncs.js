@@ -740,6 +740,7 @@ function compareAnswers(div_id) {
     data = {};
     data.div_id = div_id;
     data.course = eBookConfig.course;
+    logBookEvent({'event': 'mChoice', 'act': 'compare', 'div_id': div_id});
     jQuery.get(eBookConfig.ajaxURL + 'getaggregateresults', data, compareModal);
 }
 
@@ -779,6 +780,7 @@ function compareFITBAnswers(div_id) {
     data = {};
     data.div_id = div_id;
     data.course = eBookConfig.course;
+    logBookEvent({'event': 'mChoice', 'act': 'compare', 'div_id': div_id});
     jQuery.get(eBookConfig.ajaxURL + 'gettop10Answers', data, compareFITB);
 }
 
@@ -857,11 +859,7 @@ function createScratchActivecode() {
         '      <div class="modal-body">' +
         '        <div id="' + divid + '" lang="python">' +
         '          <div id="' + divid + '_code_div" style="display: block">' +
-<<<<<<< HEAD
-        '            <textarea cols="50" rows="12" id="' + divid + '_code" lang="python" prefixcode="undefined" class="active_code">\n\n\n\n\n</textarea>' +
-=======
-        '            <textarea cols="50" rows="12" lang="python" id="' + divid + '_code" class="active_code">\n\n\n\n\n</textarea>' +
->>>>>>> groups
+        '            <textarea cols="50" rows="12" id="' + divid + '_code" lang="python" prefixcode="undefined" class="active_code">\n\n\n\n\n</textarea>'
         '          </div>' +
         '          <p class="ac_caption"><span class="ac_caption_text">Scratch Editor</span> </p>' +
 

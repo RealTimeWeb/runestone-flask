@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Python in Context &mdash; Computational Thinking in Contexts</title>
+    <title>Introduction &mdash; Computational Thinking in Contexts</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -78,7 +78,7 @@
     <script type="text/javascript" src="_static/processing-1.4.1.min.js"></script>
     <script type="text/javascript" src="_static/jquery.hotkey.js"></script>
     <link rel="top" title="Computational Thinking in Contexts" href="#" />
-    <link rel="next" title="Introduction" href="introduction.html" />
+    <link rel="next" title="Welcome" href="Introduction/welcome.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -247,7 +247,12 @@
           <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page <b class="caret"></b></a>
   <ul class="dropdown-menu localtoc"><ul>
-<li><a class="reference internal" href="#">Python in Context</a></li>
+<li><a class="reference internal" href="#">Introduction</a></li>
+<li><a class="reference internal" href="#computational-modelling">Computational Modelling</a></li>
+<li><a class="reference internal" href="#algorithms">Algorithms</a></li>
+<li><a class="reference internal" href="#python-and-big-data">Python and Big Data</a></li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li><a class="reference internal" href="#appendix">Appendix</a></li>
 </ul>
 </ul>
 </li>
@@ -255,8 +260,8 @@
         
         
           
-  <li id="relations-next" title='Next Chapter - Introduction' data-toggle="tooltip" >
-    <a href="introduction.html" >
+  <li id="relations-next" title='Next Chapter - Welcome' data-toggle="tooltip" >
+    <a href="Introduction/welcome.html" >
       <i class='glyphicon glyphicon-forward' style='opacity:0.9;'></i>
     </a>
   </li>
@@ -284,112 +289,55 @@
 
 <div class="container">
   
-  <div class="section" id="python-in-context">
-<h1>Python in Context<a class="headerlink" href="#python-in-context" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#contextual-learning">Contextual Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#problems">Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#blockly">Blockly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#data">Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#algorithms">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#creativity">Creativity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction/welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction/themes.html">Themes</a></li>
 </ul>
 </div>
-
-<div id="cont"></div>
-<div id="ac_example1" lang="python" class="ac_section alert alert-warning" >
-
-<div class="ac_actions">
-<button class='btn btn-success' id="ac_example1_runb">Run</button>
-<button class="ac_opt btn btn-default" style="display: inline-block" id="ac_example1_saveb" onclick="saveEditor('ac_example1');">Save</button>
-<button class="ac_opt btn btn-default" style="display: inline-block" id="ac_example1_loadb" onclick="requestCode('ac_example1');">Load</button>
-
 </div>
-<br/>
-<div id="ac_example1_code_div" style="display: block" class="ac_code_div">
-<textarea cols="50" rows="12" id="ac_example1_code" class="active_code", prefixcode="undefined" lang="python">
-for i in range(10):
-    print('hello world %d\n' % i)
-</textarea>
+<div class="section" id="computational-modelling">
+<h1>Computational Modelling<a class="headerlink" href="#computational-modelling" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Modelling/introduction.html">Introduction to Computational Modeling</a></li>
+</ul>
 </div>
-<div class="ac_output">
-<div style="text-align: center">
-<canvas id="ac_example1_canvas" class="ac-canvas" height="400" width="400" style="border-style: solid; display: none; text-align: center"></canvas>
 </div>
-<pre id="ac_example1_suffix" style="display:none">
-</pre><pre id="ac_example1_pre" class="active_out">
-
-</pre>
-
-</div> 
-<div class="clearfix"></div>
-<p class="ac_caption"><span class="ac_caption_text">This is my caption (ac_example1)</span> </p>
-
-<script>
-if ('block' == 'none') {
-    // a hack to preserve the inline-block display style. Toggle() will use display: block
-    // (instead of inline-block) if the previous display style was 'none'
-    $('#ac_example1_saveb').toggle();
-    $('#ac_example1_loadb').toggle();
-}
-if ($("#ac_example1_code_div").parents(".admonition").length == 0 && $("#ac_example1_code_div").parents("#exercises").length == 0){
-	if ($(window).width() > 975){
-		$("#ac_example1_code_div").offset({
-			left: $("#ac_example1 .clearfix").offset().left
-		});
-	}
-	$("#ac_example1_runb").one("click", function(){
-		$({})
-		.queue(function (next) {
-			if ($(window).width() > 975){
-				$("#ac_example1_code_div").animate({
-					left: 40
-				}, 500, next);
-			}
-			else{
-				next();
-			}
-		})
-		.queue(function (next) {
-			$("#ac_example1_runb").parent().siblings(".ac_output").show();
-			runit('ac_example1',this, undefined);
-			$("#ac_example1_runb").on("click", function(){
-				runit('ac_example1',this, undefined);
-			});
-		})
-		
-	});
-}
-else{
-	console.log("inside new if")
-	$("#ac_example1_code_div").css({float : "none", marginLeft : "auto", marginRight : "auto"});
-	$("#ac_example1_runb").parent().siblings(".ac_output").show().css({float : "none", right : "0px"});
-	$("#ac_example1_runb").on("click", function(){
-		console.log("button clicked");
-		runit('ac_example1',this, undefined);
-	});
-}
-</script>
-
+<div class="section" id="algorithms">
+<h1>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Algorithms/introduction.html">Introduction to Algorithms with Blockly</a></li>
+</ul>
 </div>
-
-<p>Introduction</p>
-<p>The &#8220;Character&#8221; of this course</p>
-<p>Themes</p>
-<p>Learning Objectives</p>
-<p>Overview</p>
-<p>NetLogo</p>
-<p>Blockly</p>
-<p>Python</p>
-<p>Computational Modeling: NetLogo</p>
-<p>Sidebar: Installation of Netlogo</p>
-<p>Abstraction (Day 1)</p>
-<p>Properties</p>
-<p>Agents</p>
-<p>Algorithms: Blockly</p>
-<p>Coding: Python</p>
+</div>
+<div class="section" id="python-and-big-data">
+<h1>Python and Big Data<a class="headerlink" href="#python-and-big-data" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="BigData/introduction.html">Introduction to Big Data with Python</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Conclusions/introduction.html">Introduction to the Conclusion</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="appendix">
+<h1>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Appendix/introduction.html">Introduction to the Appendix</a></li>
+</ul>
+</div>
 </div>
 
 

@@ -1,0 +1,36 @@
+{{extend 'layout.html'}}
+
+<script type="text/javascript" src="/{{=request.application}}/static/{{=course_id}}/_static/dynatable/jquery.dynatable.js"></script>
+<link rel="stylesheet" type="text/css" href="/{{=request.application}}/static/{{=course_id}}/_static/dynatable/jquery.dynatable.css"></link>
+
+
+<table id='my-final-table' class='table table-bordered table-striped table-hover'>
+    <thead>
+        <tr style='background: #006a72'>
+            <th>Time</th>
+            <th>User</th>
+            <th>Event</th>
+            <th>Act</th>
+            <th>div_id</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script type="text/javascript">
+    var myRecords = {{=XML(grid,sanitize=False)}};
+    $(document).ready( function() {
+        $('#my-final-table').dynatable({
+            dataset: {
+                records : myRecords
+            },
+            table: {
+                headRowSelector: 'thead tr'
+            }
+        });
+        $(".btn").each(function() {
+            $(this).addClass('btn-default');
+            $(this).css("margin-left", "5px");
+        })
+    });
+</script>
