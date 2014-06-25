@@ -1,6 +1,8 @@
 Abstraction
 -----------
 
+This is a test.
+
 Dealing with Complexity
 
 The world is complex and people often form simplified representations of real world artifacts and phenomenon to help cope with their complexity. These simplified representations focus on the essential aspects of something and ignore or conceal less important or non-essential aspects.  The simplification reduces the complexity to a level where understanding, explanation, expression, planning, analysis or manipulation can take place. What is essential or not essential to a simplified representation depends on the purpose or goal that one has in mind. Just as "Beauty is in the eye of beholder" so also "what is essential is in the purpose of the user." A simplified representation made for one purpose may be useless for another purpose. 
