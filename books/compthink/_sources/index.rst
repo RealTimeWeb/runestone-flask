@@ -7,6 +7,7 @@ Python in Context
    :maxdepth: 2
 
    introduction.rst
+   abstraction.rst
    
 
 .. activecode:: ac_example1
