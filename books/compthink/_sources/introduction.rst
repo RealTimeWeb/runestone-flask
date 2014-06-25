@@ -3,6 +3,8 @@ Introduction
 
 Welcome to Computational Thinking. Please pay attention to the following problems.
 
+This is a new test. I hope this works so I can put this down and focus on grading.
+
 Hello World!
 
 .. context:: pollid1
