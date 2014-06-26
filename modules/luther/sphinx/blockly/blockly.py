@@ -33,11 +33,7 @@ import os
 def setup(app):
     app.add_directive('blockly',Blockly)
 
-    app.add_javascript('blockly_compressed.js' )
-    app.add_javascript('blocks_compressed.js' )
-    app.add_javascript('javascript_compressed.js' )    
-    app.add_javascript('python_compressed.js' )        
-    app.add_javascript('msg/js/en.js')
+
 
     app.add_node(BlocklyNode, html=(visit_block_node, depart_block_node))
 
@@ -62,9 +58,44 @@ class BlocklyNode(nodes.General, nodes.Element):
 
 
 START = '''
+<html>
+<head>
+    <script src='blockly_compressed.js' type="text/javascript"> </script>
+    <script src='blocks_compressed.js' type="text/javascript"> </script>
+    <script src='javascript_compressed.js' type="text/javascript"> </script>
+    <script src='python_compressed.js' type="text/javascript"> </script>
+    <script src='msg/js/en.js' type="text/javascript"> </script>
+    <link rel="stylesheet" href="bootstrap-3.0.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="video.css" type="text/css" />
+    <script type="text/javascript">
+    // Get the objects we need to do logging from the parent frame.
+    // This seems better than reloading all of jQuery and bookfuncs into the frame. But
+    // Makes this a bit more dependent on the Runestone Environment.
+    eBookConfig = parent.eBookConfig
+    logBookEvent = parent.logBookEvent
+    jQuery = parent.jQuery
+    </script>
+    <style>
+      html, body {
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+      .blocklySvg {
+        height: 100%%;
+        width: 100%%;
+      }
+      .active_out {
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-right: 5px;
+      }
+    </style>
+</head>
+<body>
 <p>
-    <button onclick="showCode()">Show Python</button>
-    <button onclick="runCode()">Run</button>
+    <button class="btn btn-default" onclick="showCode()">Show Python</button>
+    <button class="btn btn-success" onclick="runCode()">Run</button>
 </p>
 <div id="%(divid)s" style="height: 480px; width: 600px;"></div>
 '''
@@ -72,11 +103,12 @@ START = '''
 CTRL_START = '''<xml id="toolbox" style="display: none">'''
 CTRL_END = '''</xml>'''
 
-# TODO need to figure out how to inject path to _static -- get from conf.py ??
+
 END = '''
 <script>
+    //Blockly.pathToBlockly += 'http://127.0.0.1:8000/runestone/static/compthink/_static';
     Blockly.inject(document.getElementById('%(divid)s'),
-        {path: '%(blocklyHomePrefix)s_static/', toolbox: document.getElementById('toolbox')});
+        {path: './', toolbox: document.getElementById('toolbox')});
 
     function showCode() {
       // Generate JavaScript code and display it.
@@ -91,6 +123,11 @@ END = '''
       Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if (--window.LoopTrap == 0) throw "Infinite loop.";\\n';
       var code = Blockly.JavaScript.workspaceToCode();
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      if(logBookEvent) {
+          logBookEvent({'event': 'blockly', 'act': 'run', 'div_id': '%(divid)s'});
+      } else {
+          console.log('logBookEvent is not defined.  This should be defined in the parent frame')
+      }
       try {
         eval(code);
       } catch (e) {
@@ -113,14 +150,17 @@ END = '''
     var xmlText = '%(preload)s';
     var xmlDom = Blockly.Xml.textToDom(xmlText);
     Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xmlDom);
+
   </script>
   
-  <pre id="%(divid)s_pre"></pre>
+  <pre class="active_out" id="%(divid)s_pre"></pre>
+  </body>
+  </html>
 '''
 # self for these functions is an instance of the writer class.  For example
 # in html, self is sphinx.writers.html.SmartyPantsHTMLTranslator
 # The node that is passed as a parameter is an instance of our node class.
-def visit_block_node(self,node):
+def visit_block_node(self, node):
     res = START % (node.ac_components)
     res += CTRL_START
     for ctrl in node.ac_components['controls']:
@@ -136,7 +176,13 @@ def visit_block_node(self,node):
             res += '<block type="%s"></block>\n' % (ctrl)
     res += CTRL_END
     res += END % (node.ac_components)
-    self.body.append(res)
+    path = os.path.join(node.ac_components['blocklyHomePrefix'],'_static',node.ac_components['divid']+'.html')
+    final = '<iframe class="blk-iframe" seamless src="../%s" width="600" ' \
+            'height="600"></iframe>' % path
+    f = open(path, 'w')
+    f.write(res)
+    f.close()
+    self.body.append(final)
 
 def depart_block_node(self,node):
     ''' This is called at the start of processing an activecode node.  If activecode had recursive nodes
@@ -164,9 +210,7 @@ class Blockly(Directive):
 
         document = self.state.document
         rel_filename, filename = document.settings.env.relfn2path(self.arguments[0])
-
         self.options['divid'] = self.arguments[0]
-
         pathDepth = rel_filename.count("/")
         self.options['blocklyHomePrefix'] = "../"*pathDepth
         

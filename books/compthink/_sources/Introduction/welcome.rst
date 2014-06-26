@@ -6,6 +6,7 @@ Welcome to Computational Thinking. Please pay attention to the following problem
 Hello World!
 
 .. context:: pollid1
+   :submission:
    :scale: 10
    :allowcomment:
 

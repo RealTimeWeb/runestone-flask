@@ -4,10 +4,41 @@ HELLO
 mkdir_p path(u'.\\../../static/compthink')
 mkdir_p path(u'../../static/compthink')
 mkdir_p path(u'.\\../../static/compthink\\doctrees')
-sphinx-build  -b html -d .\../../static/compthink\doctrees -c . -Acourse_id=compthink -Aloglevel=10 -Alogin_required=false -Acourse_url=http://127.0.0.1:8000 -Aappname=runestone .\_sources ../../static/compthink
+sphinx-build  -b html -d .\../../static/compthink\doctrees -c . -a -E -Acourse_id=compthink -Aloglevel=10 -Alogin_required=false -Acourse_url=http://127.0.0.1:8000 -Aappname=runestone .\_sources ../../static/compthink
 Running Sphinx v1.2.1
-loading pickled environment... done
-building [html]: targets for 0 source files that are out of date
-updating environment: 0 added, 0 changed, 0 removed
+building [html]: all source files
+updating environment: 9 added, 0 changed, 0 removed
+reading sources... [ 11%] Algorithms/introduction
+reading sources... [ 22%] Appendix/introduction
+reading sources... [ 33%] BigData/introduction
+reading sources... [ 44%] Conclusions/introduction
+reading sources... [ 55%] Introduction/syllabus
+reading sources... [ 66%] Introduction/themes
+reading sources... [ 77%] Introduction/welcome
+reading sources... [ 88%] Modelling/introduction
+reading sources... [100%] index
+
+C:\Users\acbart\Projects\runestone\books\compthink\_sources\Algorithms\introduction.rst:2: WARNING: Title underline too short.
+
+Introduction to Algorithms with Blockly
+--------------------------------------
 looking for now-outdated files... none found
-no targets are out of date.
+pickling environment... done
+checking consistency... done
+preparing documents... done
+writing output... [ 11%] Algorithms/introduction
+writing output... [ 22%] Appendix/introduction
+writing output... [ 33%] BigData/introduction
+writing output... [ 44%] Conclusions/introduction
+writing output... [ 55%] Introduction/syllabus
+writing output... [ 66%] Introduction/themes
+writing output... [ 77%] Introduction/welcome
+writing output... [ 88%] Modelling/introduction
+writing output... [100%] index
+
+writing additional files... genindex search
+copying static files... done
+copying extra files... done
+dumping search index... done
+dumping object inventory... done
+build succeeded, 1 warning.
