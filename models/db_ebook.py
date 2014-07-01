@@ -13,6 +13,18 @@ db.define_table('useinfo',
   migrate='runestone_useinfo.table'
 )
 
+db.define_table('annotations',
+    Field('timestamp', 'datetime'),
+    Field('student', 'string'),
+    Field('chapter', 'string'),
+    Field('subchapter', 'string'),
+    Field('div', 'string'),
+    Field('start', 'integer'),
+    Field('stop', 'integer'),
+    Field('text', 'string'),
+    migrate='runestone_annotations.table'
+)
+
 db.define_table('code',
   Field('acid','string'),
   Field('code','text'),

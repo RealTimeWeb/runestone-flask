@@ -3,14 +3,10 @@ Welcome
 
 Welcome to Computational Thinking. Please pay attention to the following problems.
 
+This is a new test. I hope this works so I can put this down and focus on grading.
+
 Hello World!
 
-.. context:: pollid1
-   :submission:
-   :scale: 10
-   :allowcomment:
-
-    On a scale from 1 to 10, how important do you think it is to have a polling directive in the Runestone Tools?
 
 .. blockly:: blockly1
    :submission:

@@ -1,20 +1,32 @@
+{% macro ellipsis(text, limit=20) -%}
+    {% set len = text|length %}
+    {% if text|length > limit %}
+        {{text[:(limit/2)|round|int] + '... ' + text[(len-limit/2)|round|int:] }}
+    {% else %}
+        {{ text }}
+    {% endif %}
+{%- endmacro %}
+
 {%- if prev %}
   <li id="relations-prev" title="Previous Chapter - {{ prev.title }}" data-toggle="tooltip">
-    <a href="{{ prev.link|e }}" >
-      <i class='glyphicon glyphicon-backward' style='opacity:0.9;'></i>
-    </a>
+    <a href="{{ prev.link|e }}"><i class='glyphicon glyphicon-backward' style='opacity:0.9;'></i>&nbsp;<b>{{ ellipsis(prev.title) }}</b></a>
   </li>
-  {% if not next %}
+  
     <li class="divider-vertical"></li>
-  {% endif %}
+  
 
 {%- endif %}
 
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>{{ _(ellipsis(title)) }}</b> <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc">{{ toc }}</ul>
+</li>
+<li class="divider-vertical"></li>
+
+
 {%- if next %}
   <li id="relations-next" title='Next Chapter - {{ next.title }}' data-toggle="tooltip" >
-    <a href="{{ next.link|e }}" >
-      <i class='glyphicon glyphicon-forward' style='opacity:0.9;'></i>
-    </a>
+    <a href="{{ next.link|e }}"><b>{{ ellipsis(next.title) }}</b>&nbsp;<i class='glyphicon glyphicon-forward' style='opacity:0.9;'></i></a>
   </li>
   <li class="divider-vertical"></li>
 {%- endif %}

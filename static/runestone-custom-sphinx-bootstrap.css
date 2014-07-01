@@ -148,17 +148,17 @@ input[type="button"].btn.btn-sm {
     pointer-events: auto;
 }
 
-.btn-default,
-.btn-default.disabled,
-.btn-default[disabled],
-.btn-default.disabled:hover,
-.btn-default[disabled]:hover {
+.btn-dark,
+.btn-dark.disabled,
+.btn-dark[disabled],
+.btn-dark.disabled:hover,
+.btn-dark[disabled]:hover {
     color: #fff;
     background-color: #474949;
     border-color: #474949;
 }
 
-.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active {
+.btn-dark:hover, .btn-dark:focus, .btn-dark:active, .btn-dark.active {
     background-color: #3a3c3c;
     border-color: #2e2f2f;
     color: #fff;
@@ -399,13 +399,13 @@ div.flash {
 	position:fixed;
 }
 
-#relations-next{
+/*#relations-next{
 	right: 35px;
 }
 
 #relations-prev{
 	left: 35px;
-}
+}*/
 
 .navLink a{
 	color: #999;

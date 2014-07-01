@@ -33,8 +33,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'<Computational Thinking in Contexts>' # e.g. How To Think Like a Computer Scientist
-copyright = u'<2014, Dennis Kafura, Austin Cory Bart>' # e.g. "2013, Brad Miller and David Ranum"
+project = u'<Computational Thinking>' # e.g. How To Think Like a Computer Scientist
+copyright = u'<2014, Dennis Kafura, Austin Cory Bart, Bushra Chowdhury>' # e.g. "2013, Brad Miller and David Ranum"
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -52,7 +52,7 @@ html_theme = 'sphinx_bootstrap'
 # Theme options are theme-specific and customize the look and feel of a theme
 html_theme_options = {
     # Navigation bar title. (Default: ``project`` value)
-    'navbar_title': "Computational Thinking in Contexts",
+    'navbar_title': "Computational Thinking",
 
     # Tab name for entire site. (Default: "Site")
     'navbar_site_name': "Chapters",
@@ -118,7 +118,7 @@ html_static_path = ['_static',
 html_show_sourcelink = False
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
-html_show_sphinx = True
+html_show_sphinx = False
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 html_show_copyright = True
