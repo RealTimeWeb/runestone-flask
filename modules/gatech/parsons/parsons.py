@@ -43,7 +43,7 @@ class ParsonsProblem(Assessment):
     required_arguments = 1
     optional_arguments = 0
     final_argument_whitespace = False
-    option_spec = {}
+    option_spec = {'submission': directives.unchanged}
     has_content = True
 
     def run(self):

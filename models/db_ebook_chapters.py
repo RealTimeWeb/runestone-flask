@@ -3,6 +3,7 @@ import datetime
 # table of all book chapters
 db.define_table('chapters',
   Field('chapter_name','string'),
+  Field('number','integer'),
   Field('course_id','string'), # references courses(course_name)
   Field('chapter_label','string'), #Approximate number of days, aggregated based on sub chapters
   migrate='runestone_chapters.table'
@@ -11,6 +12,7 @@ db.define_table('chapters',
 # table of sub chapters
 db.define_table('sub_chapters',
   Field('sub_chapter_name','string'),
+  Field('number','integer'),
   Field('chapter_id','reference chapters'),
   Field('sub_chapter_length','integer'),
   Field('sub_chapter_label','string'), #Average Time it takes people to complete this subchapter, maybe calculated using a weekly batchjob

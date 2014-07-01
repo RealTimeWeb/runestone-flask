@@ -34,13 +34,17 @@ def build_chapters():
     # Auto-generated html gives us some assumptions:
     #   * Always starts with a chapter, and the sections follow its chapters, so
     #     we can assume the previous chapter_name was the chapter
+    chapter_number, subchapter_number = 0, 0
     for chapter_name, chapter_label, sub_url, sub_name in links:
         if chapter_name and chapter_label:
             last_chapter_name, last_chapter_label = chapter_name, chapter_label
             current_row_id = db.chapters.insert(chapter_name=chapter_name,
-                                              course_id=2,
-                                              chapter_label=chapter_label)
-            output += P("Found Chapter \"{}\" ({})".format(chapter_name, chapter_label))
+                                                number=chapter_number,
+                                                course_id=2,
+                                                chapter_label=chapter_label)
+            chapter_number += 1
+            subchapter_number = 0
+            output += P('Found Chapter {}. "{}" ({})'.format(chapter_number, chapter_name, chapter_label))
         else:
             if '/' in sub_url:
                 sub_label = sub_url.split('/')[1].split('.')[0]
@@ -48,8 +52,10 @@ def build_chapters():
                 sub_label = sub_url.split('.')[0]
             db.sub_chapters.insert(sub_chapter_name=unCamel(sub_name),
                                    chapter_id=current_row_id,
+                                   number=subchapter_number,
                                    sub_chapter_label=sub_label)
-            output += P("Found subchapter \"{}\" ({})".format(sub_name, sub_label))
+            subchapter_number += 1
+            output += P('* subchapter {}.{} "{}" ({})'.format(chapter_number, subchapter_number, sub_name, sub_label))
     db.commit()
     return output
 

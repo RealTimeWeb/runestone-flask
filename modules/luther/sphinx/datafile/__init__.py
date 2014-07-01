@@ -93,6 +93,7 @@ class DataFile(Directive):
         'hide':directives.flag,
         'edit':directives.flag,
         'rows':directives.positive_int,
+        'submission': directives.unchanged,
         'cols':directives.positive_int
     }
 

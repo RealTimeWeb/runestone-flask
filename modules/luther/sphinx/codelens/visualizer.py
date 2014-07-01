@@ -147,6 +147,7 @@ class Codelens(Directive):
         'question':directives.unchanged,
         'correct':directives.unchanged,
         'feedback':directives.unchanged,
+        'submission': directives.unchanged,
         'breakline':directives.nonnegative_int
     }
 

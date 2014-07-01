@@ -60,7 +60,8 @@ class Animation(Directive):
     option_spec = {'modelfile':directives.unchanged,
                    'viewerfile':directives.unchanged,
                    'model':directives.unchanged,
-                   'viewer':directives.unchanged
+                   'viewer':directives.unchanged,
+                   'submission': directives.unchanged
                    }
 
     def run(self):

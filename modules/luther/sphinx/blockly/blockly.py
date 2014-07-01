@@ -204,7 +204,9 @@ class Blockly(Directive):
     required_arguments = 1
     optional_arguments = 0
     has_content = True
-    option_spec = {}
+    option_spec = {
+        'submission': directives.unchanged
+        }
 
     def run(self):
 

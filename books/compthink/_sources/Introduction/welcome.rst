@@ -13,6 +13,7 @@ Hello World!
     On a scale from 1 to 10, how important do you think it is to have a polling directive in the Runestone Tools?
 
 .. blockly:: blockly1
+   :submission:
 
    * controls
    controls_if
@@ -44,12 +45,21 @@ Hello World!
    </xml>
 
 .. fillintheblank:: baseconvert1
+   :submission:
    :correct: \\b31\\b
    :blankid: baseconvert1_ans1
 
    What is value of 25 expressed as an octal number (base 8) :textfield:`baseconvert1_ans1::mini`
+   
+.. fillintheblank:: baseconvert2
+   :submission:
+   :correct: \\b31\\b
+   :blankid: baseconvert2_ans1
+
+   What is value of 25 expressed as an octal number (base 8) :textfield:`baseconvert2_ans1::mini`
 
 .. mchoicemf:: question1_1
+   :submission: cohort
    :answer_a: Python
    :answer_b: Java
    :answer_c: C

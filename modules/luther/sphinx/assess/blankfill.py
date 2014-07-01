@@ -76,6 +76,7 @@ class FillInTheBlank(Assessment):
         'feedback4':directives.unchanged,  
         'blankid':directives.unchanged,
         'iscode':directives.flag,
+        'submission': directives.unchanged,
         'casei':directives.flag  # case insensitive matching
     }
     

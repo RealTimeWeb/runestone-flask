@@ -25,20 +25,25 @@ db.define_table('code',
 )
 
 db.define_table('exercises',
+    Field('number', 'integer'),
     Field('chapter', 'string'),
     Field('subchapter', 'string'),
+    Field('type', 'string'),
+    Field('cohort', 'boolean'),
     Field('div', 'string'),
+    #migrate='runestone_exercises.table'
 )
 
 db.define_table('submissions',
-    Field('timestamp', 'string'),
+    Field('timestamp', 'datetime'),
     Field('student', 'string'),
     Field('chapter', 'string'),
     Field('subchapter', 'string'),
     Field('div', 'string'),
-    Field('solution', 'string'),
-    Field('feedback', 'string'),
-    Field('override', 'int')
+    Field('solution', 'text'),
+    Field('feedback', 'text'),
+    Field('override', 'string'),
+    #migrate='runestone_submissions.table'
 )
 
 db.define_table('acerror_log',

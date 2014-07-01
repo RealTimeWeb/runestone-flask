@@ -342,7 +342,7 @@ def buildmodulelist():
 
 
 
-def build_submissions():
+def build_exercises():
     import os.path
     import re
     db.modules.truncate()
@@ -350,32 +350,35 @@ def build_submissions():
     def procrst(arg, dirname, names):
         rstfiles = [x for x in names if '.rst' in x]
         
+        chapter = dirname.replace('\\','/').split('/')[-1]
         directive_pattern = re.compile('\.\.\s*(.*)::\s*(.*)')
         for rf in rstfiles:
-            found = 0
+            subchapter = rf.split('.')[0]
             openrf = open(os.path.abspath(os.path.join(dirname,rf)))
+            number = 0
             for line in openrf:
                 matches =  directive_pattern.findall(line)
                 if matches:
                     type, name = matches[0]
                 if ':submission:' in line:
-                    first,shortname = line.split('::')
-                    found += 1
-                if 'description::' in line:
-                    first,description = line.split('::')
-                    found += 1
-                if found > 1:
-                    break
-            if found > 1:
-                dirs = dirname.split('/')
-                db.modules.insert(shortname=shortname.strip(),
-                                  description=description.strip(),
-                                  pathtofile=os.path.join(dirs[-1],rf))
+                    cohort = 'cohort' in line
+                    number += 1
+                    existing = db((db.exercises.chapter==chapter) &
+                                  (db.exercises.subchapter==subchapter) &
+                                  (db.exercises.div==name))
+                    print "Deleting", existing
+                    existing.delete()
+                    db.commit()
+                    print "Adding", chapter, subchapter, name
+                    db.exercises.insert(chapter=chapter,
+                                        subchapter=subchapter,
+                                        type=type,
+                                        cohort=cohort,
+                                        number=number,
+                                        div=name)
 
-
-    print "Ellie"
     compthink_sources = os.path.join(request.folder, 'books', 
                                      'compthink', '_sources')
-    os.path.walk(compthink_sources,procrst,None)
-    
+    os.path.walk(compthink_sources,procrst,None)    
     session.flash = 'Module Database Rebuild Finished'
+    #redirect('/%s/admin'%request.application)
