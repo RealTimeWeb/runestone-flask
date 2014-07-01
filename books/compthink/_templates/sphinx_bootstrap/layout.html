@@ -231,9 +231,15 @@
 {{ navBar() }}
 
 <div class="container">
-  {% block body %}{% endblock %}
+    {% block body %}
+    {% endblock %}
+    {%- if next %}
+    <div class='section' style='width:90%'>
+        Next time on Computational Thinking: <a href="{{ next.link|e }}"><b>{{ next.title }}</b>&nbsp;<i class='glyphicon glyphicon-forward' style='opacity:0.9;'></i></a>
+    </div>
+    {%- endif %}
 </div>
-Advance to the next chapter: <a href="{{ next.link|e }}"><b>{{ next.title }}</b>&nbsp;<i class='glyphicon glyphicon-forward' style='opacity:0.9;'></i></a>
+
 {%- endblock %}
 
 {%- block footer %}
