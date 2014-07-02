@@ -22,7 +22,7 @@ db.define_table('annotations',
     Field('start', 'integer'),
     Field('stop', 'integer'),
     Field('comment', 'string')#,
-    #migrate='runestone_annotations.table'
+    migrate='runestone_annotations.table'
 )
 
 db.define_table('code',
@@ -43,7 +43,7 @@ db.define_table('exercises',
     Field('type', 'string'),
     Field('cohort', 'boolean'),
     Field('div_id', 'string'),
-    #migrate='runestone_exercises.table'
+    migrate='runestone_exercises.table'
 )
 
 db.define_table('submissions',
@@ -55,18 +55,18 @@ db.define_table('submissions',
     Field('solution', 'text'),
     Field('feedback', 'text'),
     Field('override', 'string'),
-    #migrate='runestone_submissions.table'
+    migrate='runestone_submissions.table'
 )
 
 db.define_table('acerror_log',
-                Field('timestamp','datetime'),
-                Field('sid','string'),
-                Field('div_id','string'),
-                Field('course_id','string'),
-                Field('code','text'),
-                Field('emessage','text'),
-                migrate='runestone_acerror_log.table'
-                )
+    Field('timestamp','datetime'),
+    Field('sid','string'),
+    Field('div_id','string'),
+    Field('course_id','string'),
+    Field('code','text'),
+    Field('emessage','text'),
+    migrate='runestone_acerror_log.table'
+)
 
 ##table to store highlights saved by the user
 db.define_table('user_highlights',
