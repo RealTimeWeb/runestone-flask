@@ -42,7 +42,7 @@ db.define_table('exercises',
     Field('subchapter', 'string'),
     Field('type', 'string'),
     Field('cohort', 'boolean'),
-    Field('div', 'string'),
+    Field('div_id', 'string'),
     #migrate='runestone_exercises.table'
 )
 
@@ -51,7 +51,7 @@ db.define_table('submissions',
     Field('student', 'string'),
     Field('chapter', 'string'),
     Field('subchapter', 'string'),
-    Field('div', 'string'),
+    Field('div_id', 'string'),
     Field('solution', 'text'),
     Field('feedback', 'text'),
     Field('override', 'string'),
