@@ -8,7 +8,6 @@ Introduction
    Introduction/welcome.rst
    Introduction/syllabus.rst
    Introduction/themes.rst
-   Introduction/abstraction.rst
 
 Computational Modelling
 =======================
@@ -17,6 +16,7 @@ Computational Modelling
    :maxdepth: 2
    
    Modelling/introduction.rst
+   Modelling/abstraction.rst
 
 Algorithms
 ==========
