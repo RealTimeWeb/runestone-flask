@@ -1,15 +1,20 @@
 [submodule "common/ext/js-parsons"]
 	path = common/ext/js-parsons
 	url = https://github.com/bnmnetp/js-parsons
+    ignore = dirty
 [submodule "common/ext/codelens"]
 	path = common/ext/codelens
 	url = https://github.com/bnmnetp/OnlinePythonTutor
+    ignore = dirty
 [submodule "common/ext/skulpt"]
 	path = common/ext/skulpt
 	url = https://github.com/bnmnetp/skulpt
+    ignore = dirty
 [submodule "Java4Python"]
 	path = Java4Python
 	url = https://github.com/bnmnetp/Java4Python
+    ignore = dirty
 [submodule "common/ext/jsav"]
 	path = common/ext/jsav
 	url = https://github.com/vkaravir/JSAV.git
+    ignore = dirty
