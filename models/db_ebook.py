@@ -21,8 +21,8 @@ db.define_table('annotations',
     Field('div', 'string'),
     Field('start', 'integer'),
     Field('stop', 'integer'),
-    Field('text', 'string'),
-    migrate='runestone_annotations.table'
+    Field('comment', 'string')#,
+    #migrate='runestone_annotations.table'
 )
 
 db.define_table('code',
