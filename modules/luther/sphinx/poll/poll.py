@@ -132,7 +132,8 @@ class PollDirective(Directive):
     final_argument_whitespace = True
     has_content = True
     option_spec = {'scale':directives.positive_int,
-                   'allowcomment': directives.flag}
+                   'allowcomment': directives.flag,
+                   'submission': directives.unchanged,}
 
     node_class = PollNode
 

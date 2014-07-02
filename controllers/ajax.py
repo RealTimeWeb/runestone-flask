@@ -145,7 +145,7 @@ def getuser():
     response.headers['content-type'] = 'application/json'
 
     if  auth.user:
-        res = {'email':auth.user.email,'nick':auth.user.username}
+        res = {'email':auth.user.email,'nick':auth.user.username,'cohortId':auth.user.cohort_id}
     else:
         res = dict(redirect=auth.settings.login_url) #?_next=....
     logging.debug("returning login info: %s",res)
@@ -248,7 +248,7 @@ def updatelastpage():
     lastPageSubchapter = lastPageUrl.split("/")[-1].split(".")[0]
     if auth.user:
         db((db.user_state.user_id == auth.user.id) &
-                 (db.user_state.course_id == course)).update(
+           (db.user_state.course_id == course)).update(
                    last_page_url = lastPageUrl,
                    last_page_chapter = lastPageChapter,
                    last_page_subchapter = lastPageSubchapter,
@@ -351,36 +351,38 @@ def getCorrectStats(miscdata,event):
 
 
 def getStudentResults(question):
-        course = db(db.courses.id == auth.user.course_id).select(db.courses.course_name).first()
+    course = db(db.courses.id == auth.user.course_id).select(db.courses.course_name).first()
 
-        q = db( (db.useinfo.div_id == question) &
-                (db.useinfo.course_id == course.course_name) &
-                (db.courses.course_name == course.course_name) &
-                (db.useinfo.timestamp >= db.courses.term_start_date) )
+    q = db( (db.useinfo.div_id == question) &
+            (db.useinfo.course_id == course.course_name) &
+            (db.courses.course_name == course.course_name) &
+            (db.useinfo.timestamp >= db.courses.term_start_date) )
 
-        res = q.select(db.useinfo.sid,db.useinfo.act,orderby=db.useinfo.sid)
+    res = q.select(db.useinfo.sid,db.useinfo.act,orderby=db.useinfo.sid)
 
-        resultList = []
-        if len(res) > 0:
-            currentSid = res[0].sid
-            currentAnswers = []
+    resultList = []
+    if len(res) > 0:
+        currentSid = res[0].sid
+        currentAnswers = []
 
-            for row in res:
-                answer = row.act.split(':')[1]
+        for row in res:
+            if not row.act.startswith('answer'):
+                continue
+            answer = row.act.split(':')[1]
 
-                if row.sid == currentSid:
-                    currentAnswers.append(answer)
-                else:
-                    currentAnswers.sort()
-                    resultList.append((currentSid, currentAnswers))
-                    currentAnswers = [row.act.split(':')[1]]
+            if row.sid == currentSid:
+                currentAnswers.append(answer)
+            else:
+                currentAnswers.sort()
+                resultList.append((currentSid, currentAnswers))
+                currentAnswers = [row.act.split(':')[1]]
 
-                    currentSid = row.sid
+                currentSid = row.sid
 
-            currentAnswers.sort()
-            resultList.append((currentSid, currentAnswers))
+        currentAnswers.sort()
+        resultList.append((currentSid, currentAnswers))
 
-        return resultList
+    return resultList
 
 
 def getaggregateresults():
@@ -431,7 +433,7 @@ def getaggregateresults():
 
     returnDict = dict(answerDict=rdata, misc=miscdata)
 
-    if auth.user and verifyInstructorStatus(course,auth.user.id):  #auth.has_membership('instructor', auth.user.id):
+    if auth.user and verifyInstructorStatus(course,auth.user.id):
         resultList = getStudentResults(question)
         returnDict['reslist'] = resultList
 
@@ -505,44 +507,45 @@ def getSphinxBuildStatus():
     elif st == 'RUNNING' or st == 'QUEUED' or st == 'ASSIGNED':
         status = 'false'
         return dict(status=status, course_url=course_url)
-    else: # task failed
+    else:  # task failed
         status = 'failed'
         tb = db(db.scheduler_run.task_id == row.id).select().first()['traceback']
         return dict(status=status, traceback=tb)
 
 def getassignmentgrade():
-    print 'in getassignmentgrade'
-    if auth.user:
-        sid = auth.user.username
-    else:
+    response.headers['content-type'] = 'application/json'
+    if not auth.user:
         return json.dumps([dict(message="not logged in")])
 
-    response.headers['content-type'] = 'application/json'
-
     divid = request.vars.div_id
-    course_id = auth.user.course_id
-    "select grade, comment from code where sid='%s' and acid='%s' and grade is not null order by timestamp desc"
-    result = db( (db.code.sid == sid) &
-                 (db.code.acid == divid) &
-                 (db.code.course_id == course_id) &
-                 (db.code.grade != None) ).select(db.code.grade,db.code.comment,orderby=~db.code.timestamp).first()
 
-    ret = {}
+    result = db(
+        (db.code.sid == auth.user.username) &
+        (db.code.acid == db.problems.acid) &
+        (db.problems.assignment == db.assignments.id) &
+        (db.assignments.released == True) &
+        (db.code.acid == divid)
+        ).select(
+            db.code.grade,
+            db.code.comment,
+        ).first()
+
+    ret = {
+        'grade':"Not graded yet",
+        'comment': "No Comments",
+        'avg': 'None',
+        'count': 'None',
+    }
     if result:
         ret['grade'] = result.grade
         if result.comment:
             ret['comment'] = result.comment
-        else:
-            ret['comment'] = "No Comments"
-    else:
-        ret['grade'] = "not graded yet"
-        ret['comment'] = "No Comments"
 
-    query = '''select avg(grade), count(grade)
-               from code where sid='%s' and course_id='%d' and grade is not null;''' % (sid,course_id)
+        query = '''select avg(grade), count(grade)
+                   from code where acid='%s';''' % (divid)
 
-    rows = db.executesql(query)
-    ret['avg'] = rows[0][0]
-    ret['count'] = rows[0][1]
+        rows = db.executesql(query)
+        ret['avg'] = rows[0][0]
+        ret['count'] = rows[0][1]
 
     return json.dumps([ret])

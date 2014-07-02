@@ -71,9 +71,14 @@ def listassignments():
     else:
         q = db((db.code.course_id == auth.user.course_id)
              & (db.code.timestamp >= course.term_start_date))
-    
-    rset = q.select(db.code.acid,orderby=db.code.acid,distinct=True)
-    return dict(exercises=rset,course_id=course.course_name)
+    prefixes = {}
+    for row in q.select(db.code.acid,orderby=db.code.acid,distinct=True):
+        acid = row.acid
+        acid_prefix = acid.split('_')[0]
+        if acid_prefix not in prefixes.keys():
+            prefixes[acid_prefix] = []
+        prefixes[acid_prefix].append(acid)
+    return dict(sections=prefixes,course_id=course.course_name)
 
 @auth.requires(lambda: verifyInstructorStatus(auth.user.course_name, auth.user), requires_login=True)
 def listassessments():
@@ -175,11 +180,49 @@ def gradeassignment():
     acid = request.vars.id
     course = db(db.courses.id == auth.user.course_id).select(db.courses.course_name).first()
 
-    rset = db.executesql('''select acid, sid, grade, T.id, first_name, last_name, comment from code as T, auth_user
-        where sid = username and T.course_id = '%s' and  acid = '%s' and timestamp =
-             (select max(timestamp) from code where sid=T.sid and acid=T.acid) order by last_name;''' %
-             (auth.user.course_id,acid))
-    return dict(solutions=rset,course_id=course.course_name)
+    section_form=FORM(
+        INPUT(_type="hidden", _name="id", _value=acid),
+        _class="form-inline",
+        _method="GET",
+        )
+    section_form.append(LABEL(
+            INPUT(_name="section_id", _type="radio", _value=""),
+            "All Students",
+            _class="radio-inline",
+            ))
+    for section in db(db.sections.course_id == auth.user.course_id).select():
+        section_form.append(LABEL(
+            INPUT(_name="section_id", _type="radio", _value=section.id),
+            section.name,
+            _class="radio-inline",
+            ))
+
+    section_form.append(INPUT(_type="submit", _value="Filter Students", _class="btn btn-default"))
+
+    joined = db((db.code.sid == db.auth_user.username) & (db.section_users.auth_user == db.auth_user.id))
+    q = joined((db.code.course_id == auth.user.course_id) & (db.code.acid == acid))
+
+    if section_form.accepts(request.vars, session, keepvalues=True) and section_form.vars.section_id != "":
+        q = q(db.section_users.section == section_form.vars.section_id)
+
+    rset = q.select(
+        db.code.acid,
+        db.code.sid,
+        db.code.grade,
+        db.code.id,
+        db.auth_user.first_name,
+        db.auth_user.last_name,
+        db.code.comment,
+        distinct = db.code.sid,
+        orderby = db.code.sid|db.code.timestamp,
+        )
+    return dict(
+        acid = acid,
+        sid = sid,
+        section_form = section_form,
+        solutions=rset,
+        course_id=course.course_name
+        )
 
 
 @auth.requires(lambda: verifyInstructorStatus(auth.user.course_name, auth.user), requires_login=True)
@@ -195,6 +238,18 @@ def showlog():
         paginate=40,
         formstyle='divs')
     return dict(grid=grid,course_id=course.course_name)
+    
+@auth.requires(lambda: verifyInstructorStatus(auth.user.course_name, auth.user), requires_login=True)
+def showlog_advanced():
+    course = db(db.courses.id == auth.user.course_id).select().first()
+    #grid = ((db.useinfo.course_id==course.course_name) & (db.useinfo.timestamp >= course.term_start_date),
+    #db.useinfo.timestamp,db.useinfo.sid, db.useinfo.event,db.useinfo.act,db.useinfo.div_id
+    grid = [{'time': row.timestamp.strftime('%Y-%m-%d %H:%M:%S'), 
+             'user': row.sid, 
+             'event': row.event, 
+             'act': row.act, 
+             'div_id': row.div_id} for row in db().select(db.useinfo.ALL)]
+    return dict(grid=json.dumps(grid),course_id=course.course_name)
 
 @auth.requires(lambda: verifyInstructorStatus(auth.user.course_name, auth.user), requires_login=True)
 def studentactivity():
@@ -278,12 +333,52 @@ def buildmodulelist():
                                   pathtofile=os.path.join(dirs[-1],rf))
 
 
-    
-    
-    os.path.walk(os.path.join(request.folder,'source'),procrst,None)
+    compthink_sources = os.path.join(request.folder, 'books', 
+                                     'compthink', '_sources')
+    os.path.walk(compthink_sources,procrst,None)
     
     session.flash = 'Module Database Rebuild Finished'
     redirect('/%s/admin'%request.application)
 
 
 
+def build_exercises():
+    import os.path
+    import re
+    db.modules.truncate()
+    
+    def procrst(arg, dirname, names):
+        rstfiles = [x for x in names if '.rst' in x]
+        
+        chapter = dirname.replace('\\','/').split('/')[-1]
+        directive_pattern = re.compile('\.\.\s*(.*)::\s*(.*)')
+        for rf in rstfiles:
+            subchapter = rf.split('.')[0]
+            openrf = open(os.path.abspath(os.path.join(dirname,rf)))
+            number = 0
+            for line in openrf:
+                matches =  directive_pattern.findall(line)
+                if matches:
+                    type, name = matches[0]
+                if ':submission:' in line:
+                    cohort = 'cohort' in line
+                    number += 1
+                    existing = db((db.exercises.chapter==chapter) &
+                                  (db.exercises.subchapter==subchapter) &
+                                  (db.exercises.div==name))
+                    print "Deleting", existing
+                    existing.delete()
+                    db.commit()
+                    print "Adding", chapter, subchapter, name
+                    db.exercises.insert(chapter=chapter,
+                                        subchapter=subchapter,
+                                        type=type,
+                                        cohort=cohort,
+                                        number=number,
+                                        div=name)
+
+    compthink_sources = os.path.join(request.folder, 'books', 
+                                     'compthink', '_sources')
+    os.path.walk(compthink_sources,procrst,None)    
+    session.flash = 'Module Database Rebuild Finished'
+    #redirect('/%s/admin'%request.application)

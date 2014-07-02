@@ -494,16 +494,10 @@ Blockly
       </block>
    </xml>
 
-Drag around some blockly blocks.  Then generate or run code.
-
-Context
--------
-
-.. context:: pollid1
-   :scale: 10
-   :allowcomment:
-
-    On a scale from 1 to 10, how important do you think it is to have a polling directive in the Runestone Tools?
+Add a print statement after the set X to 10.  Click on text and drag out a print block;
+connect it to the set block.  Then click on variables and drag out the X block and
+connect it to the print block.  Now click the run button and you should see 10 printed
+in the gray output area.
 
 
 What To Do Now

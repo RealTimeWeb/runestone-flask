@@ -1,0 +1,22 @@
+{{extend 'layout.html'}}
+
+{{block statusbar}}
+{{end}}
+
+<h1>Grading Overview</h1>
+
+<div style='overflow:scroll'>
+<table class='table'>
+    <tr>
+        <th>Student</th>
+        {{for sc in subchapters:}}<th>{{=sc}}</th>{{pass}}
+    </tr>
+    {{for us in users:}}
+        <tr>
+        <td>{{=us}}</td>
+        {{for sc in subchapters:}}
+            <td>73%</td>{{pass}}
+        </tr>
+        {{pass}}
+</table>
+</div>

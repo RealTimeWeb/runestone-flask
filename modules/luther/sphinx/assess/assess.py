@@ -78,10 +78,11 @@ class AddButton(Directive):
 class QuestionNumber(Directive):
     """Set Parameters for Question Numbering"""
     required_arguments = 0
-    optional_arguments = 3
+    optional_arguments = 4
     has_content = False
     option_spec = { 'prefix': directives.unchanged,
         'suffix': directives.unchanged,
+        'submission': directives.unchanged,
         'start': directives.positive_int
     }
 

@@ -247,6 +247,7 @@ class ActiveCode(Directive):
     optional_arguments = 1
     has_content = True
     option_spec = {
+        'submission': directives.unchanged,
         'nocanvas':directives.flag,
         'nopre':directives.flag,
         'above':directives.flag,  # put the canvas above the code

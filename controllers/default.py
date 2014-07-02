@@ -33,6 +33,7 @@ def user():
                     break
 
     form = auth()
+    progress = {}
 
     if 'register' in request.args(0) and request.janrain_form:
         # add the Janrain login form
@@ -41,11 +42,30 @@ def user():
 
     if 'profile' in request.args(0):
         form.vars.course_id = auth.user.course_name
-        print form
+        progress = db((db.user_state.user_id == auth.user.id) & 
+                      (db.user_state.course_id == auth.user.course_name)).select()
+        if progress:
+            progress = progress[0]
+        else:
+            progress = {}
+        """Field('last_page_url','string'),
+        Field('last_page_hash','string'),
+        Field('last_page_chapter','string'),
+        Field('last_page_subchapter','string'),
+        Field('last_page_scroll_location','string'),
+        Field('last_page_accessed_on','datetime'),"""
         if form.process().accepted:
             # auth.user session object doesn't automatically update when the DB gets updated
             auth.user.update(form.vars)
             auth.user.course_name = db(db.auth_user.id == auth.user.id).select()[0].course_name
+            chapter_label = db(db.chapters.course_id == auth.user.course_name).select()[0].chapter_label
+            if db((db.user_sub_chapter_progress.user_id == auth.user.id) & (db.user_sub_chapter_progress.chapter_id == chapter_label)).count() == 0:
+                db.executesql('''
+                   INSERT INTO user_sub_chapter_progress(user_id, chapter_id,sub_chapter_id, status)
+                   SELECT %s, chapters.chapter_label, sub_chapters.sub_chapter_label, -1
+                   FROM chapters, sub_chapters where sub_chapters.chapter_id = chapters.id and chapters.course_id = '%s';
+                ''' % (auth.user.id, auth.user.course_name))
+
             redirect(URL('default', 'index'))
 
     if 'login' in request.args(0):
@@ -60,7 +80,7 @@ def user():
     except AttributeError: # not all auth methods actually have a submit button (e.g. user/not_authorized)
         pass
 
-    return dict(form=form)
+    return dict(form=form, progress=progress)
 
 def download(): return response.download(request,db)
 def call(): return service()
@@ -86,6 +106,8 @@ def index():
         redirect('/%s/default/user/profile?_next=/%s/default/index' % (request.application, request.application))
     else:
         redirect('/%s/static/%s/index.html' % (request.application,course.course_name))
+
+    cohortId = db(db.auth_user.id == auth.user.id).select(db.auth_user.cohort_id).first()
 
 def error():
     return dict()

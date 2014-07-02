@@ -14,6 +14,8 @@ import datetime
 if not request.env.web2py_runtime_gae:
     ## if NOT running on Google App Engine use SQLite or other DB
     db = DAL(settings.database_uri,fake_migrate_all=False)
+    session.connect(request, response, masterapp='runestone', db=db)
+
 else:
     ## connect to Google BigTable (optional 'google:datastore://namespace')
     db = DAL('google:datastore')
@@ -62,9 +64,10 @@ auth.settings.retrieve_password_captcha	= False
 ## create all tables needed by auth if not custom tables
 db.define_table('courses',
   Field('course_id','string'),
-  Field('course_name', 'string', unique=True, length=255),
-  Field('term_start_date', 'date')#,
-  #migrate='runestone_courses.table'
+  Field('course_name', 'string', unique=True),
+  Field('term_start_date', 'date'),
+  Field('institution', 'string'),
+  migrate='runestone_courses.table'
 )
 if db(db.courses.id > 0).isempty():
     db.courses.insert(course_name='boguscourse', term_start_date=datetime.date(2000, 1, 1)) # should be id 1
@@ -73,6 +76,22 @@ if db(db.courses.id > 0).isempty():
     #db.courses.insert(course_name='pythonds', term_start_date=datetime.date(2000, 1, 1))
     #db.courses.insert(course_name='overview', term_start_date=datetime.date(2000, 1, 1))
 
+## create cohort_master table
+db.define_table('cohort_master',
+  Field('cohort_name','string',
+  writable=False,readable=False),
+  Field('created_on','datetime',default=request.now,
+  writable=False,readable=False),
+  Field('invitation_id','string',
+  writable=False,readable=False),
+  Field('average_time','integer', #Average Time it takes people to complete a unit chapter, calculated based on previous chapters
+  writable=False,readable=False),
+  Field('is_active','integer', #0 - deleted / inactive. 1 - active
+  writable=False,readable=False),
+  migrate='runestone_cohort_master.table'
+  )
+if db(db.cohort_master.id > 0).isempty():
+    db.cohort_master.insert(cohort_name='Default Group', is_active = 1)
 
 ########################################
 
@@ -112,12 +131,14 @@ class IS_COURSE_ID:
 
 db.define_table('auth_user',
     Field('username', type='string',
+          writable=False,
           label=T('Username')),
     Field('first_name', type='string',
           label=T('First Name')),
     Field('last_name', type='string',
           label=T('Last Name')),
     Field('email', type='string',
+          writable=False,
           requires=IS_EMAIL(banned='^.*shoeonlineblog\.com$'),
           label=T('Email')),
     Field('password', type='password',
@@ -134,11 +155,16 @@ db.define_table('auth_user',
           writable=False,readable=False),
     Field('registration_id',default='',
           writable=False,readable=False),
+    Field('cohort_id','reference cohort_master', requires=IS_IN_DB(db, 'cohort_master.id', 'id'),
+          writable=False,readable=False),
     Field('course_id',db.courses,label=T('Course Name'),
           required=True,
+          writable=False,
+          readable=False,
           default=2),
     Field('course_name',compute=lambda row: getCourseNameFromId(row.course_id)),
-    format='%(username)s',
+#    format='%(username)s',
+    format=lambda u: u.first_name + " " + u.last_name,
     migrate='runestone_auth_user.table')
 
 
@@ -151,7 +177,7 @@ db.auth_user.email.requires = (IS_EMAIL(error_message=auth.messages.invalid_emai
                                IS_NOT_IN_DB(db, db.auth_user.email))
 db.auth_user.course_id.requires = IS_COURSE_ID()
 
-auth.define_tables(migrate='runestone_')
+auth.define_tables(username=True, signature=False, migrate='runestone_')
 
 # create the instructor group if it doesn't already exist
 if not db(db.auth_group.role == 'instructor').select().first():
@@ -229,6 +255,7 @@ janrain_url = 'http://%s/%s/default/user/login' % (request.env.http_host,
 #auth.settings.login_form = ExtendedLoginForm(auth, janrain_form) # uncomment this to use both Janrain and web2py auth
 #auth.settings.login_form = auth # uncomment this to just use web2py integrated authentication
 auth.settings.login_form = GoogleAccount()
+auth.settings.expiration = 60 * 60 * 2 # 2 Hours
 
 #request.janrain_form = janrain_form # save the form so that it can be added to the user/register controller
 

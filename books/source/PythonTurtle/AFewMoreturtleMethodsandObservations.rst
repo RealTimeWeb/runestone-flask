@@ -12,7 +12,7 @@ A Few More turtle Methods and Observations
 
 Here are a few more things that you might find useful as you write programs that use turtles.
 
-* Turtle methods can use negative angles or distances.  So ``tess.foward(-100)``
+* Turtle methods can use negative angles or distances.  So ``tess.forward(-100)``
   will move tess backwards, and ``tess.left(-30)`` turns her to the right.
   Additionally, because there are 360 degrees in a circle, turning 30 to the
   left will leave you facing in the same direction as turning 330 to the right!
@@ -74,9 +74,9 @@ Let's do an example that shows off some of these new features.
    tess.color("blue")
    tess.shape("turtle")
 
-   print(range(5,60,2))
-   tess.up()                    # this is new
-   for size in range(5,60,2):      # start with size = 5 and grow by 2
+   print(range(5, 60, 2))
+   tess.up()                     # this is new
+   for size in range(5, 60, 2):    # start with size = 5 and grow by 2
        tess.stamp()                # leave an impression on the canvas
        tess.forward(size)          # move tess along
        tess.right(24)              # and turn her

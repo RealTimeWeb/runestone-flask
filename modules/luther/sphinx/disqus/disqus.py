@@ -100,6 +100,7 @@ class DisqusDirective(Directive):
     final_argument_whitespace = True
     has_content = False
     option_spec = {'shortname':directives.unchanged_required,
+                   'submission': directives.unchanged,
                    'identifier':directives.unchanged_required
                   }
 

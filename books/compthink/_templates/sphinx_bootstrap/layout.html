@@ -64,6 +64,7 @@
         <li class="divider-vertical"></li>
 
         <!-- social media dropdown -->
+        <!--
         <li class="dropdown">
           <a class="dropdown-toggle" href="#" data-toggle="dropdown">
             <i class="glyphicon glyphicon-share-alt" style="opacity: 0.9"></i>
@@ -90,9 +91,9 @@
                   </iframe>
                 </div>
               </li>
-             -->
+             --><!--
           </ul>
-        </li>
+        </li>-->
         <!-- end social media dropdown -->
 
         <li class="divider-vertical"></li>
@@ -175,7 +176,6 @@
         <li class="divider-vertical"></li>
         {% block sidebartoc %}
           {% include "localtoc.html" %}
-          <li class="divider-vertical"></li>
         {% endblock %}
         {% block sidebarrel %}
           {% include "relations.html" %}
@@ -231,8 +231,15 @@
 {{ navBar() }}
 
 <div class="container">
-  {% block body %}{% endblock %}
+    {% block body %}
+    {% endblock %}
+    {%- if next %}
+    <div class='section' style='width:90%'>
+        Next time on Computational Thinking: <a href="{{ next.link|e }}"><b>{{ next.title }}</b>&nbsp;<i class='glyphicon glyphicon-forward' style='opacity:0.9;'></i></a>
+    </div>
+    {%- endif %}
 </div>
+
 {%- endblock %}
 
 {%- block footer %}
