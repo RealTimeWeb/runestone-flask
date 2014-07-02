@@ -17,6 +17,7 @@ Computational Modelling
    
    Modelling/introduction.rst
    Modelling/abstraction.rst
+   Modelling/NetLogo.rst
 
 Algorithms
 ==========
