@@ -121,7 +121,7 @@ db.define_table('assignment_types',
     Field('assignments_count', default=0),
     Field('assignments_dropped', default=0),
     format='%(names)s',
-    migrate='runestone_assignment_types.table',
+    migrate='runestone_assignment_types.table' if settings.migrate else False
     )
 
 db.define_table('assignments',
@@ -132,7 +132,7 @@ db.define_table('assignments',
     Field('threshold', 'integer', default=1),
     Field('released', 'boolean'),
     format='%(name)s',
-    migrate='runestone_assignments.table'
+    migrate='runestone_assignments.table' if settings.migrate else False
     )
 
 class score(object):
@@ -437,19 +437,19 @@ db.assignments.release_grades = Field.Method(lambda row, released=True: assignme
 db.define_table('problems',
     Field('assignment', db.assignments),
     Field('acid', 'string'),
-    migrate='runestones_problems.table',
+    migrate='runestones_problems.table' if settings.migrate else False
     )
 
 db.define_table('grades',
     Field('auth_user', db.auth_user),
     Field('assignment', db.assignments),
     Field('score', 'double'),
-    migrate='runestone_grades.table',
+    migrate='runestone_grades.table' if settings.migrate else False
     )
 
 db.define_table('deadlines',
     Field('assignment', db.assignments, requires=IS_IN_DB(db, 'assignments.id', db.assignments._format)),
     Field('section', db.sections, requires=IS_EMPTY_OR(IS_IN_DB(db, 'sections.id', '%(name)s'))),
     Field('deadline', 'datetime'),
-    migrate='runestone_deadlines.table',
+    migrate='runestone_deadlines.table' if settings.migrate else False
     )

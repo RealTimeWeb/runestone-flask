@@ -351,21 +351,60 @@ def build_exercises():
         rstfiles = [x for x in names if '.rst' in x]
         
         chapter = dirname.replace('\\','/').split('/')[-1]
-        directive_pattern = re.compile('\.\.\s*(.*)::\s*(.*)')
+        directive_pattern = re.compile('^\.\.\s*(.*)::\s*(.*)')
+        field_pattern = re.compile('\s+:(.*?):(.*)')
+        prior_blank = False
+        print chapter
         for rf in rstfiles:
             subchapter = rf.split('.')[0]
             openrf = open(os.path.abspath(os.path.join(dirname,rf)))
             number = 0
+            search_status = 'nothing'
+            fields = {}
+            key, value, body = None, None, ""
+            prior_white_index = None
             for line in openrf:
-                matches =  directive_pattern.findall(line)
-                if matches:
-                    type, name = matches[0]
-                if ':submission:' in line:
+                if prior_blank and line.lstrip() == line and search_status != 'nothing':
+                    if key:
+                        fields[key] = value
+                    print type, name, fields, body[:20].replace('\n', '\\n'), len(body), body.count('\n')
+                    body = ''
+                    prior_white_index = None
+                    key, value = None, None
+                    fields = {}
+                    search_status = 'nothing'
+                    
+                if search_status == 'nothing':
+                    matches = directive_pattern.findall(line)
+                    if matches:
+                        type, name = matches[0]
+                        search_status = 'directive_found'
+                elif search_status == 'directive_found':
+                    matches = field_pattern.findall(line)
+                    white_index = len(line) - len(line.lstrip())
+                    if matches:
+                        if key:
+                            fields[key] = value
+                        key, value = matches[0]
+                    elif line.strip():
+                        if key:
+                            if white_index >= prior_white_index:
+                                body += line.lstrip()
+                            else:
+                                value += line.lstrip()
+                        else:
+                            body += line.lstrip()
+                    prior_blank = ("" == line.strip())
+                    if line.strip():
+                        prior_white_index = min(prior_white_index, white_index)
+            if search_status == 'directive_found':
+                print "Extra", type, name, fields, body[:20].replace('\n', '\\n'), len(body), body.count('\n')
+                """if ':submission:' in line:
                     cohort = 'cohort' in line
                     number += 1
                     existing = db((db.exercises.chapter==chapter) &
                                   (db.exercises.subchapter==subchapter) &
-                                  (db.exercises.div==name))
+                                  (db.exercises.div_id==name))
                     print "Deleting", existing
                     existing.delete()
                     db.commit()
@@ -375,7 +414,7 @@ def build_exercises():
                                         type=type,
                                         cohort=cohort,
                                         number=number,
-                                        div=name)
+                                        div_id=name)"""
 
     compthink_sources = os.path.join(request.folder, 'books', 
                                      'compthink', '_sources')

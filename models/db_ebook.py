@@ -10,7 +10,7 @@ db.define_table('useinfo',
   Field('act','string'),
   Field('div_id','string'),
   Field('course_id','string'),
-  migrate='runestone_useinfo.table'
+  migrate='runestone_useinfo.table' if settings.migrate else False
 )
 
 db.define_table('annotations',
@@ -22,18 +22,18 @@ db.define_table('annotations',
     Field('start', 'integer'),
     Field('stop', 'integer'),
     Field('comment', 'string'),
-    migrate='runestone_annotations.table'
+    migrate='runestone_annotations.table' if settings.migrate else False
 )
 
 db.define_table('code',
-  Field('acid','string'),
-  Field('code','text'),
-  Field('course_id','string'),
-  Field('grade','double'),
-  Field('sid','string'),
-  Field('timestamp','datetime'),
-  Field('comment','text'),
-  migrate='runestone_code.table'
+    Field('acid','string'),
+    Field('code','text'),
+    Field('course_id','string'),
+    Field('grade','double'),
+    Field('sid','string'),
+    Field('timestamp','datetime'),
+    Field('comment','text'),
+    migrate='runestone_code.table' if settings.migrate else False
 )
 
 db.define_table('exercises',
@@ -43,7 +43,7 @@ db.define_table('exercises',
     Field('type', 'string'),
     Field('cohort', 'boolean'),
     Field('div_id', 'string'),
-    #migrate='runestone_exercises.table'
+    migrate='runestone_exercises.table' if settings.migrate else False
 )
 
 db.define_table('submissions',
@@ -55,7 +55,7 @@ db.define_table('submissions',
     Field('solution', 'text'),
     Field('feedback', 'text'),
     Field('override', 'string'),
-    #migrate='runestone_submissions.table'
+    migrate='runestone_submissions.table' if settings.migrate else False
 )
 
 db.define_table('acerror_log',
@@ -65,7 +65,7 @@ db.define_table('acerror_log',
     Field('course_id','string'),
     Field('code','text'),
     Field('emessage','text'),
-    migrate='runestone_acerror_log.table'
+    migrate='runestone_acerror_log.table' if settings.migrate else False
 )
 
 ##table to store highlights saved by the user
@@ -79,7 +79,7 @@ db.define_table('user_highlights',
   Field('sub_chapter_url','text'),
   Field('method','string'), #self / Imported from friend
   Field('is_active','integer', default=1), #0 - deleted / inactive. 1 - active
-  migrate='runestone_user_highlights.table'
+  migrate='runestone_user_highlights.table' if settings.migrate else False
 )
 
 ##table to store the last position of the user. 1 row per user, per course
@@ -92,13 +92,13 @@ db.define_table('user_state',
   Field('last_page_subchapter','string'),
   Field('last_page_scroll_location','string'),
   Field('last_page_accessed_on','datetime'),
-  migrate='runestone_user_state.table'
+  migrate='runestone_user_state.table' if settings.migrate else False
 )
 
 # Table to match instructor(s) to their course(s)
 db.define_table('course_instructor',
     Field('course', db.courses ),
     Field('instructor', db.auth_user),
-    migrate='runestone_course_instructor.table'
+    migrate='runestone_course_instructor.table' if settings.migrate else False
 )
 

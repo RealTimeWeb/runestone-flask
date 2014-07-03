@@ -63,11 +63,11 @@ auth.settings.retrieve_password_captcha	= False
 
 ## create all tables needed by auth if not custom tables
 db.define_table('courses',
-  Field('course_id','string'),
-  Field('course_name', 'string', length=255, unique=True),
-  Field('term_start_date', 'date'),
-  Field('institution', 'string'),
-  migrate='runestone_courses.table'
+    Field('course_id','string'),
+    Field('course_name', 'string', length=255, unique=True),
+    Field('term_start_date', 'date'),
+    Field('institution', 'string'),
+    migrate='runestone_courses.table' if settings.migrate else False
 )
 if db(db.courses.id > 0).isempty():
     db.courses.insert(course_name='boguscourse', term_start_date=datetime.date(2000, 1, 1)) # should be id 1
@@ -79,16 +79,16 @@ if db(db.courses.id > 0).isempty():
 ## create cohort_master table
 db.define_table('cohort_master',
   Field('cohort_name','string',
-  writable=False,readable=False),
+    writable=False,readable=False),
   Field('created_on','datetime',default=request.now,
-  writable=False,readable=False),
+    writable=False,readable=False),
   Field('invitation_id','string',
-  writable=False,readable=False),
+    writable=False,readable=False),
   Field('average_time','integer', #Average Time it takes people to complete a unit chapter, calculated based on previous chapters
-  writable=False,readable=False),
+    writable=False,readable=False),
   Field('is_active','integer', #0 - deleted / inactive. 1 - active
-  writable=False,readable=False),
-  migrate='runestone_cohort_master.table'
+    writable=False,readable=False),
+  migrate='runestone_cohort_master.table' if settings.migrate else False
   )
 if db(db.cohort_master.id > 0).isempty():
     db.cohort_master.insert(cohort_name='Default Group', is_active = 1)
@@ -165,7 +165,7 @@ db.define_table('auth_user',
     Field('course_name',compute=lambda row: getCourseNameFromId(row.course_id)),
 #    format='%(username)s',
     format=lambda u: u.first_name + " " + u.last_name,
-    migrate='runestone_auth_user.table')
+    migrate='runestone_auth_user.table' if settings.migrate else False)
 
 
 db.auth_user.first_name.requires = IS_NOT_EMPTY(error_message=auth.messages.is_empty)
@@ -177,7 +177,9 @@ db.auth_user.email.requires = (IS_EMAIL(error_message=auth.messages.invalid_emai
                                IS_NOT_IN_DB(db, db.auth_user.email))
 db.auth_user.course_id.requires = IS_COURSE_ID()
 
-auth.define_tables(username=True, signature=False, migrate='runestone_')
+auth.define_tables(username=True, 
+                   signature=False, 
+                   migrate='runestone_' if settings.migrate else False)
 
 # create the instructor group if it doesn't already exist
 if not db(db.auth_group.role == 'instructor').select().first():

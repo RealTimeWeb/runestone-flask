@@ -6,7 +6,7 @@ db.define_table('chapters',
   Field('number','integer'),
   Field('course_id','string'), # references courses(course_name)
   Field('chapter_label','string'), #Approximate number of days, aggregated based on sub chapters
-  migrate='runestone_chapters.table'
+  migrate='runestone_chapters.table' if settings.migrate else False
 )
 
 # table of sub chapters
@@ -16,7 +16,7 @@ db.define_table('sub_chapters',
   Field('chapter_id','reference chapters'),
   Field('sub_chapter_length','integer'),
   Field('sub_chapter_label','string'), #Average Time it takes people to complete this subchapter, maybe calculated using a weekly batchjob
-  migrate='runestone_sub_chapters.table'
+  migrate='runestone_sub_chapters.table' if settings.migrate else False
 )
 
 db.define_table('user_chapter_progress',
@@ -25,7 +25,7 @@ db.define_table('user_chapter_progress',
   Field('start_date','datetime', default=datetime.datetime.now()),
   Field('end_date','datetime'),
   Field('status','integer'), #-1  - not started. 0 - active. 1 - completed
-  #migrate='runestone_user_chapter_progress.table'
+  migrate='runestone_user_chapter_progress.table' if settings.migrate else False
 )
 
 db.define_table('user_sub_chapter_progress',
@@ -35,7 +35,7 @@ db.define_table('user_sub_chapter_progress',
   Field('start_date','datetime', default=datetime.datetime.now()),
   Field('end_date','datetime'),
   Field('status','integer'), #-1  - not started. 0 - active. 1 - completed
-  migrate='runestone_user_sub_chapter_progress.table'
+  migrate='runestone_user_sub_chapter_progress.table' if settings.migrate else False
 )
 
 #
