@@ -26,7 +26,7 @@ else:
 # Logging
 import logging
 logging.basicConfig(
-    filename="flask-runestone.log",
+    filename="logs/flask-runestone.log",
     level=logging.INFO,
     format='[%(asctime)s] [%(name)s] [%(levelname)s] %(message)s',
     datefmt='%Y%m%d-%H:%M%p',
@@ -96,7 +96,7 @@ from controllers.frontend import frontend
 app.register_blueprint(frontend)
 
 from flask.ext.security import Security, SQLAlchemyUserDatastore
-from models import db, User, Role
+from models.models import db, User, Role
 from security_extras import ExtendedRegisterForm
 
 # Setup Flask-Security

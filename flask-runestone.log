@@ -1,9 +1,0 @@
-[20140703-19:16PM] [main] [INFO] Emailing on error is ENABLED
-[20140703-19:18PM] [main] [INFO] Emailing on error is ENABLED
-[20140703-19:18PM] [main] [INFO] Emailing on error is ENABLED
-[20140703-19:19PM] [main] [INFO] Emailing on error is ENABLED
-[20140703-19:19PM] [main] [INFO] Emailing on error is ENABLED
-[20140703-19:19PM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
-[20140703-19:19PM] [werkzeug] [INFO]  * Restarting with reloader
-[20140703-19:19PM] [main] [INFO] Emailing on error is ENABLED
-[20140703-19:20PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 19:20:04] "GET / HTTP/1.1" 200 -

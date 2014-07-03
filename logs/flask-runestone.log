@@ -1,0 +1,8 @@
+[20140703-19:28PM] [main] [INFO] Emailing on error is ENABLED
+[20140703-19:28PM] [main] [INFO] Emailing on error is ENABLED
+[20140703-19:28PM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
+[20140703-19:28PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-19:28PM] [main] [INFO] Emailing on error is ENABLED
+[20140703-19:32PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\private\\config.py', reloading
+[20140703-19:32PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-19:32PM] [main] [INFO] Emailing on error is ENABLED

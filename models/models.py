@@ -24,3 +24,14 @@ class User(db.Model, UserMixin):
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
+
+class Courses(db.Model):
+    """
+    A given book may have several Courses associated with it.
+    """
+    id = db.Column(db.Integer(), primary_key=True)
+    course_id = db.Column(db.String(255))
+    course_name = db.Column(db.String(255), unique=True)
+    term_start_date = db.Column(db.DateTime())
+    institution = db.Column(db.String(255))
+    
