@@ -105,7 +105,7 @@ function createEditors() {
                                                       }
         );
         cm_editors[newEdId].parentDiv = edList[i].parentNode.parentNode.id;
-        //requestCode(edList[i].parentNode.id) // populate with user's code
+        requestCode(edList[i].parentNode.id) // populate with user's code
     }
 
 }
@@ -859,7 +859,7 @@ function createScratchActivecode() {
         '      <div class="modal-body">' +
         '        <div id="' + divid + '" lang="python">' +
         '          <div id="' + divid + '_code_div" style="display: block">' +
-        '            <textarea cols="50" rows="12" id="' + divid + '_code" lang="python" prefixcode="undefined" class="active_code">\n\n\n\n\n</textarea>'
+        '            <textarea cols="50" rows="12" id="' + divid + '_code" lang="python" prefixcode="undefined" class="active_code">\n\n\n\n\n</textarea>' +
         '          </div>' +
         '          <p class="ac_caption"><span class="ac_caption_text">Scratch Editor</span> </p>' +
 
@@ -882,6 +882,7 @@ function createScratchActivecode() {
         '    </div>' +
         '  </div>' +
         '</div>';
+    console.log(html);
     el = $(html);
     $('body').append(el);
 

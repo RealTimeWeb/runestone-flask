@@ -43,7 +43,7 @@ db.define_table('exercises',
     Field('type', 'string'),
     Field('cohort', 'boolean'),
     Field('div_id', 'string'),
-    migrate='runestone_exercises.table'
+    #migrate='runestone_exercises.table'
 )
 
 db.define_table('submissions',
@@ -55,7 +55,7 @@ db.define_table('submissions',
     Field('solution', 'text'),
     Field('feedback', 'text'),
     Field('override', 'string'),
-    migrate='runestone_submissions.table'
+    #migrate='runestone_submissions.table'
 )
 
 db.define_table('acerror_log',
