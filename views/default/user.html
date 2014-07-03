@@ -10,6 +10,7 @@
 
 <div class="container" style="margin-top:20px;">
   <div class='col-md-12'>
+  {{ if progress: }}
     <h2>Continue</h2>
     <ul>
     <li>{{=progress}}</li>
@@ -17,7 +18,8 @@
     <li>Chapter: <a class="btn btn-default" href="{{=progress.last_page_url}}">{{=progress.last_page_chapter}}</a></li>
     <li>Chapter: <a class="btn btn-default" href="{{=progress.last_page_url}}">{{=progress.last_page_chapter}}</a></li>
     <li>Chapter: <a class="btn btn-default" href="{{=progress.last_page_url}}">{{=progress.last_page_chapter}}</a></li>
-    </ul></p>
+    </ul>
+  {{ pass }}
     
     <h2>Progress</h2>
     <table class='table'>

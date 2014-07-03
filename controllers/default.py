@@ -79,7 +79,7 @@ def user():
         form.element(_id='submit_record__row')[1][0]['_class']='btn btn-default'
     except AttributeError: # not all auth methods actually have a submit button (e.g. user/not_authorized)
         pass
-
+        
     return dict(form=form, progress=progress)
 
 def download(): return response.download(request,db)
