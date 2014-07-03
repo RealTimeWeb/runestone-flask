@@ -1,30 +1,32 @@
 #!/usr/bin/env python
 
 import os
+try:
+    from os import uname
+except:
+    def uname():
+        return ['0', 'windows']
 
 FLASK_APP_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Flask
 from flask import Flask
 
-
 app = Flask(__name__)
 
 # Config
-if True: #os.getenv('DEV') == 'yes':
-    app.config.from_object('flask_application.config.DevelopmentConfig')
-    app.logger.info("Config: Development")
-elif os.getenv('TEST') == 'yes':
-    app.config.from_object('flask_application.config.TestConfig')
-    app.logger.info("Config: Test")
-else:
-    app.config.from_object('flask_application.config.ProductionConfig')
+
+if 'think.cs.vt.edu' in uname()[1]:
+    app.config.from_object('private.config.ProductionConfig')
     app.logger.info("Config: Production")
+else:
+    app.config.from_object('private.config.DevelopmentConfig')
+    app.logger.info("Config: Development")
 
 # Logging
 import logging
 logging.basicConfig(
-    filename="rtw-log.txt",
+    filename="flask-runestone.log",
     level=logging.INFO,
     format='[%(asctime)s] [%(name)s] [%(levelname)s] %(message)s',
     datefmt='%Y%m%d-%H:%M%p',
@@ -84,24 +86,22 @@ def cache_fetch(key, value_function, timeout=None):
 app.cache.fetch = cache_fetch
 
 # Helpers
-from flask_application.helpers import datetimeformat
+from helpers import datetimeformat
 app.jinja_env.filters['datetimeformat'] = datetimeformat
 
 # Business Logic
 # http://flask.pocoo.org/docs/patterns/packages/
 # http://flask.pocoo.org/docs/blueprints/
-from flask_application.controllers.frontend import frontend
+from controllers.frontend import frontend
 app.register_blueprint(frontend)
 
 from flask.ext.security import Security, SQLAlchemyUserDatastore
-from flask_application.models import db, User, Role
-from flask_application.security_extras import ExtendedRegisterForm
+from models import db, User, Role
+from security_extras import ExtendedRegisterForm
 
 # Setup Flask-Security
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore, register_form=ExtendedRegisterForm)
 
-
-
-from flask_application.controllers.admin import admin
-app.register_blueprint(admin)
+#from flask_application.controllers.admin import admin
+#app.register_blueprint(admin)

@@ -9,7 +9,7 @@ from flask.ext.security.script import (CreateUserCommand , AddRoleCommand,
         RemoveRoleCommand, ActivateUserCommand, DeactivateUserCommand)
 
 manager = Manager(app)
-manager.add_command("runserver", Server())
+manager.add_command("dev", Server())
 manager.add_command("production", Server(host='0.0.0.0', threaded=True))
 
 manager.add_command("reset_db", ResetDB())
