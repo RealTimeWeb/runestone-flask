@@ -24,13 +24,14 @@ app.config.from_object('private.config.Config')
 # Logging
 import logging
 logging.basicConfig(
-    filename="logs/flask-runestone.log",
+    #filename="logs/flask-runestone.log",
     level=logging.INFO,
     format='[%(asctime)s] [%(name)s] [%(levelname)s] %(message)s',
     datefmt='%Y%m%d-%H:%M%p',
 )
 
 # Email on errors
+"""
 if not app.debug and not app.testing:
     import logging.handlers
     mail_handler = logging.handlers.SMTPHandler(
@@ -55,7 +56,7 @@ Message:
     app.logger.addHandler(mail_handler)
     app.logger.info("Emailing on error is ENABLED")
 else:
-    app.logger.info("Emailing on error is DISABLED")
+    app.logger.info("Emailing on error is DISABLED")"""
 
 # Assets
 from flask.ext.assets import Environment
@@ -66,8 +67,8 @@ if not os.path.exists(assets_output_dir):
     os.mkdir(assets_output_dir)
 
 # Email
-from flask.ext.mail import Mail
-mail = Mail(app)
+"""from flask.ext.mail import Mail
+mail = Mail(app)"""
 
 
 # Google Authentication

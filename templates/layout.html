@@ -73,49 +73,27 @@
 
         <li class="divider-vertical"></li>
 
-        <!-- social media dropdown -->
-        <li class="dropdown">
-          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-            <i class="glyphicon glyphicon-share-alt" style="opacity: 0.9"></i>
-          </a>
-          <ul class="dropdown-menu social-menu">
-              <li>
-                <div>
-                    <b>Computational Thinking at VT on Facebook!</b>
-                </div>
-              </li>
-          </ul>
-        </li>
-        <!-- end social media dropdown -->
-
-        <li class="divider-vertical"></li>
-
         <!-- user account dropdown -->
         <li class="dropdown">
           <a class="dropdown-toggle" href="#" data-toggle="dropdown">
             <i class="glyphicon glyphicon-user" style="opacity:0.9;"></i>
           </a>
           <ul class="dropdown-menu user-menu">
-            {% if auth.user %}
-              <li><span class='loggedinuser'>{{ auth.user.email }}</span></li>
+            {% if user %}
+                <li><span class='loggedinuser'>{{ user.email }}</span></li>
+                <li class="divider"></li>
+                <li><a href='mygroup/schedule'>Group Schedule</a></li>
+                <li><a href='mygroup/newschedule'>Schedule New Chapter</a></li>
+                <li><a href='mygroup/manageGroup'>Manage Group</a></li>
+                <li class="divider"></li>
+                <li><a href='{{ url_for("instructor.index") }}'>Instructor's Page</a></li>
+                <li class="divider"></li>
+                <li><a href="/{{ request.application}}/default/user/profile">Profile</a>
+                <li><a href='{{ url_for('assignments.index')}}'>Progress Page</a></li>
+                <li class='loginout'><a href='{{ url_for("users.logout")}}'>Log Out</a></li>
             {% else %}
-              <li><span class='loggedinuser'>Not logged in</span></li>
-            {% endif %}
-            <li class="divider"></li>
-            <li><a href='/{{ request.application}}/mygroup/schedule'>Group Schedule</a></li>
-            <li><a href='/{{ request.application}}/mygroup/newschedule'>Schedule New Chapter</a></li>
-            <li><a href='/{{ request.application}}/mygroup/manageGroup'>Manage Group</a></li>
-            <li class="divider"></li>
-            <li><a href='/{{ request.application}}/admin/index'>Instructor's Page</a></li>
-            <li class="divider"></li>
-            {% if auth.user %}
-              <li><a href="/{{ request.application}}/default/user/profile">Edit Profile</a>
-              <li><a href="/{{ request.application}}/default/user/change_password">Change Password</a>
-              <li><a href='{{ url_for('assignments.index')}}'>Progress Page</a></li>              
-              <li class='loginout'><a href='{{ url_for("users.logout")}}'>Log Out</a></li>
-            {% else %}
-              <li><a href='{{ url_for("users.register")}}'>Register</a></li>
-              <li class='loginout'><a href='{{ url_for("users.login")}}'>Login</a></li>
+                <li><span class='loggedinuser'>Not logged in</span></li>
+                <li class='loginout'><a href='{{ url_for("users.login")}}'>Login</a></li>
             {% endif %}
           </ul>
         </li>
@@ -159,14 +137,14 @@
   <footer class="footer" style="margin-top:20px;">
     <div class="container">
       <p class="pull-right">
-        {% if auth.user %}
-          <span class='loggedinuser'>{{ auth.user.email}}</span> | <a href="#">Back to top</a>
+        {% if user %}
+          <span class='loggedinuser'>{{ user.email}}</span> | <a href="#">Back to top</a>
         {% else %}
           <span class='loggedinuser'>Not logged in</span> | <a href="#">Back to top</a>
         {% endif %}
       </p>
       <p>
-        &copy; Copyright 2013 Brad Miller, David Ranum
+        &copy; Copyright 2013 Dennis Kafura, Austin Cory Bart
       </p>
     </div>
   </footer>

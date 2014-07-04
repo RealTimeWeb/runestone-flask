@@ -20,7 +20,6 @@ class Role(db.Model, RoleMixin):
 class User(db.Model, UserMixin):
     # General user properties
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(255), unique=True)
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
     email = db.Column(db.String(255), unique=True)
@@ -33,14 +32,13 @@ class User(db.Model, UserMixin):
     cohort = db.Column(db.Integer())
     # Temporal activity
     active = db.Column(db.Boolean())
-    created_on = db.Column(db.DateTime())
-    modified_on = db.Column(db.DateTime())
-    confirmed_at = db.Column(db.DateTime())
+    created_on = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
+    modified_on = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
     
 
-class Courses(db.Model):
+class Course(db.Model):
     """
     A given book may have several Courses associated with it.
     """
@@ -63,6 +61,16 @@ class CourseInstructors(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     course = db.Column(db.Integer())
     instructor = db.Column(db.Integer())
+    
+def get_course_id_from_name(name):
+    '''
+    '''
+    try:
+        return Course.query.filter_by(name=name).first().id
+    except NoResultFound, e:
+        return 0
+    except MultipleResultsFound, e:
+        return 0
 
 def get_course_name_from_id(id):
     '''
@@ -70,8 +78,7 @@ def get_course_name_from_id(id):
     'Unknown course' or 'Multiple Courses' if it couldn't find the expected.
     '''
     try:
-        matching_courses = db.session.query(Courses).filter(Courses.id == id)
-        return matching_courses.one().name
+        matching_courses = Course.query.filter_by(id=id).one().name
     except NoResultFound, e:
         return 'Unknown Course'
     except MultipleResultsFound, e:
@@ -83,7 +90,7 @@ def verify_instructor_status(course, instructor):
     given course.
     """
     if type(course) == str:
-        course = db.session.query(Courses).filter(Courses.name == course).one().id
+        course = db.session.query(Course).filter(Course.name == course).one().id
     temp = db.session.query.filter(CourseInstructors.course == course,
                                    CourseInstructors.instructor == instructor)
     return temp.count() > 0

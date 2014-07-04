@@ -4,13 +4,13 @@
 useinfo: basically, the event log. Terrible, terrible name.
 """
 db.define_table('useinfo',
-  Field('timestamp','datetime'),
-  Field('sid','string'),
-  Field('event','string'),
-  Field('act','string'),
-  Field('div_id','string'),
-  Field('course_id','string'),
-  migrate='runestone_useinfo.table' if settings.migrate else False
+    Field('timestamp','datetime'),
+    Field('sid','string'),
+    Field('event','string'),
+    Field('act','string'),
+    Field('div_id','string'),
+    Field('course_id','string'),
+    migrate='runestone_useinfo.table' if settings.migrate else False
 )
 
 db.define_table('annotations',

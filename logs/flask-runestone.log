@@ -377,3 +377,347 @@
 [20140703-22:49PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:49:51] "GET /static/js/dd.js HTTP/1.1" 304 -
 [20140703-22:49PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:49:51] "GET /static/bootstrap-3.0.0/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 -
 [20140703-22:49PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:49:51] "GET /static/images/logo_small.png HTTP/1.1" 404 -
+[20140703-22:50PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:50PM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
+[20140703-22:50PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-22:50PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:50PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:50:58] "GET /users/login HTTP/1.1" 302 -
+[20140703-22:51PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:51:52] "GET / HTTP/1.1" 404 -
+[20140703-22:51PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:51:55] "GET /users HTTP/1.1" 301 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:12] "GET /users/ HTTP/1.1" 200 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:12] "GET /static/images/logo_small.png HTTP/1.1" 404 -
+[20140703-22:52PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\__init__.py', reloading
+[20140703-22:52PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-22:52PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:38] "GET / HTTP/1.1" 500 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:38] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:38] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:38] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:38] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:38] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:38] "GET /?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:38] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-22:52PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\__init__.py', reloading
+[20140703-22:52PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-22:52PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET / HTTP/1.1" 302 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET /users/ HTTP/1.1" 200 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET /static/bootstrap-sphinx.css HTTP/1.1" 304 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET /static/bootstrap-3.0.0/css/bootstrap.min.css HTTP/1.1" 304 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET /static/runestone-custom-sphinx-bootstrap.css HTTP/1.1" 304 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET /static/css/dd.css HTTP/1.1" 304 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET /static/js/jquery-1.10.2.min.js HTTP/1.1" 304 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET /static/js/jquery-fix.js HTTP/1.1" 304 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET /static/js/web2py.js HTTP/1.1" 304 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET /static/bootstrap-3.0.0/js/bootstrap.min.js HTTP/1.1" 304 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET /static/bootstrap-sphinx.js HTTP/1.1" 304 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET /static/js/dd.js HTTP/1.1" 304 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET /static/images/logo_small.png HTTP/1.1" 404 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:49] "GET /static/bootstrap-3.0.0/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:52] "GET / HTTP/1.1" 302 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:52] "GET /users/ HTTP/1.1" 200 -
+[20140703-22:52PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:52:52] "GET /static/images/logo_small.png HTTP/1.1" 404 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:02] "GET /users/login HTTP/1.1" 302 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:05] "GET /users/authorized?code=4/8VbFAdNpdaCRPfObj4XNY87yeczn.cmiaKjlPDZcV3oEBd8DOtNAL0Jf-jQI HTTP/1.1" 200 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:31] "GET /users/ HTTP/1.1" 200 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:31] "GET /static/bootstrap-3.0.0/css/bootstrap.min.css HTTP/1.1" 304 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:31] "GET /static/bootstrap-sphinx.css HTTP/1.1" 304 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:31] "GET /static/runestone-custom-sphinx-bootstrap.css HTTP/1.1" 304 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:31] "GET /static/css/dd.css HTTP/1.1" 304 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:31] "GET /static/js/jquery-1.10.2.min.js HTTP/1.1" 304 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:31] "GET /static/js/jquery-fix.js HTTP/1.1" 304 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:31] "GET /static/js/web2py.js HTTP/1.1" 304 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:31] "GET /static/bootstrap-3.0.0/js/bootstrap.min.js HTTP/1.1" 304 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:31] "GET /static/bootstrap-sphinx.js HTTP/1.1" 304 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:31] "GET /static/js/dd.js HTTP/1.1" 304 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:31] "GET /static/images/logo_small.png HTTP/1.1" 404 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:31] "GET /static/bootstrap-3.0.0/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:47] "GET /users/ HTTP/1.1" 500 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:47] "GET /users/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:47] "GET /users/?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:47] "GET /users/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:47] "GET /users/?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:47] "GET /users/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:47] "GET /users/?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140703-22:53PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:53:47] "GET /users/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-22:54PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140703-22:54PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-22:54PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:03] "GET /users/ HTTP/1.1" 200 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:03] "GET /static/bootstrap-3.0.0/css/bootstrap.min.css HTTP/1.1" 304 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:03] "GET /static/bootstrap-sphinx.css HTTP/1.1" 304 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:03] "GET /static/runestone-custom-sphinx-bootstrap.css HTTP/1.1" 304 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:03] "GET /static/css/dd.css HTTP/1.1" 304 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:03] "GET /static/js/jquery-1.10.2.min.js HTTP/1.1" 304 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:03] "GET /static/js/jquery-fix.js HTTP/1.1" 304 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:03] "GET /static/js/web2py.js HTTP/1.1" 304 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:03] "GET /static/bootstrap-3.0.0/js/bootstrap.min.js HTTP/1.1" 304 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:03] "GET /static/bootstrap-sphinx.js HTTP/1.1" 304 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:03] "GET /static/js/dd.js HTTP/1.1" 304 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:03] "GET /static/images/logo_small.png HTTP/1.1" 404 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:03] "GET /static/bootstrap-3.0.0/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:04] "GET /users/register HTTP/1.1" 302 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:21] "GET /users/register HTTP/1.1" 302 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:30] "GET /users/authorized?code=4/Vbiu4DncZJ5EJ4_Fy5VRGDoeUQIY.EpKlIw8Qylcb3oEBd8DOtNBpb5r-jQI HTTP/1.1" 200 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:39] "GET /users/authorized?code=4/ezY35Hn_3UtteLL6pOYEiqNTrvnV.gsX_RRmCXAgX3oEBd8DOtNBhupr-jQI HTTP/1.1" 500 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:39] "GET /users/authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:40] "GET /users/authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:40] "GET /users/authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:40] "GET /users/authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:40] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:40] "GET /users/authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:40] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-22:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:54:57] "GET /users/authorized?__debugger__=yes&cmd=source&frm=56872272&s=2lPK6zTn6qMgkzM0FMOJ HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:09] "GET /users/authorized HTTP/1.1" 400 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:11] "GET /users/ HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:11] "GET /static/bootstrap-3.0.0/css/bootstrap.min.css HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:11] "GET /static/bootstrap-sphinx.css HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:11] "GET /static/runestone-custom-sphinx-bootstrap.css HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:11] "GET /static/css/dd.css HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:11] "GET /static/js/jquery-1.10.2.min.js HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:11] "GET /static/js/jquery-fix.js HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:11] "GET /static/js/web2py.js HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:11] "GET /static/bootstrap-3.0.0/js/bootstrap.min.js HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:11] "GET /static/bootstrap-sphinx.js HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:11] "GET /static/js/dd.js HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:12] "GET /static/images/logo_small.png HTTP/1.1" 404 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:12] "GET /static/bootstrap-3.0.0/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:13] "GET /users/register HTTP/1.1" 302 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:22] "GET /users/authorized?code=4/OMsbDOd5DTAm487cdhMqV27mImPY.IlSyozWInCMU3oEBd8DOtNBfC5z-jQI HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:30] "GET / HTTP/1.1" 302 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:30] "GET /users/ HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:30] "GET /static/images/logo_small.png HTTP/1.1" 404 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:43] "GET /users/ HTTP/1.1" 200 -
+[20140703-22:55PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:55:43] "GET /static/images/logo_small.png HTTP/1.1" 404 -
+[20140704-00:00AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:00:53] "GET /users/ HTTP/1.1" 200 -
+[20140704-00:00AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:00:54] "GET /static/bootstrap-3.0.0/css/bootstrap.min.css HTTP/1.1" 304 -
+[20140704-00:00AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:00:54] "GET /static/bootstrap-sphinx.css HTTP/1.1" 304 -
+[20140704-00:00AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:00:54] "GET /static/runestone-custom-sphinx-bootstrap.css HTTP/1.1" 304 -
+[20140704-00:00AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:00:54] "GET /static/js/jquery-fix.js HTTP/1.1" 304 -
+[20140704-00:00AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:00:54] "GET /static/js/jquery-1.10.2.min.js HTTP/1.1" 304 -
+[20140704-00:00AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:00:54] "GET /static/css/dd.css HTTP/1.1" 304 -
+[20140704-00:00AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:00:54] "GET /static/js/web2py.js HTTP/1.1" 304 -
+[20140704-00:00AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:00:54] "GET /static/bootstrap-3.0.0/js/bootstrap.min.js HTTP/1.1" 304 -
+[20140704-00:00AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:00:54] "GET /static/bootstrap-sphinx.js HTTP/1.1" 304 -
+[20140704-00:00AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:00:54] "GET /static/js/dd.js HTTP/1.1" 304 -
+[20140704-00:00AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:00:54] "GET /static/images/logo_small.png HTTP/1.1" 404 -
+[20140704-00:00AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:00:54] "GET /static/bootstrap-3.0.0/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:05] "GET /users/ HTTP/1.1" 200 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:05] "GET /static/bootstrap-3.0.0/css/bootstrap.min.css HTTP/1.1" 304 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:05] "GET /static/bootstrap-sphinx.css HTTP/1.1" 304 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:05] "GET /static/runestone-custom-sphinx-bootstrap.css HTTP/1.1" 304 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:05] "GET /static/css/dd.css HTTP/1.1" 304 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:05] "GET /static/js/jquery-1.10.2.min.js HTTP/1.1" 304 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:05] "GET /static/js/jquery-fix.js HTTP/1.1" 304 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:05] "GET /static/js/web2py.js HTTP/1.1" 304 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:05] "GET /static/bootstrap-3.0.0/js/bootstrap.min.js HTTP/1.1" 304 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:05] "GET /static/bootstrap-sphinx.js HTTP/1.1" 304 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:05] "GET /static/js/dd.js HTTP/1.1" 304 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:05] "GET /static/bootstrap-3.0.0/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:05] "GET /static/images/logo_small.png HTTP/1.1" 404 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:07] "GET /users/login HTTP/1.1" 302 -
+[20140704-00:58AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 00:58:10] "GET /users/authorized?code=4/f0LcZs1BoP9TROKgVQ0mZqePtZlB.Ykq4HIQn8NET3oEBd8DOtNDL3nz_jQI HTTP/1.1" 200 -
+[20140704-01:05AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\models\\models.py', reloading
+[20140704-01:05AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:05AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:06AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\models\\models.py', reloading
+[20140704-01:06AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:06AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:08AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:08AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:08AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:44AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:46AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:47AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:47AM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
+[20140704-01:47AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:47AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:17] "GET /users/ HTTP/1.1" 200 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:17] "GET /static/bootstrap-3.0.0/css/bootstrap.min.css HTTP/1.1" 304 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:17] "GET /static/bootstrap-sphinx.css HTTP/1.1" 304 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:17] "GET /static/runestone-custom-sphinx-bootstrap.css HTTP/1.1" 304 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:17] "GET /static/css/dd.css HTTP/1.1" 304 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:17] "GET /static/js/jquery-1.10.2.min.js HTTP/1.1" 304 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:17] "GET /static/js/jquery-fix.js HTTP/1.1" 304 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:17] "GET /static/js/web2py.js HTTP/1.1" 304 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:17] "GET /static/bootstrap-3.0.0/js/bootstrap.min.js HTTP/1.1" 304 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:17] "GET /static/bootstrap-sphinx.js HTTP/1.1" 304 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:17] "GET /static/js/dd.js HTTP/1.1" 304 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:17] "GET /static/images/logo_small.png HTTP/1.1" 404 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:17] "GET /static/bootstrap-3.0.0/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:18] "GET /users/login HTTP/1.1" 302 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:20] "GET /users/authorized?code=4/FwgSN1bmPU9p_-p73Qy-5vExZdQa.8uO5H8tF5N8a3oEBd8DOtNDb6db_jQI HTTP/1.1" 500 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:20] "GET /users/authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:21] "GET /users/authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:21] "GET /users/authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:21] "GET /users/authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:21] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:21] "GET /users/authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140704-01:47AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:47AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:47AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:42] "GET /users/authorized?code=4/FwgSN1bmPU9p_-p73Qy-5vExZdQa.8uO5H8tF5N8a3oEBd8DOtNDb6db_jQI HTTP/1.1" 500 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:43] "GET /users/authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:43] "GET /users/authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:43] "GET /users/authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:43] "GET /users/authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:43] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:43] "GET /users/authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140704-01:47AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:47:43] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:48AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:48AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:23] "GET /users/authorized?code=4/FwgSN1bmPU9p_-p73Qy-5vExZdQa.8uO5H8tF5N8a3oEBd8DOtNDb6db_jQI HTTP/1.1" 500 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:23] "GET /users/authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:23] "GET /users/authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:23] "GET /users/authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:23] "GET /users/authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:23] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:23] "GET /users/authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:23] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:48AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:48AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:42] "GET /users/authorized?code=4/FwgSN1bmPU9p_-p73Qy-5vExZdQa.8uO5H8tF5N8a3oEBd8DOtNDb6db_jQI HTTP/1.1" 500 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:42] "GET /users/authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:42] "GET /users/authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:42] "GET /users/authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:42] "GET /users/authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:42] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:42] "GET /users/authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140704-01:48AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:48:42] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:49AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:49AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:49AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:49AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:49AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:49AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:49AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:49:11] "GET /users/authorized?code=4/FwgSN1bmPU9p_-p73Qy-5vExZdQa.8uO5H8tF5N8a3oEBd8DOtNDb6db_jQI HTTP/1.1" 400 -
+[20140704-01:49AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\main.py', reloading
+[20140704-01:49AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:49AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:49AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:49AM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
+[20140704-01:49AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:49AM] [main] [INFO] Emailing on error is DISABLED
+[20140704-01:49AM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
+[20140704-01:49AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:50AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:50:08] "GET /users/authorized?code=4/FwgSN1bmPU9p_-p73Qy-5vExZdQa.8uO5H8tF5N8a3oEBd8DOtNDb6db_jQI HTTP/1.1" 400 -
+[20140704-01:50AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:50:13] "GET /users/authorized?code=4/CISf_MOPhwoVB8lVY7uQsimwnLju.0oaSTi--iYcc3oEBd8DOtNDbL9z_jQI HTTP/1.1" 400 -
+[20140704-01:50AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:50AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:50AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:50:40] "GET /users/authorized?code=4/CISf_MOPhwoVB8lVY7uQsimwnLju.0oaSTi--iYcc3oEBd8DOtNDbL9z_jQI HTTP/1.1" 500 -
+[20140704-01:50AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:50:40] "GET /users/authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140704-01:50AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:50:40] "GET /users/authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140704-01:50AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:50:40] "GET /users/authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140704-01:50AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:50:40] "GET /users/authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140704-01:50AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:50:40] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:50AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:50:40] "GET /users/authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140704-01:50AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:50:40] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:52AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:03] "GET /users/authorized?code=4/CISf_MOPhwoVB8lVY7uQsimwnLju.0oaSTi--iYcc3oEBd8DOtNDbL9z_jQI HTTP/1.1" 500 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:09] "GET /users/authorized?code=4/CISf_MOPhwoVB8lVY7uQsimwnLju.0oaSTi--iYcc3oEBd8DOtNDbL9z_jQI HTTP/1.1" 500 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:09] "GET /users/authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:09] "GET /users/authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:09] "GET /users/authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:09] "GET /users/authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:09] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:09] "GET /users/authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:09] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:52AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:52AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:52AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:52AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:52AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:52AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:52AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:52:44] "GET /users/authorized?code=4/CISf_MOPhwoVB8lVY7uQsimwnLju.0oaSTi--iYcc3oEBd8DOtNDbL9z_jQI HTTP/1.1" 400 -
+[20140704-01:53AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:53AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:53AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:53:12] "GET /users/authorized?code=4/CISf_MOPhwoVB8lVY7uQsimwnLju.0oaSTi--iYcc3oEBd8DOtNDbL9z_jQI HTTP/1.1" 400 -
+[20140704-01:54AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:54AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:54AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:54AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:54AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:54:27] "GET /users/authorized?code=4/CISf_MOPhwoVB8lVY7uQsimwnLju.0oaSTi--iYcc3oEBd8DOtNDbL9z_jQI HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:02] "GET /users/login HTTP/1.1" 302 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:03] "GET /users/authorized?code=4/UqTvTpAcq278CBRuy2_AcpU5Arct.Uih4vInCeC8R3oEBd8DOtNBDDOX_jQI HTTP/1.1" 500 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:03] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:55AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:18] "GET /users/login HTTP/1.1" 302 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:20] "GET /users/authorized?code=4/DARV7lJd8VHoo_HSImqpcrg6VmFb.AiZ_nOiMURIV3oEBd8DOtNBvjuX_jQI HTTP/1.1" 500 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:20] "GET /users/authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:20] "GET /users/authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:20] "GET /users/authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:20] "GET /users/authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:20] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:20] "GET /users/authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:55AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:30] "GET /users/login HTTP/1.1" 302 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:34] "GET /users/login HTTP/1.1" 302 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:36] "GET /users/authorized?code=4/zRfk-tCQKFcWo7Zk-lIce_ZkQiWj.YhqrmEf9XGgZ3oEBd8DOtNBDC-b_jQI HTTP/1.1" 500 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:36] "GET /users/authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:36] "GET /users/authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:36] "GET /users/authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:36] "GET /users/authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:36] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:55AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:55:36] "GET /users/authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140704-01:56AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:56AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:56AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:56AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:56AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:56AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:56AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:56:25] "GET /users/authorized?code=4/zRfk-tCQKFcWo7Zk-lIce_ZkQiWj.YhqrmEf9XGgZ3oEBd8DOtNBDC-b_jQI HTTP/1.1" 200 -
+[20140704-01:56AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:56:28] "GET /users/login HTTP/1.1" 302 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:08] "GET /users/authorized?code=4/VdncDnkkbHamDv2zwGapBDG97BS4.MpxCx64g3u4UshQV0ieZDArOsOf_jQI HTTP/1.1" 500 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /users/authorized?code=4/fKxDGsqR4vL5iK3y21-KrultVbZA.kj_BUXh6UpIT3oEBd8DOtNCTWej_jQI HTTP/1.1" 500 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /users/ HTTP/1.1" 200 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /static/bootstrap-3.0.0/css/bootstrap.min.css HTTP/1.1" 304 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /static/css/dd.css HTTP/1.1" 304 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /static/runestone-custom-sphinx-bootstrap.css HTTP/1.1" 304 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /static/bootstrap-sphinx.css HTTP/1.1" 304 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /static/js/jquery-fix.js HTTP/1.1" 304 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /static/js/jquery-1.10.2.min.js HTTP/1.1" 304 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /static/js/web2py.js HTTP/1.1" 304 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /static/bootstrap-3.0.0/js/bootstrap.min.js HTTP/1.1" 304 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /static/bootstrap-sphinx.js HTTP/1.1" 304 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /static/js/dd.js HTTP/1.1" 304 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /static/bootstrap-3.0.0/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:09] "GET /static/images/logo_small.png HTTP/1.1" 404 -
+[20140704-01:57AM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
+[20140704-01:57AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:14] "GET /users/login HTTP/1.1" 302 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:16] "GET /users/authorized?code=4/wo49s4ftNIJb9QBs1nNAesVrT1ee.Il9wKeDUJqUV3oEBd8DOtNClFun_jQI HTTP/1.1" 500 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:16] "GET /users/authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:16] "GET /users/authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:16] "GET /users/authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:16] "GET /users/authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:16] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:16] "GET /users/authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:17] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:57AM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\users.py', reloading
+[20140704-01:57AM] [werkzeug] [INFO]  * Restarting with reloader
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:31] "GET /users/login HTTP/1.1" 302 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:34] "GET /users/authorized?code=4/5w7tHEiauJ3eKIytitgaxz8TxQnc.spB7IZJKTpIW3oEBd8DOtNARnun_jQI HTTP/1.1" 500 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:34] "GET /users/authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:34] "GET /users/authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:34] "GET /users/authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:34] "GET /users/authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:34] "GET /users/authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140704-01:57AM] [werkzeug] [INFO] 127.0.0.1 - - [04/Jul/2014 01:57:34] "GET /users/authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -

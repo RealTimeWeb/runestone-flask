@@ -1,6 +1,6 @@
 from flask.ext.script import Command, Option
-#from flask_application.populate import populate_data
-#from flask_application.models import db
+from models.populate import populate_data
+from models.models import db
 import datetime
 
 
