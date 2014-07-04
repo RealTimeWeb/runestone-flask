@@ -6,3 +6,197 @@
 [20140703-19:32PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\private\\config.py', reloading
 [20140703-19:32PM] [werkzeug] [INFO]  * Restarting with reloader
 [20140703-19:32PM] [main] [INFO] Emailing on error is ENABLED
+[20140703-20:16PM] [main] [INFO] Emailing on error is ENABLED
+[20140703-20:17PM] [main] [INFO] Emailing on error is ENABLED
+[20140703-20:17PM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
+[20140703-20:17PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-20:17PM] [main] [INFO] Emailing on error is ENABLED
+[20140703-20:17PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 20:17:21] "GET / HTTP/1.1" 200 -
+[20140703-20:17PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 20:17:21] "GET /favicon.ico HTTP/1.1" 404 -
+[20140703-21:18PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:19PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:21PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:21PM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
+[20140703-21:21PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:21PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:22PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-21:22PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:22PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:23PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:23PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:24PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:24PM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
+[20140703-21:24PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:24PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:03] "GET / HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-21:24PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:24PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:19] "GET / HTTP/1.1" 500 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:19] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:19] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:19] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:19] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:19] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:19] "GET /?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:19] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-21:24PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:24PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:44] "GET / HTTP/1.1" 500 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:44] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:44] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:44] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:44] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:44] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:44] "GET /?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140703-21:24PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:24:44] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:26PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-21:26PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:26PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:26PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-21:26PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:26PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:26PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-21:26PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:26PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:26PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:26:22] "GET / HTTP/1.1" 302 -
+[20140703-21:26PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:26:22] "GET /login HTTP/1.1" 302 -
+[20140703-21:26PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-21:26PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:26PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:31PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:31:12] "GET / HTTP/1.1" 302 -
+[20140703-21:31PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:31:12] "GET /login HTTP/1.1" 302 -
+[20140703-21:33PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\main.py', reloading
+[20140703-21:33PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:33PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:34PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:34PM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
+[20140703-21:34PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:34PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:35PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:35:42] "GET / HTTP/1.1" 302 -
+[20140703-21:35PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:35:42] "GET /login HTTP/1.1" 302 -
+[20140703-21:35PM] [requests.packages.urllib3.connectionpool] [INFO] Starting new HTTPS connection (1): accounts.google.com
+[20140703-21:35PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:35:50] "GET /authorized?code=4/CK8tAQK0JYLcW7-XUd-tb81pznao.gg3WpJt4vVsUaDn_6y0ZQNj6Xgr-jQI HTTP/1.1" 500 -
+[20140703-21:35PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:35:50] "GET /authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140703-21:35PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:35:50] "GET /authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140703-21:35PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:35:50] "GET /authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140703-21:35PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:35:50] "GET /authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140703-21:35PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:35:50] "GET /authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:35PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:35:50] "GET /authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140703-21:35PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:35:50] "GET /authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:35PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:35:51] "GET /authorized?__debugger__=yes&cmd=source&frm=59875280&s=Q6gMNnMITk53Nkizv5K2 HTTP/1.1" 200 -
+[20140703-21:37PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:37PM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
+[20140703-21:37PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:37PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:37PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:37:55] "GET / HTTP/1.1" 302 -
+[20140703-21:37PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:37:55] "GET /login HTTP/1.1" 302 -
+[20140703-21:37PM] [requests.packages.urllib3.connectionpool] [INFO] Starting new HTTPS connection (1): accounts.google.com
+[20140703-21:37PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:37:58] "GET /authorized?code=4/5Ulu5qHyIxIsx3l_qsbi8hraf5oa.0hBxMoqVs50c3oEBd8DOtNABSA7-jQI HTTP/1.1" 500 -
+[20140703-21:37PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:37:58] "GET /authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140703-21:37PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:37:58] "GET /authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140703-21:37PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:37:58] "GET /authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140703-21:37PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:37:58] "GET /authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140703-21:37PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:37:58] "GET /authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:37PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:37:58] "GET /authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140703-21:37PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:37:58] "GET /authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:54PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:54PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:54PM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
+[20140703-21:54PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:54PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:54:51] "GET / HTTP/1.1" 302 -
+[20140703-21:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:54:52] "GET /login HTTP/1.1" 302 -
+[20140703-21:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:54:52] "GET / HTTP/1.1" 302 -
+[20140703-21:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:54:52] "GET /login HTTP/1.1" 302 -
+[20140703-21:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:54:56] "GET /authorized?code=4/vbG1N5OjEmrZn86ZydXtsoS9LvgL.wr_aS789dpgVaDn_6y0ZQNiyWS3-jQI HTTP/1.1" 500 -
+[20140703-21:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:54:56] "GET /authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140703-21:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:54:56] "GET /authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140703-21:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:54:56] "GET /authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140703-21:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:54:56] "GET /authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140703-21:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:54:56] "GET /authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:54:56] "GET /authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140703-21:54PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:54:57] "GET /authorized?__debugger__=yes&cmd=source&frm=57736752&s=UmkHZlP1tL7aWuEZO8PZ HTTP/1.1" 200 -
+[20140703-21:58PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-21:58PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:58PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:58PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:58:33] "GET /authorized?code=4/vbG1N5OjEmrZn86ZydXtsoS9LvgL.wr_aS789dpgVaDn_6y0ZQNiyWS3-jQI HTTP/1.1" 500 -
+[20140703-21:58PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:58:34] "GET /authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140703-21:58PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:58:34] "GET /authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140703-21:58PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:58:34] "GET /authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140703-21:58PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:58:34] "GET /authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140703-21:58PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:58:34] "GET /authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:58PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:58:34] "GET /authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140703-21:58PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:58:34] "GET /authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-21:59PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:59PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:14] "GET /authorized?code=4/vbG1N5OjEmrZn86ZydXtsoS9LvgL.wr_aS789dpgVaDn_6y0ZQNiyWS3-jQI HTTP/1.1" 500 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:15] "GET /authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:15] "GET /authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:15] "GET /authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:15] "GET /authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:15] "GET /authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:15] "GET /authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:15] "GET /authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:34] "GET /authorized?__debugger__=yes&cmd=source&frm=56823728&s=siEPiF7uSm0esJIfjQz0 HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:36] "GET / HTTP/1.1" 302 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:36] "GET /login HTTP/1.1" 302 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:36] "GET / HTTP/1.1" 302 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:36] "GET /login HTTP/1.1" 302 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:38] "GET /authorized?code=4/AMSpz436ygFFqiJJ89Lr-Merw83O.MndIhGiF1wgWaDn_6y0ZQNjE_TX-jQI HTTP/1.1" 500 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:39] "GET /authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:39] "GET /authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:39] "GET /authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:39] "GET /authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:39] "GET /authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 21:59:39] "GET /authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140703-21:59PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-21:59PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:59PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-21:59PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-21:59PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-21:59PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:00PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:00:03] "GET / HTTP/1.1" 302 -
+[20140703-22:00PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:00:03] "GET /login HTTP/1.1" 302 -
+[20140703-22:00PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:00:03] "GET / HTTP/1.1" 302 -
+[20140703-22:00PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:00:03] "GET /login HTTP/1.1" 302 -
+[20140703-22:00PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:00:05] "GET /authorized?code=4/rx9b0L4YN5To1fywTpv_IfSA-hB7.okdbnKJ1uJEaaDn_6y0ZQNgWzTb-jQI HTTP/1.1" 200 -
+[20140703-22:03PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\models\\models.py', reloading
+[20140703-22:03PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-22:03PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:04PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\models\\models.py', reloading
+[20140703-22:04PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-22:04PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:13PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-22:13PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-22:13PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:15PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\main.py', reloading
+[20140703-22:15PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-22:15PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:15PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\main.py', reloading
+[20140703-22:15PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-22:15PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:15PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\__init__.py', reloading
+[20140703-22:15PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-22:15PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:15PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:15PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:15PM] [werkzeug] [INFO]  * Running on http://127.0.0.1:5000/
+[20140703-22:15PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-22:15PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:15PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:15:30] "GET /authorized?code=4/rx9b0L4YN5To1fywTpv_IfSA-hB7.okdbnKJ1uJEaaDn_6y0ZQNgWzTb-jQI HTTP/1.1" 500 -
+[20140703-22:15PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:15:30] "GET /authorized?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[20140703-22:15PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:15:30] "GET /authorized?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[20140703-22:15PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:15:30] "GET /authorized?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[20140703-22:15PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:15:30] "GET /authorized?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[20140703-22:15PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:15:30] "GET /authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-22:15PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:15:30] "GET /authorized?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+[20140703-22:15PM] [werkzeug] [INFO] 127.0.0.1 - - [03/Jul/2014 22:15:30] "GET /authorized?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[20140703-22:16PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-22:16PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-22:16PM] [main] [INFO] Emailing on error is DISABLED
+[20140703-22:16PM] [werkzeug] [INFO]  * Detected change in 'C:\\Users\\acbart\\projects\\runestone\\controllers\\frontend.py', reloading
+[20140703-22:16PM] [werkzeug] [INFO]  * Restarting with reloader
+[20140703-22:16PM] [main] [INFO] Emailing on error is DISABLED

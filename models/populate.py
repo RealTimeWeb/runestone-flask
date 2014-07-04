@@ -1,5 +1,18 @@
 from main import user_datastore
-from models import db
+from models import db, Course
+
+import datetime
+
+def create_courses():
+    ct = Course(name='compthink', term_start_date=datetime.date(2014, 7, 3))
+    db.session.add(ct)
+    db.session.commit()
+    
+def create_cohort():
+    default_group = CohortMaster(name='Default Group', is_active=1)
+    db.session.add(default_group)
+    db.session.commit()
+
 def create_roles():
     for role in ('admin', 'editor', 'author'):
         user_datastore.create_role(name=role, description=role)

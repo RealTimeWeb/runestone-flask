@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import json
 import os
 try:
     from os import uname
@@ -8,6 +9,8 @@ except:
         return ['0', 'windows']
 
 FLASK_APP_DIR = os.path.dirname(os.path.abspath(__file__))
+MODE = 'local' # 'dev', 'prod'
+GOOGLE_KEYS = json.load(open('private/google_auth_{}_flask.json'.format(MODE), 'r'))['web']
 
 # Flask
 from flask import Flask
@@ -15,13 +18,8 @@ from flask import Flask
 app = Flask(__name__)
 
 # Config
-
-if 'think.cs.vt.edu' in uname()[1]:
-    app.config.from_object('private.config.ProductionConfig')
-    app.logger.info("Config: Production")
-else:
-    app.config.from_object('private.config.DevelopmentConfig')
-    app.logger.info("Config: Development")
+app.logger.info("Config: Production")
+app.config.from_object('private.config.Config')
 
 # Logging
 import logging
@@ -71,6 +69,24 @@ if not os.path.exists(assets_output_dir):
 from flask.ext.mail import Mail
 mail = Mail(app)
 
+
+# Google Authentication
+from flask_oauthlib.client import OAuth
+oauth = OAuth(app)
+google = oauth.remote_app(
+    'google',
+    consumer_key=app.config.get('GOOGLE_ID'),
+    consumer_secret=app.config.get('GOOGLE_SECRET'),
+    request_token_params={
+        'scope': 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
+    },
+    base_url='https://www.googleapis.com/oauth2/v1/',
+    request_token_url=None,
+    access_token_method='POST',
+    access_token_url='https://accounts.google.com/o/oauth2/token',
+    authorize_url='https://accounts.google.com/o/oauth2/auth',
+)
+
 # Memcache
 from werkzeug.contrib.cache import MemcachedCache
 app.cache = MemcachedCache(app.config['MEMCACHED_SERVERS'])
@@ -92,16 +108,18 @@ app.jinja_env.filters['datetimeformat'] = datetimeformat
 # Business Logic
 # http://flask.pocoo.org/docs/patterns/packages/
 # http://flask.pocoo.org/docs/blueprints/
-from controllers.frontend import frontend
-app.register_blueprint(frontend)
+import controllers
 
 from flask.ext.security import Security, SQLAlchemyUserDatastore
 from models.models import db, User, Role
-from security_extras import ExtendedRegisterForm
+from models.security_extras import ExtendedRegisterForm
 
 # Setup Flask-Security
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore, register_form=ExtendedRegisterForm)
 
+
+
 #from flask_application.controllers.admin import admin
 #app.register_blueprint(admin)
+
