@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% block statusbar %}
+{% endblock %}
+
+{% block body %}
+<div class="container" style="margin-top:20px;">
+  <div class='col-md-12'>
+  {% if progress %}
+    <h2>Continue</h2>
+    <ul>
+    <li>{{ progress}}</li>
+    <li>Chapter: <a class="btn btn-default" href="{{progress.last_page_url}}">{{progress.last_page_chapter}}</a></li>
+    <li>Chapter: <a class="btn btn-default" href="{{progress.last_page_url}}">{{progress.last_page_chapter}}</a></li>
+    <li>Chapter: <a class="btn btn-default" href="{{progress.last_page_url}}">{{progress.last_page_chapter}}</a></li>
+    <li>Chapter: <a class="btn btn-default" href="{{progress.last_page_url}}">{{progress.last_page_chapter}}</a></li>
+    </ul>
+  {% endif %}
+    
+    <h2>Profile</h2>
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10"><p class="form-control-static">{{ user.email }}</p></div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10"><p class="form-control-static">{{ user.first_name }} {{ user.last_name }}</p></div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Gender</label>
+        <div class="col-sm-10"><p class="form-control-static">{{ user.gender }}</p></div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Cohort</label>
+        <div class="col-sm-10"><p class="form-control-static">{{ user.cohort }}</p></div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Picture</label>
+        <div class="col-sm-10"><img src='{{ user.picture }}' style="width:50px"/></p></div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script language="javascript"><!--
+      $jqTheme("#web2py_user_form input:visible:enabled:first").focus();
+      //--></script>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", init, false);
+
+    function init(){
+      var video = document.getElementById("runestonevid");
+      video.addEventListener("play", videoPlay, false);
+      video.addEventListener("pause", videoPause, false);
+      video.addEventListener("ended", videoEnd, false);
+    }
+
+    function videoPlay(event) {
+      trackEvent('Play', 'My Video');
+    }
+
+    function videoPause(event) {
+      trackEvent('Pause', 'My Video');
+    }
+
+    function videoEnd(event) {
+      trackEvent('Ended', 'My Video');
+    }
+
+    function trackEvent(action, title) {
+      _gaq.push(['_trackEvent', 'Videos', action, title]);
+    }
+</script>
+
+{% endblock %}

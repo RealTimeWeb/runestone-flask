@@ -10,6 +10,7 @@ from flask import Blueprint
 from flask import Flask, redirect, url_for, session, request, jsonify
 
 # Runestone imports
+from helpers import crossdomain
 
 ajax = Blueprint('ajax', __name__)
 
