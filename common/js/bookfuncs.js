@@ -585,7 +585,7 @@ function isLoggedIn() {
 function addUserToFooter() {
     // test to see if online before doing this.
     if (shouldLogin()) {
-        jQuery.get(eBookConfig.ajaxURL + 'getuser', null, gotUser)
+        jQuery.get(eBookConfig.ajaxURL + 'get_user', null, gotUser)
     } else {
         x = $(".footer").html();
         $(".footer").html(x + 'not logged in');

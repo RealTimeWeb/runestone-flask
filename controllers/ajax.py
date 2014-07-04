@@ -7,12 +7,12 @@ from collections import Counter
 
 # Flask imports
 from flask import Blueprint
-from flask import Flask, redirect, url_for, session, request, jsonify
+from flask import Flask, redirect, url_for, session, request, jsonify, g
 
 # Runestone imports
 from helpers import crossdomain
 
-ajax = Blueprint('ajax', __name__)
+ajax = Blueprint('ajax', __name__, url_prefix='/ajax')
 
 @ajax.route('/get_user/', methods=['GET', 'POST'])
 @crossdomain(origin="*")
@@ -26,9 +26,9 @@ def get_user():
     :returns: `str`, `bool`
     """
     if g.user:
-        return str(g.user.id), False
+        return "['{}', False]".format(g.user.id)
     else:
-        return "Guest", True
+        return "['Guest', True]"
     
 @ajax.route('/hsblog/', methods=['GET', 'POST'])
 @crossdomain(origin="*")
