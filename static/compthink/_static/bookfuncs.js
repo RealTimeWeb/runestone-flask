@@ -882,7 +882,6 @@ function createScratchActivecode() {
         '    </div>' +
         '  </div>' +
         '</div>';
-    console.log(html);
     el = $(html);
     $('body').append(el);
 

@@ -12,7 +12,7 @@ sys.path.append(os.getcwd())
 project_name = "compthink"
 ###############################
 
-master_url = 'http://127.0.0.1:8000'
+master_url = 'http://127.0.0.1:5000'
 master_app = 'runestone'
 
 options(
