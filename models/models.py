@@ -41,6 +41,10 @@ class User(db.Model, UserMixin):
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
     
+    def __repr__(self):
+        return '<{} {}>'.format('Instructor' if self.is_instructor()
+                                             else 'Student',
+                                self.email)
     def is_instructor(self, course=None):
         if course is None:
             return CourseInstructors.query.filter_by(instructor_id= self.id).count() > 0
@@ -134,13 +138,15 @@ class UseInfo(db.Model):
     """
     __tablename__ = 'use_info'
     id = db.Column(db.Integer(), primary_key=True)
-    timestamp = db.Column(db.DateTime())
+    timestamp = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
     student = db.Column(db.Integer())
     event = db.Column(db.String(255))
     act = db.Column(db.String(255))
     div_id = db.Column(db.String(255))
     # `div_id` is used because `div` is a reserved SQL word
     course_id = db.Column(db.String(255))
+    def __repr__(self):
+        return '<Use Info {} ({})>'.format(id, event)
 
 class Annotations(db.Model):
     """
@@ -193,12 +199,14 @@ class CodeErrorLog(db.Model):
     """
     __tablename__ = 'code_error_log'
     id = db.Column(db.Integer(), primary_key=True)
-    timestamp = db.Column(db.DateTime())
+    timestamp = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
     student = db.Column(db.String(255)) # formally sid
     div_id = db.Column(db.String(255))
     course_id = db.Column(db.String(255))
     code = db.Column(db.Text())
     error_message = db.Column(db.Text())
+    def __repr__(self):
+        return '<Code Error Log {}>'.format(id)
     
 class UserHighlights(db.Model):
     """

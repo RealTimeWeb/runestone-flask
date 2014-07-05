@@ -88,7 +88,7 @@
                 <li class="divider"></li>
                 <li><a href='{{ url_for("instructor.index") }}'>Instructor's Page</a></li>
                 <li class="divider"></li>
-                <li><a href="/{{ request.application}}/default/user/profile">Profile</a>
+                <li><a href="{{ url_for('users.profile') }}" id="profilelink">Edit Profile</a></li>
                 <li><a href='{{ url_for('assignments.index')}}'>Progress Page</a></li>
                 <li class='loginout'><a href='{{ url_for("users.logout")}}'>Log Out</a></li>
             {% else %}

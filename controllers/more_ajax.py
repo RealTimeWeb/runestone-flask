@@ -1,36 +1,5 @@
 
 
-    db.useinfo.insert(sid=sid,act=act,div_id=div_id,event=event,timestamp=ts,course_id=course)
-    response.headers['content-type'] = 'application/json'
-    res = {'log':True}
-    if setCookie:
-        response.cookies['ipuser'] = sid
-        response.cookies['ipuser']['expires'] = 24*3600*90
-        response.cookies['ipuser']['path'] = '/'
-    return json.dumps(res)
-
-def runlog():    # Log errors and runs with code
-    sid, setCookie = get_user()
-    div_id = request.vars.div_id
-    course = request.vars.course
-    code = request.vars.code
-    ts = datetime.datetime.now()
-    error_info = request.vars.errinfo
-    if error_info != 'success':
-        event = 'ac_error'
-        act = error_info
-    else:
-        act = 'run'
-        event = 'activecode'
-    db.acerror_log.insert(sid=sid,div_id=div_id,timestamp=ts,course_id=course,code=code,emessage=error_info)
-    db.useinfo.insert(sid=sid,act=act,div_id=div_id,event=event,timestamp=ts,course_id=course)
-    response.headers['content-type'] = 'application/json'
-    res = {'log':True}
-    if setCookie:
-        response.cookies['ipuser'] = sid
-        response.cookies['ipuser']['expires'] = 24*3600*90
-        response.cookies['ipuser']['path'] = '/'
-    return json.dumps(res)
 
 
 #

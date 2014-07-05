@@ -367,14 +367,14 @@ errorText.NotImplementedErrorFix = "For now the only way to fix this is to not u
 function logBookEvent(eventInfo) {
     eventInfo.course = eBookConfig.course;
     if (eBookConfig.logLevel > 0) {
-        jQuery.get(eBookConfig.ajaxURL + 'hsblog', eventInfo); // Log the run event
+        jQuery.get(eBookConfig.ajaxURL + 'hsb_log', eventInfo); // Log the run event
     }
 }
 
 function logRunEvent(eventInfo) {
     eventInfo.course = eBookConfig.course;
     if (eBookConfig.logLevel > 0) {
-        jQuery.post(eBookConfig.ajaxURL + 'runlog', eventInfo); // Log the run event
+        jQuery.post(eBookConfig.ajaxURL + 'run_log', eventInfo); // Log the run event
     }
 }
 
