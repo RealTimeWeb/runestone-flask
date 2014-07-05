@@ -42,3 +42,12 @@ def hsblog():    # Human Subjects Board Log
     event = request.values.get('event')
     course = request.values.get('course')
     ts = datetime.datetime.now()
+    
+    db.useinfo.insert(sid=sid,act=act,div_id=div_id,event=event,timestamp=ts,course_id=course)
+    response.headers['content-type'] = 'application/json'
+    res = {'log':True}
+    if setCookie:
+        response.cookies['ipuser'] = sid
+        response.cookies['ipuser']['expires'] = 24*3600*90
+        response.cookies['ipuser']['path'] = '/'
+    return json.dumps(res)
