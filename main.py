@@ -114,7 +114,6 @@ import controllers
 from flask.ext.security import Security, SQLAlchemyUserDatastore
 from models.models import db, Role, verify_instructor_status
 from models.models import User, Course, CourseInstructors, Cohort
-from models.security_extras import ExtendedRegisterForm
 
 # Setup Flask-Security
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
