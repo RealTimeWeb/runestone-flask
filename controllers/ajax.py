@@ -7,13 +7,19 @@ from collections import Counter
 
 # Flask imports
 from flask import Blueprint
-from flask import Flask, redirect, url_for, session, request, jsonify, g, make_response
+from flask import Flask, redirect, url_for, session, request, jsonify, g,\
+                  make_response, Response
 
 # Runestone imports
 from helpers import crossdomain
-from models.models import db, UseInfo, User, CodeErrorLog
+from models.models import db, UseInfo, User, CodeErrorLog, Code
+
+from main import app
 
 ajax = Blueprint('ajax', __name__, url_prefix='/ajax')
+
+def jsonify_list(content):
+    return Response(json.dumps(content),  mimetype='application/json')
 
 def get_user_and_cookie_status():
     """
@@ -79,4 +85,54 @@ def run_log():
     if set_cookie:
         response.set_cookie('ipuser', sid, max_age=24*3600*90)
     return response
+
+@ajax.route('/save_program/', methods=['GET', 'POST'])
+@crossdomain(origin="*")
+def save_program():
+    """
+    Ajax Handlers for saving and restoring active code blocks
+    """
+    acid = request.values.get('acid')
+    code = request.values.get('code')
+    # Attempt to store in the database
+    try:
+        db.session.add(Code(student=g.user.id, acid=acid, code=code,
+                            course_id=g.user.course.id))
+        db.session.commit()
+    except Exception as e:
+        if g.user:
+            return jsonify_list(["ERROR: " + str(e) + "Please copy this error and use the Report a Problem link"])
+        else:
+            return jsonify_list(["ERROR: auth.user is not defined.  Copy your code to the clipboard and reload or logout/login"])
+    return jsonify_list([acid])
+    
+@ajax.route('/load_program/', methods=['GET', 'POST'])
+@crossdomain(origin="*")
+def load_program():
+    """
+    return the program code for a particular acid
+    :Parameters:
+        - `acid`: id of the active code block
+        - `user`: optional identifier for the owner of the code
+    :Return:
+        - json object containing the source text
+    """
+    acid = request.values.get('acid')
+    sid = request.values.get('sid')
+    # Build up query, unless no user then exit with empty response
+    if sid:
+        query = Code.query.filter_by(student=sid, acid=acid)
+    elif g.user:
+        query = Code.query.filter_by(student=g.user.id, acid=acid)
+    else:
+        return jsonify_list([{}])
+    # Execute query
+    response = {'acid': acid}
+    if query.count():
+        response['source'] = query.order_by(Code.timestamp).first().code
+        if sid:
+            response['sid'] = sid
+    else:
+        app.logger.debug("Did not find anything to load for {}".format(sid))
+    return jsonify_list([response])
 

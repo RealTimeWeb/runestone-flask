@@ -139,14 +139,30 @@ class UseInfo(db.Model):
     __tablename__ = 'use_info'
     id = db.Column(db.Integer(), primary_key=True)
     timestamp = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
-    student = db.Column(db.Integer())
+    student = db.Column(db.Integer(), db.ForeignKey('user.id'))
     event = db.Column(db.String(255))
     act = db.Column(db.String(255))
     div_id = db.Column(db.String(255))
     # `div_id` is used because `div` is a reserved SQL word
     course_id = db.Column(db.String(255))
     def __repr__(self):
-        return '<Use Info {} ({})>'.format(id, event)
+        return '<Use Info {} ({})>'.format(self.id, self.event)
+
+class Code(db.Model):
+    """
+    For storing the ActiveCode responses
+    """
+    __tablename__ = 'code'
+    id = db.Column(db.Integer(), primary_key=True)
+    timestamp = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
+    student = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    acid = db.Column(db.String(255))
+    code = db.Column(db.Text())
+    grade = db.Column(db.Numeric())
+    comment = db.Column(db.Text())
+    course_id = db.Column(db.String(255))
+    def __repr__(self):
+        return '<Code {} by {}>'.format(self.acid, self.student)
 
 class Annotations(db.Model):
     """
@@ -156,9 +172,9 @@ class Annotations(db.Model):
     __tablename__ = 'annotations'
     id = db.Column(db.Integer(), primary_key=True)
     timestamp = db.Column(db.DateTime())
-    student = db.Column(db.Integer())
-    chapter = db.Column(db.String(255))
-    subchapter = db.Column(db.String(255))
+    student = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    chapter = db.Column(db.Integer(), db.ForeignKey('chapter.id'))
+    subchapter = db.Column(db.Integer(), db.ForeignKey('subchapter.id'))
     div_id = db.Column(db.String(255))
     start = db.Column(db.Integer())
     stop = db.Column(db.Integer())
@@ -179,13 +195,12 @@ class Exercises(db.Model):
 
 class Submissions(db.Model):
     """
-    The ranges and associated comments of a annotated body of text, for the
-    Annotate directive.
+    A submitted solution for a given exercise
     """
     __tablename__ = 'submissions'
     id = db.Column(db.Integer(), primary_key=True)
     timestamp = db.Column(db.DateTime())
-    student = db.Column(db.String(255))
+    student = db.Column(db.Integer(), db.ForeignKey('user.id'))
     chapter = db.Column(db.String(255))
     subchapter = db.Column(db.String(255))
     div_id = db.Column(db.String(255))
@@ -206,7 +221,7 @@ class CodeErrorLog(db.Model):
     code = db.Column(db.Text())
     error_message = db.Column(db.Text())
     def __repr__(self):
-        return '<Code Error Log {}>'.format(id)
+        return '<Code Error Log {}>'.format(self.id)
     
 class UserHighlights(db.Model):
     """

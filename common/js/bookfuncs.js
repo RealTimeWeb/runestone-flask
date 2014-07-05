@@ -416,7 +416,7 @@ function saveEditor(divName) {
     $(document).ajaxError(function (e, jqhxr, settings, exception) {
         alert("Request Failed for" + settings.url)
     });
-    jQuery.post(eBookConfig.ajaxURL + 'saveprog', data, saveSuccess);
+    jQuery.post(eBookConfig.ajaxURL + 'save_program', data, saveSuccess);
     if (editor.acEditEvent) {
         logBookEvent({'event': 'activecode', 'act': 'edit', 'div_id': divName}); // Log the run event
         editor.acEditEvent = false;
@@ -433,7 +433,7 @@ function requestCode(divName, sid) {
         data['sid'] = sid;
     }
     logBookEvent({'event': 'activecode', 'act': 'load', 'div_id': divName}); // Log the run event
-    jQuery.get(eBookConfig.ajaxURL + 'getprog', data, loadEditor);
+    jQuery.get(eBookConfig.ajaxURL + 'load_program', data, loadEditor);
 }
 
 function loadEditor(data, status, whatever) {
