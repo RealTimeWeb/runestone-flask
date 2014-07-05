@@ -3,6 +3,7 @@ import datetime
 from main import app
 
 from flask.ext.sqlalchemy import SQLAlchemy
+from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
 from flask.ext.security import UserMixin, RoleMixin
 from sqlalchemy import event
 
@@ -28,9 +29,11 @@ class User(db.Model, UserMixin):
     gender = db.Column(db.String(255))
     picture = db.Column(db.String(255))
     # Courses
-    course = db.Column(db.String(255))
+    course_id = db.Column(db.Integer(), db.ForeignKey('course.id'))
+    course = db.relationship("Course", backref=db.backref('students', order_by=id))
     # Cohorts
-    cohort = db.Column(db.Integer())
+    cohort_id = db.Column(db.Integer(), db.ForeignKey('cohort.id'))
+    cohort = db.relationship("Cohort", backref=db.backref('students', order_by=id))
     # Temporal activity
     active = db.Column(db.Boolean())
     created_on = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
@@ -83,8 +86,10 @@ def get_default_cohort():
 class CourseInstructors(db.Model):
     __tablename__ = 'course_instructors'
     id = db.Column(db.Integer(), primary_key=True)
-    course = db.Column(db.Integer())
-    instructor = db.Column(db.Integer())
+    course_id = db.Column(db.Integer(), db.ForeignKey('course.id'))
+    course = db.relationship("Course", backref=db.backref('instructors', order_by=id))
+    instructor_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    instructor = db.relationship("User")
     
 def get_course_id_from_name(name):
     '''
@@ -260,7 +265,7 @@ class UserChapterProgress(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     user = db.relationship("User", backref=db.backref('chapterProgresses', order_by=id))
-    chapter_id = db.Column(db.String(255))
+    chapter_id = db.Column(db.Integer(), db.ForeignKey('chapter.id'))
     start_date = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
     end_date = db.Column(db.DateTime())
     status = db.Column(db.Integer()) #-1  - not started. 0 - active. 1 - completed
@@ -270,8 +275,8 @@ class UserSubchapterProgress(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     user = db.relationship("User", backref=db.backref('subchapterProgresses', order_by=id))
-    chapter_id = db.Column(db.String(255))
-    subchapter_id = db.Column(db.String(255))
+    chapter_id = db.Column(db.Integer(), db.ForeignKey('chapter.id'))
+    subchapter_id = db.Column(db.Integer(), db.ForeignKey('subchapter.id'))
     start_date = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
     end_date = db.Column(db.DateTime())
     status = db.Column(db.Integer()) #-1  - not started. 0 - active. 1 - completed
@@ -282,17 +287,16 @@ class UserSubchapterProgress(db.Model):
 #
 @db.event.listens_for(User, 'after_insert')
 def make_progress_entries(mapper, connection, target):
-    course_name = get_course_name_from_id(target.course)
     db.session.execute('''
        INSERT INTO user_chapter_progress(user_id, chapter_id, status)
            SELECT {}, chapter.label, -1
            FROM chapter WHERE chapter.course_id = '{}';
-        '''.format(target.id, course_name))
+        '''.format(target.id, target.course_id))
     db.session.execute('''
        INSERT INTO user_subchapter_progress(user_id, chapter_id, subchapter_id, status)
            SELECT {}, chapter.label, subchapter.label, -1
            FROM chapter, subchapter WHERE subchapter.chapter_id = chapter.id and chapter.course_id = '{}';
-        '''.format(target.id, course_name))
+        '''.format(target.id, target.course_id))
 
 class CohortPlan(db.Model):
     __tablename__ = 'cohort_plan'

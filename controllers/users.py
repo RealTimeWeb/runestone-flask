@@ -8,7 +8,10 @@ from flask import Flask, redirect, url_for, session, request, jsonify, g
 from flask_oauthlib.client import OAuthException
 
 from main import google
-from models.models import db, User, get_course_id_from_name, get_default_course
+from models.models import db, CourseInstructors, User,\
+                          get_course_id_from_name,\
+                          get_default_course,\
+                          get_default_cohort
 from helpers import login_required
 
 from flask.ext.wtf import Form
@@ -73,14 +76,14 @@ def update_user(user, data):
     user.picture = data.get("picture", user.picture)
     user.modified_on = default=datetime.datetime.utcnow()
 
-def create_user(data):
+def create_user(data, course):
     return User(first_name=data.get('given_name', 'NoFirstName'),
                 last_name=data.get('family_name', 'NoLastName'),
                 email=data.get('email', data['id']), #We gotta have something
                 gender = data.get('gender', 'unspecified'),
                 picture = data.get('picture', url_for("static", filename='images/anon.jpg')),
-                course = get_default_course().id,
-                cohort = get_default_cohort().id,
+                course_id = course.id,
+                cohort_id = get_default_cohort().id,
                 active = data.get('email', '').endswith('vt.edu'))
 
 @users.route('/authorized/')
@@ -89,13 +92,24 @@ def authorized(resp):
     if resp is None or isinstance(resp, OAuthException):
         return resp.message + ": " + resp.data.get('error_description', "Unknown error")
     session['google_token'] = (resp['access_token'], '')
-    me = google.get('userinfo')
-    data = me.data
+    data = google.get('userinfo').data
     user = db.session.query(User).filter(User.email == data['email']).first()
+    # Add the user, or update their information
     if user:
+        course = user.course
         update_user(user, data)
     else:
-        db.session.add(create_user(data))
+        course = get_default_course()
+        user = create_user(data, course)
+        db.session.add(user)
+    # If there is no instructor yet, this user becomes an instructor.
+    db.session.commit()
+    print user.id, user
+    if not course.instructors:
+    #instructor = CourseInstructors.query.filter_by(course=course.id).count()
+    #if instructor == 0:
+        db.session.add(CourseInstructors(course=course,
+                                         instructor=user))
     session['user_email'] = user.email
     db.session.commit()
     return redirect(url_for('users.profile'))

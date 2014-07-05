@@ -120,9 +120,10 @@ user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
 
 # Setup Admin
-from flask.ext.admin import Admin, BaseView, expose
+from flask.ext.admin import Admin, BaseView, expose, form
 from flask.ext.admin.contrib.sqla import ModelView
 from flask import g
+from jinja2 import Markup
 from controllers.helpers import instructor_required
 class AdminView(BaseView):
     @expose('/')
@@ -132,7 +133,19 @@ class AdminView(BaseView):
     def is_accessible(self):
         return g.user is None or not verify_instructor_status('compthink', g.user.id)
 admin = Admin(app)
-admin.add_view(ModelView(User, db.session, category='Tables'))
+class UserView(ModelView):
+    def _list_thumbnail(view, context, model, name):
+        if not model.picture:
+            return ''
+        elif model.picture.startswith('http'):
+            return Markup('<img style="width:50px" src="{}">'.format(model.picture))
+        else:
+            return Markup('<img src="{}">'.format(url_for('static', filename=model.picture)))
+    column_formatters = {
+        'picture': _list_thumbnail
+    }
+
+admin.add_view(UserView(User, db.session, category='Tables'))
 admin.add_view(ModelView(Course, db.session, category='Tables'))
 admin.add_view(ModelView(CourseInstructors, db.session, category='Tables'))
 admin.add_view(ModelView(Cohort, db.session, category='Tables'))
