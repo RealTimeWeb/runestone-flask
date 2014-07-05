@@ -519,19 +519,19 @@ function gotUser(data, status, whatever) {
                 caughtErr = true;
                 mess = "Not logged in";
                 disableAcOpt();
-                $('li.loginout').html('<a href="' + eBookConfig.app + '/default/user/login">Login</a>')
+                $('li.loginout').html('<a href="' + eBookConfig.app + '/users/login">Login</a>')
             } else {
-                window.location.href = eBookConfig.app + '/default/user/login?_next=' + window.location.href
+                window.location.href = eBookConfig.app + '/users/login?_next=' + window.location.href
             }
         }
     }
     if (d.redirect) {
         if (eBookConfig.loginRequired) {
-            window.location.href = eBookConfig.app + '/default/user/login?_next=' + window.location.href
+            window.location.href = eBookConfig.app + '/users/login?_next=' + window.location.href
         } else {
             mess = "Not logged in";
             disableAcOpt();
-            $('li.loginout').html('<a href="' + eBookConfig.app + '/default/user/login">Login</a>')
+            $('li.loginout').html('<a href="' + eBookConfig.app + '/users/login">Login</a>')
         }
     } else {
         if (!caughtErr) {
@@ -611,12 +611,12 @@ function addNavbarLoginLink() {
         $('#profilelink').show();
         $('#passwordlink').show();
         $('#registerlink').hide();
-        $('li.loginout').html('<a href="' + eBookConfig.app + '/default/user/logout">Log Out</a>')
+        $('li.loginout').html('<a href="' + eBookConfig.app + '/users/logout">Log Out</a>')
     } else {
         $('#registerlink').show();
         $('#profilelink').hide();
         $('#passwordlink').hide();
-        $('li.loginout').html('<a href="' + eBookConfig.app + '/default/user/login">Login</a>')
+        $('li.loginout').html('<a href="' + eBookConfig.app + '/users/login">Login</a>')
     }
 }
 

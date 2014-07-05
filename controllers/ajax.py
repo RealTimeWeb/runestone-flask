@@ -11,7 +11,7 @@ from flask import Flask, redirect, url_for, session, request, jsonify, g,\
                   make_response, Response
 
 # Runestone imports
-from helpers import crossdomain
+from helpers import crossdomain, instructor_required
 from models.models import db, UseInfo, User, CodeErrorLog, Code
 
 from main import app
@@ -35,7 +35,7 @@ def get_user_and_cookie_status():
     else:
         return ('Guest', True)
     
-@ajax.route('/hsb_log/', methods=['GET', 'POST'])
+@ajax.route('/hsb_log', methods=['GET', 'POST'])
 @crossdomain(origin="*")
 def hsb_log():
     """
@@ -57,7 +57,7 @@ def hsb_log():
         response.set_cookie('ipuser', sid, max_age=24*3600*90)
     return response
     
-@ajax.route('/run_log/', methods=['GET', 'POST'])
+@ajax.route('/run_log', methods=['GET', 'POST'])
 @crossdomain(origin="*")
 def run_log():
     """
@@ -86,7 +86,7 @@ def run_log():
         response.set_cookie('ipuser', sid, max_age=24*3600*90)
     return response
 
-@ajax.route('/save_program/', methods=['GET', 'POST'])
+@ajax.route('/save_program', methods=['GET', 'POST'])
 @crossdomain(origin="*")
 def save_program():
     """
@@ -96,17 +96,17 @@ def save_program():
     code = request.values.get('code')
     # Attempt to store in the database
     try:
-        db.session.add(Code(student=g.user.id, acid=acid, code=code,
-                            course_id=g.user.course.id))
+        db.session.add(Code(student=g.user, acid=acid, code=code,
+                            course=g.user.course))
         db.session.commit()
     except Exception as e:
         if g.user:
             return jsonify_list(["ERROR: " + str(e) + "Please copy this error and use the Report a Problem link"])
         else:
-            return jsonify_list(["ERROR: auth.user is not defined.  Copy your code to the clipboard and reload or logout/login"])
+            return jsonify_list(["ERROR: You are not logged in.  Copy your code to the clipboard and reload or logout/login"])
     return jsonify_list([acid])
     
-@ajax.route('/load_program/', methods=['GET', 'POST'])
+@ajax.route('/load_program', methods=['GET', 'POST'])
 @crossdomain(origin="*")
 def load_program():
     """
@@ -121,9 +121,9 @@ def load_program():
     sid = request.values.get('sid')
     # Build up query, unless no user then exit with empty response
     if sid:
-        query = Code.query.filter_by(student=sid, acid=acid)
+        query = Code.query.filter_by(student_id=sid, acid=acid)
     elif g.user:
-        query = Code.query.filter_by(student=g.user.id, acid=acid)
+        query = Code.query.filter_by(student=g.user, acid=acid)
     else:
         return jsonify_list([{}])
     # Execute query
@@ -136,3 +136,29 @@ def load_program():
         app.logger.debug("Did not find anything to load for {}".format(sid))
     return jsonify_list([response])
 
+
+@ajax.route('/save_grade', methods=['GET', 'POST'])
+@crossdomain(origin="*")
+@instructor_required
+def save_grade():
+    id = request.values.get('id')
+    grade = request.values.get('grade')
+    comment = request.values.get('comment')
+    code = Code.query.filter_by(id=id).first()
+    if grade:
+        code.grade = grade
+    else:
+        code.comment = comment
+    db.session.commit()
+
+@ajax.route('/get_user', methods=['GET', 'POST'])
+@crossdomain(origin="*")
+def get_user():
+    if g.user:
+        response = {'email': g.user.email,
+                    'nick': g.user.name(),
+                    'cohortId': g.user.cohort_id}
+    else:        
+        response = {'redirect': url_for('users.login')} #?_next=....
+    app.logger.debug("Returning login info: {}".format(response))
+    return jsonify_list([response])

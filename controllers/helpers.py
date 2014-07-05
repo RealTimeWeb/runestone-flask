@@ -16,10 +16,10 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
     
-def instructor_required(f):
+def instructor_required(f, course=None):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if g.user is None or not verify_instructor_status('compthink', g.user.id):
+        if g.user is None or not g.user.is_instructor(course):
             return redirect(url_for('users.index', next=request.url))
         return f(*args, **kwargs)
     return decorated_function

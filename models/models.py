@@ -30,17 +30,20 @@ class User(db.Model, UserMixin):
     picture = db.Column(db.String(255))
     # Courses
     course_id = db.Column(db.Integer(), db.ForeignKey('course.id'))
-    course = db.relationship("Course", backref=db.backref('students', order_by=id))
+    course = db.relationship("Course",  backref='students')
     # Cohorts
     cohort_id = db.Column(db.Integer(), db.ForeignKey('cohort.id'))
-    cohort = db.relationship("Cohort", backref=db.backref('students', order_by=id))
+    cohort = db.relationship("Cohort", backref='students')
     # Temporal activity
     active = db.Column(db.Boolean())
     created_on = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
     modified_on = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
-    roles = db.relationship('Role', secondary=roles_users,
-                            backref=db.backref('users', lazy='dynamic'))
+    roles = db.relationship('Role', secondary=roles_users, backref='users')
     
+    def __str__(self):
+        return '<{} {}>'.format('Instructor' if self.is_instructor()
+                                             else 'Student',
+                                self.email)
     def __repr__(self):
         return '<{} {}>'.format('Instructor' if self.is_instructor()
                                              else 'Student',
@@ -53,6 +56,8 @@ class User(db.Model, UserMixin):
         temp = db.session.query.filter(CourseInstructors.course == course,
                                        CourseInstructors.instructor_id == self.id)
         return temp.count() > 0 
+    def name(self):
+        return self.first_name + self.last_name
 
 class Course(db.Model):
     """
@@ -64,6 +69,8 @@ class Course(db.Model):
     term_start_date = db.Column(db.DateTime())
     institution = db.Column(db.String(255))
     default = db.Column(db.Boolean(), default=False)
+    def __str__(self):
+        return '<Course {}>'.format(self.name)
     
 def get_default_course():
     """
@@ -82,6 +89,8 @@ class Cohort(db.Model):
     average_time = db.Column(db.Integer())
     is_active = db.Column(db.Integer())
     default = db.Column(db.Boolean(), default=False)
+    def __str__(self):
+        return '<Cohort {}>'.format(self.name)
     
 def get_default_cohort():
     """
@@ -145,6 +154,8 @@ class UseInfo(db.Model):
     div_id = db.Column(db.String(255))
     # `div_id` is used because `div` is a reserved SQL word
     course_id = db.Column(db.String(255))
+    def __str__(self):
+        return '<Use Info {} ({})>'.format(self.id, self.event)
     def __repr__(self):
         return '<Use Info {} ({})>'.format(self.id, self.event)
 
@@ -155,12 +166,14 @@ class Code(db.Model):
     __tablename__ = 'code'
     id = db.Column(db.Integer(), primary_key=True)
     timestamp = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
-    student = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    student_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    student = db.relationship("User", backref=db.backref('saved_codes', order_by=id))
     acid = db.Column(db.String(255))
     code = db.Column(db.Text())
     grade = db.Column(db.Numeric())
     comment = db.Column(db.Text())
-    course_id = db.Column(db.String(255))
+    course_id = db.Column(db.String(255), db.ForeignKey('course.id'))
+    course = db.relationship("Course", backref=db.backref('saved_codes', order_by=id))
     def __repr__(self):
         return '<Code {} by {}>'.format(self.acid, self.student)
 

@@ -144,11 +144,12 @@ class UserView(ModelView):
     column_formatters = {
         'picture': _list_thumbnail
     }
-from models.models import CodeErrorLog, UseInfo
+from models.models import CodeErrorLog, UseInfo, Code
 admin.add_view(UserView(User, db.session, category='Tables'))
 admin.add_view(ModelView(Course, db.session, category='Tables'))
 admin.add_view(ModelView(CourseInstructors, db.session, category='Tables'))
 admin.add_view(ModelView(Cohort, db.session, category='Tables'))
+admin.add_view(ModelView(Code, db.session, category='Tables'))
 admin.add_view(ModelView(CodeErrorLog, db.session, category='Tables'))
 admin.add_view(ModelView(UseInfo, db.session, category='Tables'))
 

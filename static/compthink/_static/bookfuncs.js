@@ -367,14 +367,14 @@ errorText.NotImplementedErrorFix = "For now the only way to fix this is to not u
 function logBookEvent(eventInfo) {
     eventInfo.course = eBookConfig.course;
     if (eBookConfig.logLevel > 0) {
-        jQuery.get(eBookConfig.ajaxURL + 'hsblog', eventInfo); // Log the run event
+        jQuery.get(eBookConfig.ajaxURL + 'hsb_log', eventInfo); // Log the run event
     }
 }
 
 function logRunEvent(eventInfo) {
     eventInfo.course = eBookConfig.course;
     if (eBookConfig.logLevel > 0) {
-        jQuery.post(eBookConfig.ajaxURL + 'runlog', eventInfo); // Log the run event
+        jQuery.post(eBookConfig.ajaxURL + 'run_log', eventInfo); // Log the run event
     }
 }
 
@@ -416,7 +416,7 @@ function saveEditor(divName) {
     $(document).ajaxError(function (e, jqhxr, settings, exception) {
         alert("Request Failed for" + settings.url)
     });
-    jQuery.post(eBookConfig.ajaxURL + 'saveprog', data, saveSuccess);
+    jQuery.post(eBookConfig.ajaxURL + 'save_program', data, saveSuccess);
     if (editor.acEditEvent) {
         logBookEvent({'event': 'activecode', 'act': 'edit', 'div_id': divName}); // Log the run event
         editor.acEditEvent = false;
@@ -433,7 +433,7 @@ function requestCode(divName, sid) {
         data['sid'] = sid;
     }
     logBookEvent({'event': 'activecode', 'act': 'load', 'div_id': divName}); // Log the run event
-    jQuery.get(eBookConfig.ajaxURL + 'getprog', data, loadEditor);
+    jQuery.get(eBookConfig.ajaxURL + 'load_program', data, loadEditor);
 }
 
 function loadEditor(data, status, whatever) {
@@ -519,19 +519,19 @@ function gotUser(data, status, whatever) {
                 caughtErr = true;
                 mess = "Not logged in";
                 disableAcOpt();
-                $('li.loginout').html('<a href="' + eBookConfig.app + '/default/user/login">Login</a>')
+                $('li.loginout').html('<a href="' + eBookConfig.app + '/users/login">Login</a>')
             } else {
-                window.location.href = eBookConfig.app + '/default/user/login?_next=' + window.location.href
+                window.location.href = eBookConfig.app + '/users/login?_next=' + window.location.href
             }
         }
     }
     if (d.redirect) {
         if (eBookConfig.loginRequired) {
-            window.location.href = eBookConfig.app + '/default/user/login?_next=' + window.location.href
+            window.location.href = eBookConfig.app + '/users/login?_next=' + window.location.href
         } else {
             mess = "Not logged in";
             disableAcOpt();
-            $('li.loginout').html('<a href="' + eBookConfig.app + '/default/user/login">Login</a>')
+            $('li.loginout').html('<a href="' + eBookConfig.app + '/users/login">Login</a>')
         }
     } else {
         if (!caughtErr) {
@@ -611,12 +611,12 @@ function addNavbarLoginLink() {
         $('#profilelink').show();
         $('#passwordlink').show();
         $('#registerlink').hide();
-        $('li.loginout').html('<a href="' + eBookConfig.app + '/default/user/logout">Log Out</a>')
+        $('li.loginout').html('<a href="' + eBookConfig.app + '/users/logout">Log Out</a>')
     } else {
         $('#registerlink').show();
         $('#profilelink').hide();
         $('#passwordlink').hide();
-        $('li.loginout').html('<a href="' + eBookConfig.app + '/default/user/login">Login</a>')
+        $('li.loginout').html('<a href="' + eBookConfig.app + '/users/login">Login</a>')
     }
 }
 

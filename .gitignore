@@ -8,6 +8,7 @@ databases~1/
 *~
 .DS_Store
 
+test.db
 databases/storage.sqlite
 data/*
 databases/c8b669d15150d7109e5f7ab36744a5b7_auth_cas.table
