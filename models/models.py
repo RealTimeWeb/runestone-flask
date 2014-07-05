@@ -41,11 +41,13 @@ class User(db.Model, UserMixin):
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
     
-    def is_instructor(self, course):
+    def is_instructor(self, course=None):
+        if course is None:
+            return CourseInstructors.query.filter_by(instructor_id= self.id).count() > 0
         if type(course) == str:
             course = db.session.query(Course).filter(Course.name == course).one().id
         temp = db.session.query.filter(CourseInstructors.course == course,
-                                       CourseInstructors.instructor == self.id)
+                                       CourseInstructors.instructor_id == self.id)
         return temp.count() > 0 
 
 class Course(db.Model):
