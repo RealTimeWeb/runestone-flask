@@ -148,7 +148,8 @@ class UseInfo(db.Model):
     __tablename__ = 'use_info'
     id = db.Column(db.Integer(), primary_key=True)
     timestamp = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
-    student = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    student_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    student = db.relationship("User", backref='use_info')
     event = db.Column(db.String(255))
     act = db.Column(db.String(255))
     div_id = db.Column(db.String(255))

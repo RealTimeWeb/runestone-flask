@@ -162,3 +162,12 @@ def get_user():
         response = {'redirect': url_for('users.login')} #?_next=....
     app.logger.debug("Returning login info: {}".format(response))
     return jsonify_list([response])
+
+@ajax.route('/count_users_online', methods=['GET', 'POST'])
+@crossdomain(origin="*")
+def count_users_online():
+    five_minutes_ago = datetime.datetime.now() - datetime.timedelta(minutes=15)
+    count = UseInfo.query.distinct(UseInfo.student).\
+                          filter(UseInfo.timestamp >= five_minutes_ago).\
+                          count()
+    return jsonify_list([{'online':count}])
