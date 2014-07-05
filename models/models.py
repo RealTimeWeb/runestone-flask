@@ -49,6 +49,7 @@ class Course(db.Model):
     """
     A given book may have several Courses associated with it.
     """
+    __tablename__ = 'course'
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(255), unique=True)
     term_start_date = db.Column(db.DateTime())
@@ -61,9 +62,10 @@ def get_default_course():
     """
     return Course.query.filter_by(default=True).first()
 
-class CohortMaster(db.Model):
+class Cohort(db.Model):
     """
     """
+    __tablename__ = 'cohort'
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(255), unique=True)
     created_on = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
@@ -76,9 +78,10 @@ def get_default_cohort():
     """
     Returns the first cohort with 
     """
-    return CohortMaster.query.filter_by(default=True).first()
+    return Cohort.query.filter_by(default=True).first()
  
 class CourseInstructors(db.Model):
+    __tablename__ = 'course_instructors'
     id = db.Column(db.Integer(), primary_key=True)
     course = db.Column(db.Integer())
     instructor = db.Column(db.Integer())
@@ -122,6 +125,7 @@ class UseInfo(db.Model):
     through a directive!! I suspect that this system should be broken up into
     some other kind of system.
     """
+    __tablename__ = 'use_info'
     id = db.Column(db.Integer(), primary_key=True)
     timestamp = db.Column(db.DateTime())
     student = db.Column(db.Integer())
@@ -136,6 +140,7 @@ class Annotations(db.Model):
     The ranges and associated comments of a annotated body of text, for the
     Annotate directive.
     """
+    __tablename__ = 'annotations'
     id = db.Column(db.Integer(), primary_key=True)
     timestamp = db.Column(db.DateTime())
     student = db.Column(db.Integer())
@@ -151,6 +156,7 @@ class Exercises(db.Model):
     The ranges and associated comments of a annotated body of text, for the
     Annotate directive.
     """
+    __tablename__ = 'exercises'
     id = db.Column(db.Integer(), primary_key=True)
     chapter = db.Column(db.String(255))
     subchapter = db.Column(db.String(255))
@@ -163,6 +169,7 @@ class Submissions(db.Model):
     The ranges and associated comments of a annotated body of text, for the
     Annotate directive.
     """
+    __tablename__ = 'submissions'
     id = db.Column(db.Integer(), primary_key=True)
     timestamp = db.Column(db.DateTime())
     student = db.Column(db.String(255))
@@ -173,10 +180,11 @@ class Submissions(db.Model):
     feedback = db.Column(db.Text())
     override = db.Column(db.String(255))
 
-class ActiveCodeErrorLog(db.Model):
+class CodeErrorLog(db.Model):
     """
     Formally named acerror_log, this is where Active Code errors are recorded.
     """
+    __tablename__ = 'code_error_log'
     id = db.Column(db.Integer(), primary_key=True)
     timestamp = db.Column(db.DateTime())
     student = db.Column(db.String(255)) # formally sid
@@ -190,6 +198,7 @@ class UserHighlights(db.Model):
     I don't think this is actually implemented yet, but it appears as if there
     are plans to add book highlighting.
     """
+    __tablename__ = 'user_highlights'
     id = db.Column(db.Integer(), primary_key=True)
     created_on = db.Column(db.DateTime())
     user_id = db.Column(db.Integer())
@@ -207,6 +216,7 @@ class UserState(db.Model):
     and where they were.
     Store the last position of the user. 1 row per user, per course.
     """
+    __tablename__ = 'user_state'
     id = db.Column(db.Integer(), primary_key=True)
     user_id = db.Column(db.Integer())
     course_id = db.Column(db.String(255))
@@ -230,7 +240,7 @@ class Chapters(db.Model):
 
 class Subchapters(db.Model):
     """
-    Table of all book chapters.
+    Table of all book subchapters.
     
     Subchapters is ONE word, no space or anything.
     """
@@ -283,3 +293,60 @@ def make_progress_entries(mapper, connection, target):
            SELECT {}, chapters.label, subchapters.label, -1
            FROM chapters, subchapters WHERE subchapters.chapter_id = chapters.id and chapters.course_id = '{}';
         '''.format(target.id, course_name))
+
+class CohortPlan(db.Model):
+    __tablename__ = 'cohort_plan'
+    id = db.Column(db.Integer(), primary_key=True)
+    cohort_id = db.Column(db.Integer(), db.ForeignKey('cohort.id'))
+    cohort = db.relationship("Cohort", backref=db.backref('plans', order_by=id))
+    chapter_id = db.Column(db.Integer(), db.ForeignKey('chapter.id'))
+    chapter = db.relationship("Chapter", backref=db.backref('cohort_plans', order_by=id))
+    start_date = db.Column(db.DateTime())
+    end_date = db.Column(db.DateTime())
+    actual_end_date = db.Column(db.DateTime()) #actual date when everyone completed the chapter
+    note = db.Column(db.String(255))
+    status = db.Column(db.String(255))
+    created_on = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
+    created_by = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    is_active = db.Column(db.Integer(), default=1) #0 - deleted / inactive. 1 - active
+
+class CohortPlanRevisions(db.Model):
+    __tablename__ = 'cohort_plan_revisions'
+    id = db.Column(db.Integer(), primary_key=True)
+    plan_id = db.Column(db.Integer(), db.ForeignKey('cohort_plan.id'))
+    plan = db.relationship("CohortPlan", backref=db.backref('revisions', order_by=id))
+    revision_no = db.Column(db.Integer()) #Revision no of the modified plan. Calculated by max(revision_no) + 1 where cohort_id and chapter_id are matched.
+    cohort_id = db.Column(db.Integer(), db.ForeignKey('cohort.id'))
+    cohort = db.relationship("Cohort", backref=db.backref('plans', order_by=id))
+    chapter_id = db.Column(db.Integer(), db.ForeignKey('chapter.id'))
+    chapter = db.relationship("Chapter", backref=db.backref('cohort_plans', order_by=id))
+    start_date = db.Column(db.DateTime())
+    end_date = db.Column(db.DateTime())
+    actual_end_date = db.Column(db.DateTime()) #actual date when everyone completed the chapter
+    note = db.Column(db.String(255))
+    status = db.Column(db.String(255))
+    created_on = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
+    created_by = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    is_active = db.Column(db.Integer(), default=1) #0 - deleted / inactive. 1 - active
+    
+class CohortPlanResponses(db.Model):
+    __tablename__ = 'cohort_plan_responses'
+    id = db.Column(db.Integer(), primary_key=True)
+    plan_id = db.Column(db.Integer()) #combination of plan and revision define which iteration was this response for
+    response = db.Column(db.response()) #-1 - awaiting response. 0 - rejected. 1 - accepted
+    response_by = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    response_on = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
+
+class UserComments(db.Model):
+    __tablename__ = 'user_comments'
+    id = db.Column(db.Integer(), primary_key=True)
+    cohort_id = db.Column(db.Integer(), db.ForeignKey('cohort.id'))
+    cohort = db.relationship("Cohort", backref=db.backref('comments', order_by=id))
+    chapter_id = db.Column(db.Integer(), db.ForeignKey('chapter.id'))
+    chapter = db.relationship("Chapter", backref=db.backref('comments', order_by=id))
+    comment = db.Column(db.Text())
+    comment_by_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    comment_by = db.relationship("User", backref=db.backref('comments', order_by=id))
+    comment_parent_id = db.Column(db.Integer(), db.ForeignKey('user_comments.id'))
+    comment_parent = db.relationship("UserComments", backref=db.backref('replies', order_by=id))
+    comment_on = db.Column(db.DateTime(), default=datetime.datetime.utcnow)

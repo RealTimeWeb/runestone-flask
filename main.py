@@ -113,7 +113,7 @@ import controllers
 
 from flask.ext.security import Security, SQLAlchemyUserDatastore
 from models.models import db, Role, verify_instructor_status
-from models.models import User, Course, CourseInstructors
+from models.models import User, Course, CourseInstructors, Cohort
 from models.security_extras import ExtendedRegisterForm
 
 # Setup Flask-Security
@@ -136,6 +136,7 @@ admin = Admin(app)
 admin.add_view(ModelView(User, db.session, category='Tables'))
 admin.add_view(ModelView(Course, db.session, category='Tables'))
 admin.add_view(ModelView(CourseInstructors, db.session, category='Tables'))
+admin.add_view(ModelView(Cohort, db.session, category='Tables'))
 
 #from flask_application.controllers.admin import admin
 #app.register_blueprint(admin)

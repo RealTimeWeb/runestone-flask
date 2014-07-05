@@ -1,5 +1,5 @@
 from main import user_datastore
-from models import db, Course
+from models import db, Course, Cohort
 
 import datetime
 
@@ -13,10 +13,10 @@ def create_courses():
     db.session.commit()
     
 def create_cohort():
-    CohortMaster.query.delete()
-    default_group = CohortMaster(name='Default Group',
-                                 is_active=1,
-                                 default=True)
+    Cohort.query.delete()
+    default_group = Cohort(name='Default Group',
+                           is_active=1,
+                           default=True)
     db.session.add(default_group)
     db.session.commit()
 
@@ -36,4 +36,4 @@ def create_users():
 
 def populate_data():
     create_courses()
-    create_cohort
+    create_cohort()
