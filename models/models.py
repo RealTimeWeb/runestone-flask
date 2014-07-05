@@ -372,3 +372,16 @@ class CodeExerciseDeadline(db.Model):
     section_id = db.Column(db.Integer(), db.ForeignKey('section.id'))
     section = db.relationship("Section", backref=db.backref('code_exercise_deadlines', order_by=id))
 
+class Modules(db.Model):
+    __tablename__ = 'modules'
+    id = db.Column(db.Integer, primary_key=True)
+    shortname = db.Column(db.String(255))
+    description = db.Column(db.Text())
+    pathtofile = db.Column(db.String(255))
+
+class Projects(db.Model):
+    __tablename__ = 'projects'
+    id = db.Column(db.Integer, primary_key=True)
+    project_code = db.Column(db.String(255))
+    description = db.Column(db.String(255))
+    
