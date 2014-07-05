@@ -1,16 +1,27 @@
 import datetime
 
+from models import db
+
 def pct2pts(x):
+    """
+    Converts percentage (75%) to points (.75)
+    """
     return "%.2f" % (100*x)
 
 class Grade(object):
-    """Grade of one user for either a collection of assignments, or for the whole course"""
     def __init__(self):
+        """
+        Grade of one user for either a collection of assignments, or for the
+        whole course
+        """
         self.weight = 1
         self.scores = []
         self.assignment_scores = []
     
     def points(self):
+        """
+        Returns the total sum of points for this grade
+        """
         self.scores.sort()
         if len(self.scores) > self.assignments_count - self.assignments_dropped:
             # too many grades; drop lowest
@@ -19,34 +30,53 @@ class Grade(object):
             return sum(self.scores)
     
     def assignment_points(self):
+        """
+        Returns the total sum of assignment points for this grade
+        """
         self.assignment_scores.sort()
         if len(self.scores) > self.assignments_count - self.assignments_dropped:
             # too many grades; drop lowest assignment
             return sum(self.assignment_scores[self.assignments_dropped:])
         else:
             return sum(self.assignment_scores)
-            
     
     def current(self):
+        """
+        Returns the current weighted grade as a percentage of the possible.
+        """
         if self.possible == 0:
             return 0
         points = float(self.points())/self.possible
         return points*self.weight
 
     def projected(self):
+        """
+        Returns the projected grade given current performance
+        """
         if self.assignment_points() == 0:
             return 0
         points = float(self.points())/self.assignment_points()
         return points*self.weight
 
     def points_after_drops(self):
+        """
+        Returns the sum of the points after dropped assignments are dropped
+        """
         self.scores.sort()
         return sum(self.scores[self.assignments_dropped:])
+        
     def assignment_points_after_drops(self):
+        """
+        Returns the sum of the assignment points after dropped assignments are dropped
+        """
         self.assignment_scores.sort()
         return sum(self.assignment_scores[self.assignments_dropped:])
 
     def max(self):
+        """
+        This somehow factors in the number of dropped assignments to calculate
+        the maximum possible score?
+        """
         # this is more complicated because of the "best k of n" scoring
         
         if self.possible == 0:
@@ -58,6 +88,9 @@ class Grade(object):
         return points * self.weight
 
     def percent(self, points=None, total=None):
+        """
+        Returns this grade as a percentage (`str`)
+        """
         if points == None:
             points = self.points()
         if total == None:
@@ -84,6 +117,12 @@ class CourseGrade(Grade):
         return self.max_pts
 
 def student_grade(user=None, course=None, assignment_type=None):
+    """
+    Constructs a Grade object for a given student in a given course across
+    a given assignment_type.
+    If one of the arguments is missing or None, then the default Grade object
+    is returned.
+    """
     grade = Grade()
     if not user or not course or not assignment_type:
         return grade
@@ -94,10 +133,11 @@ def student_grade(user=None, course=None, assignment_type=None):
     if assignment_type.points_possible != None:
         grade.possible = assignment_type.points_possible
     if assignment_type.assignments_count:
-        grade.assignments_count = int(assignment_type.assignments_count)
+        grade.assignments_count = assignment_type.assignments_count
     if assignment_type.assignments_dropped:
-        grade.assignments_dropped = int(assignment_type.assignments_dropped) 
-
+        grade.assignments_dropped = assignment_type.assignments_dropped
+"""
+    UserGrades.query.filter_by(
     assignments = db(db.assignments.id == db.grades.assignment)
     assignments = assignments(db.assignments.course == course.id)
     assignments = assignments(db.grades.auth_user == user.id)
@@ -111,30 +151,62 @@ def student_grade(user=None, course=None, assignment_type=None):
     for row in assignments:
         grade.scores.append(row.grades.score)
         grade.assignment_scores.append(row.assignments.points)
-    return grade
+    return grade"""
+    
+class UserGrades(db.Model):
+    __tablename__ = 'user_grades'
+    id = db.Column(db.Integer(), primary_key=True)
+    user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    user = db.relationship("User", backref=db.backref('grades', order_by=id))
+    assignment_id = db.Column(db.Integer(), db.ForeignKey('assignment.id'))
+    assignment = db.relationship("Assignment", backref=db.backref('grades', order_by=id))
+    score = db.Column(db.Numeric())
 
-db.define_table('assignment_types',
-    Field('name', 'string'),
-    Field('grade_type', 'string', default="additive", requires=IS_IN_SET(['additive', 'checkmark', 'use'])),
-    Field('weight', 'double', default=1.0),
-    Field('points_possible','integer', default=0),
-    Field('assignments_count', default=0),
-    Field('assignments_dropped', default=0),
-    format='%(names)s',
-    migrate='runestone_assignment_types.table' if settings.migrate else False
-    )
+class AssignmentType(db.Model):
+    __tablename__ = 'assignment_type'
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(255))
+    grade_type = db.Column(db.Enum('additive', 'checkmark', 'use'), default='additive')
+    weight = db.Column(db.Numeric(), default=1.0)
+    points_possible = db.Column(db.Integer(), default=0)
+    assignments_count = db.Column(db.Integer(), default=0)
+    assignments_dropped = db.Column(db.Integer(), default=0)
+    
+    def __repr__(self):
+        return self.name
+        
+class Assignment(db.Model):
+    __tablename__ = 'assignment'
+    id = db.Column(db.Integer(), primary_key=True)
+    course_id = db.Column(db.Integer(), db.ForeignKey('course.id'))
+    course = db.relationship("Course", backref=db.backref('assignments', order_by=id))
+    type_id = db.Column(db.Integer(), db.ForeignKey('assignment_type.id'))
+    type = db.relationship("AssignmentType", backref=db.backref('assignments', order_by=id))
+    name = db.Column(db.String(255))
+    points = db.Column(db.Integer())
+    threshold = db.Column(db.Integer(), default=1)
+    released = db.Column(db.Boolean())
+    def __repr__(self):
+        return self.name
 
-db.define_table('assignments',
-    Field('course', db.courses),
-    Field('assignment_type', db.assignment_types, requires=IS_EMPTY_OR(IS_IN_DB(db, 'assignment_types.id', '%(name)s'))),
-    Field('name', 'string'),
-    Field('points', 'integer'),
-    Field('threshold', 'integer', default=1),
-    Field('released', 'boolean'),
-    format='%(name)s',
-    migrate='runestone_assignments.table' if settings.migrate else False
-    )
+class Problems(db.Model):
+    __tablename__ = 'problems'
+    id = db.Column(db.Integer(), primary_key=True)
+    assignment_id = db.Column(db.Integer(), db.ForeignKey('assignment.id'))
+    assignment = db.relationship("Assignment", backref=db.backref('problems', order_by=id))
+    acid = db.Column(db.String(255))
 
+class Deadlines(db.Model):
+    __tablename__ = 'deadlines'
+    id = db.Column(db.Integer(), primary_key=True)
+    assignment_id = db.Column(db.Integer(), db.ForeignKey('assignment.id'))
+    assignment = db.relationship("Assignment", backref=db.backref('deadlines', order_by=id))
+    section_id = db.Column(db.Integer(), db.ForeignKey('section.id'))
+    section = db.relationship("Section", backref=db.backref('deadlines', order_by=id))
+    deadline = db.Column(db.DateTime())
+    acid = db.Column(db.String(255))
+
+"""
 class score(object):
     def __init__(self, acid=None, points=0, comment="", user=None):
         self.acid = acid
@@ -434,22 +506,5 @@ def assignment_release_grades(assignment, released=True):
     return True
 db.assignments.release_grades = Field.Method(lambda row, released=True: assignment_release_grades(row.assignments, released))
 
-db.define_table('problems',
-    Field('assignment', db.assignments),
-    Field('acid', 'string'),
-    migrate='runestones_problems.table' if settings.migrate else False
-    )
 
-db.define_table('grades',
-    Field('auth_user', db.auth_user),
-    Field('assignment', db.assignments),
-    Field('score', 'double'),
-    migrate='runestone_grades.table' if settings.migrate else False
-    )
-
-db.define_table('deadlines',
-    Field('assignment', db.assignments, requires=IS_IN_DB(db, 'assignments.id', db.assignments._format)),
-    Field('section', db.sections, requires=IS_EMPTY_OR(IS_IN_DB(db, 'sections.id', '%(name)s'))),
-    Field('deadline', 'datetime'),
-    migrate='runestone_deadlines.table' if settings.migrate else False
-    )
+"""

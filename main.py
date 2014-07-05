@@ -117,7 +117,7 @@ from models.models import User, Course, CourseInstructors, Cohort
 
 # Setup Flask-Security
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
-security = Security(app, user_datastore, register_form=ExtendedRegisterForm)
+security = Security(app, user_datastore)
 
 # Setup Admin
 from flask.ext.admin import Admin, BaseView, expose

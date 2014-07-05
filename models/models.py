@@ -21,7 +21,7 @@ class Role(db.Model, RoleMixin):
 class User(db.Model, UserMixin):
     # General user properties
     __tablename__ = 'user'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
     email = db.Column(db.String(255), unique=True)
@@ -227,30 +227,30 @@ class UserState(db.Model):
     last_page_scroll_location = db.Column(db.String(255))
     last_page_accessed_on = db.Column(db.DateTime())
 
-class Chapters(db.Model):
+class Chapter(db.Model):
     """
     Table of all book chapters.
     """
-    __tablename__ = 'chapters'
+    __tablename__ = 'chapter'
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(255))
     label = db.Column(db.String(255))
     number = db.Column(db.Integer())
     course_id = db.Column(db.String(255)) # references courses(course_name)
 
-class Subchapters(db.Model):
+class Subchapter(db.Model):
     """
     Table of all book subchapters.
     
     Subchapters is ONE word, no space or anything.
     """
-    __tablename__ = 'subchapters'
+    __tablename__ = 'subchapter'
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(255))
     label = db.Column(db.String(255))
     number = db.Column(db.Integer())
-    chapter_id = db.Column(db.String(255), db.ForeignKey('chapters.id'))
-    chapter = db.relationship("Chapters", backref=db.backref('subchapters', order_by=id))
+    chapter_id = db.Column(db.String(255), db.ForeignKey('chapter.id'))
+    chapter = db.relationship("Chapter", backref=db.backref('subchapter', order_by=id))
     # Average Time it takes people to complete this subchapter, maybe calculated
     # using a weekly batchjob
     length = db.Column(db.Integer())
@@ -285,13 +285,13 @@ def make_progress_entries(mapper, connection, target):
     course_name = get_course_name_from_id(target.course)
     db.session.execute('''
        INSERT INTO user_chapter_progress(user_id, chapter_id, status)
-           SELECT {}, chapters.label, -1
-           FROM chapters WHERE chapters.course_id = '{}';
+           SELECT {}, chapter.label, -1
+           FROM chapter WHERE chapter.course_id = '{}';
         '''.format(target.id, course_name))
     db.session.execute('''
        INSERT INTO user_subchapter_progress(user_id, chapter_id, subchapter_id, status)
-           SELECT {}, chapters.label, subchapters.label, -1
-           FROM chapters, subchapters WHERE subchapters.chapter_id = chapters.id and chapters.course_id = '{}';
+           SELECT {}, chapter.label, subchapter.label, -1
+           FROM chapter, subchapter WHERE subchapter.chapter_id = chapter.id and chapter.course_id = '{}';
         '''.format(target.id, course_name))
 
 class CohortPlan(db.Model):
@@ -317,9 +317,9 @@ class CohortPlanRevisions(db.Model):
     plan = db.relationship("CohortPlan", backref=db.backref('revisions', order_by=id))
     revision_no = db.Column(db.Integer()) #Revision no of the modified plan. Calculated by max(revision_no) + 1 where cohort_id and chapter_id are matched.
     cohort_id = db.Column(db.Integer(), db.ForeignKey('cohort.id'))
-    cohort = db.relationship("Cohort", backref=db.backref('plans', order_by=id))
+    cohort = db.relationship("Cohort", backref=db.backref('revisions', order_by=id))
     chapter_id = db.Column(db.Integer(), db.ForeignKey('chapter.id'))
-    chapter = db.relationship("Chapter", backref=db.backref('cohort_plans', order_by=id))
+    chapter = db.relationship("Chapter", backref=db.backref('revisions', order_by=id))
     start_date = db.Column(db.DateTime())
     end_date = db.Column(db.DateTime())
     actual_end_date = db.Column(db.DateTime()) #actual date when everyone completed the chapter
@@ -333,7 +333,7 @@ class CohortPlanResponses(db.Model):
     __tablename__ = 'cohort_plan_responses'
     id = db.Column(db.Integer(), primary_key=True)
     plan_id = db.Column(db.Integer()) #combination of plan and revision define which iteration was this response for
-    response = db.Column(db.response()) #-1 - awaiting response. 0 - rejected. 1 - accepted
+    response = db.Column(db.Integer()) #-1 - awaiting response. 0 - rejected. 1 - accepted
     response_by = db.Column(db.Integer(), db.ForeignKey('user.id'))
     response_on = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
 
@@ -348,25 +348,25 @@ class UserComments(db.Model):
     comment_by_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     comment_by = db.relationship("User", backref=db.backref('comments', order_by=id))
     comment_parent_id = db.Column(db.Integer(), db.ForeignKey('user_comments.id'))
-    comment_parent = db.relationship("UserComments", backref=db.backref('replies', order_by=id))
+    comment_parent = db.relationship("UserComments", remote_side=[id])
     comment_on = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
     
 class Section(db.Model):
     # General user properties
     __tablename__ = 'section'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(255))
     course_id = db.Column(db.Integer(), db.ForeignKey('course.id'))
     course = db.relationship("Course", backref=db.backref('sections', order_by=id))
     
 SectionUsers = db.Table('section_users',
         db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
-        db.Column('sectio_id', db.Integer(), db.ForeignKey('section.id')))
+        db.Column('section_id', db.Integer(), db.ForeignKey('section.id')))
         
 class CodeExerciseDeadline(db.Model):
     # was 'pipactex_deadline'
     __tablename__ = 'code_exercise_deadline'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
     acid_prefix = db.Column(db.String(255))
     deadline = db.Column(db.DateTime())
     section_id = db.Column(db.Integer(), db.ForeignKey('section.id'))
@@ -374,14 +374,15 @@ class CodeExerciseDeadline(db.Model):
 
 class Modules(db.Model):
     __tablename__ = 'modules'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
     shortname = db.Column(db.String(255))
     description = db.Column(db.Text())
     pathtofile = db.Column(db.String(255))
 
 class Projects(db.Model):
     __tablename__ = 'projects'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
     project_code = db.Column(db.String(255))
     description = db.Column(db.String(255))
     
+import grouped_assignments
