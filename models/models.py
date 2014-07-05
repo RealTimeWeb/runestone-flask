@@ -350,3 +350,25 @@ class UserComments(db.Model):
     comment_parent_id = db.Column(db.Integer(), db.ForeignKey('user_comments.id'))
     comment_parent = db.relationship("UserComments", backref=db.backref('replies', order_by=id))
     comment_on = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
+    
+class Section(db.Model):
+    # General user properties
+    __tablename__ = 'section'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+    course_id = db.Column(db.Integer(), db.ForeignKey('course.id'))
+    course = db.relationship("Course", backref=db.backref('sections', order_by=id))
+    
+SectionUsers = db.Table('section_users',
+        db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+        db.Column('sectio_id', db.Integer(), db.ForeignKey('section.id')))
+        
+class CodeExerciseDeadline(db.Model):
+    # was 'pipactex_deadline'
+    __tablename__ = 'code_exercise_deadline'
+    id = db.Column(db.Integer, primary_key=True)
+    acid_prefix = db.Column(db.String(255))
+    deadline = db.Column(db.DateTime())
+    section_id = db.Column(db.Integer(), db.ForeignKey('section.id'))
+    section = db.relationship("Section", backref=db.backref('code_exercise_deadlines', order_by=id))
+
