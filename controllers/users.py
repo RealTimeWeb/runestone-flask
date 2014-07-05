@@ -8,7 +8,7 @@ from flask import Flask, redirect, url_for, session, request, jsonify, g
 from flask_oauthlib.client import OAuthException
 
 from main import google
-from models.models import db, User, get_course_id_from_name
+from models.models import db, User, get_course_id_from_name, get_default_course
 from helpers import login_required
 
 from flask.ext.wtf import Form
@@ -65,6 +65,23 @@ def login():
 def logout():
     session.pop('google_token', None)
     return redirect(url_for('users.index'))
+    
+def update_user(user, data):
+    user.first_name = data.get("given_name", user.first_name)
+    user.last_name = data.get("family_name", user.last_name)
+    user.gender = data.get("gender", user.gender)
+    user.picture = data.get("picture", user.picture)
+    user.modified_on = default=datetime.datetime.utcnow()
+
+def create_user(data):
+    return User(first_name=data.get('given_name', 'NoFirstName'),
+                last_name=data.get('family_name', 'NoLastName'),
+                email=data.get('email', data['id']), #We gotta have something
+                gender = data.get('gender', 'unspecified'),
+                picture = data.get('picture', url_for("static", filename='images/anon.jpg')),
+                course = get_default_course().id,
+                cohort = get_default_cohort().id,
+                active = data.get('email', '').endswith('vt.edu'))
 
 @users.route('/authorized/')
 @google.authorized_handler
@@ -76,21 +93,9 @@ def authorized(resp):
     data = me.data
     user = db.session.query(User).filter(User.email == data['email']).first()
     if user:
-        user.first_name = data.get("given_name", user.first_name)
-        user.last_name = data.get("family_name", user.last_name)
-        user.gender = data.get("gender", user.gender)
-        user.picture = data.get("picture", user.picture)
-        user.modified_on = default=datetime.datetime.utcnow()
+        update_user(user, data)
     else:
-        user = User(first_name=data.get('given_name', 'NoFirstName'),
-                    last_name=data.get('family_name', 'NoLastName'),
-                    email=data.get('email', data['id']), #We gotta have something
-                    gender = data.get('gender', 'unspecified'),
-                    picture = data.get('picture', url_for("static", filename='images/anon.jpg')),
-                    course = get_course_id_from_name('compthink'),
-                    cohort = 0,
-                    active = data.get('email', '').endswith('vt.edu'))
-        db.session.add(user)
+        db.session.add(create_user(data))
     session['user_email'] = user.email
     db.session.commit()
     return redirect(url_for('users.profile'))

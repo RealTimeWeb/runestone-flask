@@ -7,12 +7,16 @@ def create_courses():
     Course.query.delete()
     ct = Course(name='compthink', 
                 term_start_date=datetime.date(2014, 7, 3),
-                institution='Virginia Tech')
+                institution='Virginia Tech',
+                default=True)
     db.session.add(ct)
     db.session.commit()
     
 def create_cohort():
-    default_group = CohortMaster(name='Default Group', is_active=1)
+    CohortMaster.query.delete()
+    default_group = CohortMaster(name='Default Group',
+                                 is_active=1,
+                                 default=True)
     db.session.add(default_group)
     db.session.commit()
 
@@ -32,3 +36,4 @@ def create_users():
 
 def populate_data():
     create_courses()
+    create_cohort

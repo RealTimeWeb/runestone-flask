@@ -53,6 +53,13 @@ class Course(db.Model):
     name = db.Column(db.String(255), unique=True)
     term_start_date = db.Column(db.DateTime())
     institution = db.Column(db.String(255))
+    default = db.Column(db.Boolean(), default=False)
+    
+def get_default_course():
+    """
+    Returns the first course with default=True
+    """
+    return Course.query.filter_by(default=True).first()
 
 class CohortMaster(db.Model):
     """
@@ -63,6 +70,13 @@ class CohortMaster(db.Model):
     invitation_id = db.Column(db.String(255), unique=True)
     average_time = db.Column(db.Integer())
     is_active = db.Column(db.Integer())
+    default = db.Column(db.Boolean(), default=False)
+    
+def get_default_cohort():
+    """
+    Returns the first cohort with 
+    """
+    return CohortMaster.query.filter_by(default=True).first()
  
 class CourseInstructors(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
