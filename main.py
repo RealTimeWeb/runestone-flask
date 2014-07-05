@@ -112,14 +112,30 @@ app.jinja_env.filters['datetimeformat'] = datetimeformat
 import controllers
 
 from flask.ext.security import Security, SQLAlchemyUserDatastore
-from models.models import db, User, Role
+from models.models import db, Role, verify_instructor_status
+from models.models import User, Course, CourseInstructors
 from models.security_extras import ExtendedRegisterForm
 
 # Setup Flask-Security
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore, register_form=ExtendedRegisterForm)
 
-
+# Setup Admin
+from flask.ext.admin import Admin, BaseView, expose
+from flask.ext.admin.contrib.sqla import ModelView
+from flask import g
+from controllers.helpers import instructor_required
+class AdminView(BaseView):
+    @expose('/')
+    def index(self):
+        if self.is_accessible():
+            return self.render('admin/index.html')
+    def is_accessible(self):
+        return g.user is None or not verify_instructor_status('compthink', g.user.id)
+admin = Admin(app)
+admin.add_view(ModelView(User, db.session, category='Tables'))
+admin.add_view(ModelView(Course, db.session, category='Tables'))
+admin.add_view(ModelView(CourseInstructors, db.session, category='Tables'))
 
 #from flask_application.controllers.admin import admin
 #app.register_blueprint(admin)

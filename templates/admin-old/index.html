@@ -1,0 +1,78 @@
+{{extend 'layout.html'}}
+
+<h1>Instructor's Dashboard</h1>
+
+Welcome Instructor!
+
+<!--<a href="/{{=request.application}}/designer">Create a Custom Course</a>-->
+
+
+<h3>Administer Your Course</h3>
+<ul>
+	<li>
+		<a href="{{=URL('assignments','index')}}">List/Create Assignments</a>
+	</li>
+	<li>
+	  <a href="/{{=request.application}}/admin/listassignments">List and Grade Assignments</a>
+	</li>
+	<li>
+	  <a href="/{{=request.application}}/admin/listassessments">Assessment Summary</a>
+	</li>
+	<li>
+		<a href="/{{=request.application}}/admin/sections_list">Show All Sections</a>
+	</li>
+	<li>
+	  <a href="/{{=request.application}}/admin/studentactivity">Student Activity Summary</a>
+	</li>
+	<li>
+		<a href="/{{=request.application}}/admin/showlog">Show Course Logs</a>
+	</li>
+	<li>
+	  <a href="/{{=request.application}}">Take me to my course</a>
+	</li>
+</ul>
+
+<h3>Course Maintenance</h3>
+<ul>
+	<li>
+	  <a href="/{{=request.application}}/admin/startdate">Change course start date</a>
+	</li>
+	<li>
+	  <a href="/{{=request.application}}/admin/rebuildcourse">Rebuild my course</a>
+	  {{ if my_vers: }}
+		  {{ if my_vers != mst_vers: }}
+		  	<span>(Update Available)</span>
+		  {{pass}}
+	  {{ pass }}
+	</li>
+	<li>
+		<a href="/{{=request.application}}/designer/delete_course">Delete My Course</a>
+	</li>
+</ul>
+
+
+
+<h3>Contribute to the Project</h3>
+<ul>
+	<li>
+		<a href="https://github.com/bnmnetp/runestone/issues/new">Submit an Exercise</a>
+	</li>
+	<li>
+		<a href="https://github.com/bnmnetp/runestone/issues/new">Report a Bug or Request a Feature</a>
+	</li>
+	<li>
+		We also welcome submissions of modules, videos, new and other material.  Fork us on <a href="http://github.com/bnmnetp/runestone">GitHub.</a>
+	</li>
+
+</ul>
+
+<h4>Build Information</h4>
+<p><a href="http://github.com/bnmnetp/runestone/blob/master/ChangeLog.rst">View ChangeLog</a></p>
+{{ if build_info: }}
+<table class="table table-striped table-bordered table-condensed">
+<tr><td>Current Version (version-build-hash)</td><td>My Version</td></tr>
+<tr><td>{{=master_build}}</td><td>{{=build_info}}</td></tr>
+</table>
+{{ pass }}
+
+

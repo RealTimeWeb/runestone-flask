@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from flask import Blueprint
-from flask import Flask, redirect, url_for, session, request, jsonify
+from flask import Flask, redirect, url_for, session, request, jsonify, render_template, g
 
 instructor = Blueprint('instructor', __name__)
 

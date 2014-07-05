@@ -4,7 +4,10 @@ from models import db, Course
 import datetime
 
 def create_courses():
-    ct = Course(name='compthink', term_start_date=datetime.date(2014, 7, 3))
+    Course.query.delete()
+    ct = Course(name='compthink', 
+                term_start_date=datetime.date(2014, 7, 3),
+                institution='Virginia Tech')
     db.session.add(ct)
     db.session.commit()
     
@@ -28,5 +31,4 @@ def create_users():
         db.session.commit()
 
 def populate_data():
-	create_roles()
-	create_users()
+    create_courses()

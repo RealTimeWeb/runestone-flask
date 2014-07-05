@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block statusbar %}
+{% endblock %}
+
+{% block body %}
+<h1>Welcome</h1>
+
+<p>
+	Are you interested in learning about Computational Thinking? Then <a href='{{ url_for("users.login") }}' class='btn btn-default'>Login</a> with your VT email!
+</p>
+{% endblock %}

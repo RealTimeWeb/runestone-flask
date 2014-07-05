@@ -20,11 +20,11 @@ class Role(db.Model, RoleMixin):
 
 class User(db.Model, UserMixin):
     # General user properties
+    __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
     email = db.Column(db.String(255), unique=True)
-    password = db.Column(db.String(255))
     gender = db.Column(db.String(255))
     picture = db.Column(db.String(255))
     # Courses
@@ -38,6 +38,12 @@ class User(db.Model, UserMixin):
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
     
+    def is_instructor(self, course):
+        if type(course) == str:
+            course = db.session.query(Course).filter(Course.name == course).one().id
+        temp = db.session.query.filter(CourseInstructors.course == course,
+                                       CourseInstructors.instructor == self.id)
+        return temp.count() > 0 
 
 class Course(db.Model):
     """
@@ -124,20 +130,6 @@ class Annotations(db.Model):
     div_id = db.Column(db.String(255))
     start = db.Column(db.Integer())
     stop = db.Column(db.Integer())
-    comment = db.Column(db.Text())
-    
-class Annotations(db.Model):
-    """
-    The ranges and associated comments of a annotated body of text, for the
-    Annotate directive.
-    """
-    id = db.Column(db.Integer(), primary_key=True)
-    timestamp = db.Column(db.DateTime())
-    acid = db.Column(db.String(255))
-    code = db.Column(db.Text())
-    course_id = db.Column(db.String(255))
-    grade = db.Column(db.String(255))
-    student = db.Column(db.String(255))
     comment = db.Column(db.Text())
 
 class Exercises(db.Model):
@@ -234,7 +226,7 @@ class Subchapters(db.Model):
     label = db.Column(db.String(255))
     number = db.Column(db.Integer())
     chapter_id = db.Column(db.String(255), db.ForeignKey('chapters.id'))
-    chapter = db.relationship("Chapter", backref=db.backref('subchapters', order_by=id))
+    chapter = db.relationship("Chapters", backref=db.backref('subchapters', order_by=id))
     # Average Time it takes people to complete this subchapter, maybe calculated
     # using a weekly batchjob
     length = db.Column(db.Integer())
@@ -242,7 +234,7 @@ class Subchapters(db.Model):
 class UserChapterProgress(db.Model):
     __tablename__ = 'user_chapter_progress'
     id = db.Column(db.Integer(), primary_key=True)
-    user_id = db.Column(db.Integer(), db.ForeignKey('User.id'))
+    user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     user = db.relationship("User", backref=db.backref('chapterProgresses', order_by=id))
     chapter_id = db.Column(db.String(255))
     start_date = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
@@ -252,7 +244,7 @@ class UserChapterProgress(db.Model):
 class UserSubchapterProgress(db.Model):
     __tablename__ = 'user_subchapter_progress'
     id = db.Column(db.Integer(), primary_key=True)
-    user_id = db.Column(db.Integer(), db.ForeignKey('User.id'))
+    user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     user = db.relationship("User", backref=db.backref('subchapterProgresses', order_by=id))
     chapter_id = db.Column(db.String(255))
     subchapter_id = db.Column(db.String(255))
@@ -274,6 +266,6 @@ def make_progress_entries(mapper, connection, target):
         '''.format(target.id, course_name))
     db.session.execute('''
        INSERT INTO user_subchapter_progress(user_id, chapter_id, subchapter_id, status)
-           SELECT {}, chapters.label, subchapters.sub_chapter_label, -1
+           SELECT {}, chapters.label, subchapters.label, -1
            FROM chapters, subchapters WHERE subchapters.chapter_id = chapters.id and chapters.course_id = '{}';
         '''.format(target.id, course_name))
